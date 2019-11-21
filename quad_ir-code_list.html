@@ -1,0 +1,381 @@
+<!doctype html>
+<html>
+
+<head>
+   <title>Roboquad_Raw_IR_Codes</title>
+   <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<div id="navbar">
+
+
+<img src="icons/banner-logo.png" alt="RobotPicture" id="banner">
+
+<!-- Nav bar section -->
+         <nav>
+            <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="robots.html">Various Robots</a></li>
+               <li><a href="projects.html">Sundry Projects</a></li>
+               <li><a href="more.html">More</a></li>
+               <li><a href="about.html">About</a></li>
+            </ul>
+         </nav>
+
+</div>
+      <div id="main">
+         <h1>Roboquad IR codes</h1>
+        	<p class="centext">All of the IR codes below were recorded with the IRrecvDumpV2 program of the Ken Shirriff IR library. The accuracy of these codes cannot be guaranteed.</p>
+ 
+	<hr>
+         <h3>
+            <font color="555555" ><strong>Unshifted commands</strong></font>
+         </h3>
+         <div><font color="black">
+            <div class="gysh">Activity toggle GREEN</div>
+            unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 900,3450, 850,3450, 850,800, 850,3500, 800,800, 900,800, 800,850, 850,800, 850};
+            <br>
+            <div class="gysh">Activity toggle ORANGE</div>
+            unsigned int  rawData[25] = {6550,850, 800,3500, 800,3500, 800,850, 850,3450, 850,3450, 850,3450, 850,850, 800,3500, 800,850, 850,850, 800,3500, 800};
+            <br>
+            <div class="gysh">Activity toggle RED</div>
+            unsigned int  rawData[25] = {6550,850, 800,3500, 800,3550, 750,900, 750,3550, 800,3500, 750,3550, 800,900, 750,3550, 800,850, 750,3550, 800,850, 800};
+            <br>
+         <hr>
+         <div class="gysh">Aggression toggle GREEN</div>
+         unsigned int  rawData[25] = {6550,900, 750,3550, 800,3500, 750,900, 750,3550, 800,3500, 800,900, 750,900, 800,3500, 750,900, 800,3550, 750,900, 800};
+         <br>
+         <div class="gysh">Aggression toggle ORANGE</div>
+         unsigned int  rawData[25] = {6550,900, 750,3550, 750,3550, 750,900, 800,3500, 800,3550, 750,900, 750,3550, 750,3550, 800,850, 800,3550, 750,900, 750};
+         <br>
+         <div class="gysh">Aggression toggle RED</div>
+         unsigned int  rawData[25] = {6600,850, 800,3500, 800,3500, 800,900, 800,3450, 850,3450, 850,3450, 850,850, 800,3550, 750,900, 800,3450, 850,850, 800};
+         <br>
+         <hr>
+         <div class="gysh">Awareness toggle GREEN</div>
+         unsigned int  rawData[25] = {6550,900, 750,3550, 800,3500, 750,900, 800,3500, 800,3500, 800,3500, 800,900, 800,850, 800,850, 800,3550, 750,900, 750};
+         <br>
+         <div class="gysh">Awareness toggle ORANGE</div>
+         unsigned int  rawData[25] = {6550,900, 800,3500, 750,3550, 800,850, 800,3500, 800,3500, 800,3550, 800,850, 800,850, 800,3500, 800,3550, 800,850, 750};
+         <br>
+         <div class="gysh">Awareness toggle RED</div>
+         unsigned int  rawData[25] = {6550,900, 750,3550, 800,3500, 750,900, 800,3500, 800,3500, 800,3550, 750,900, 750,3550, 800,900, 750,3550, 750,900, 800};
+         <hr>
+         <br>
+         <div class="gysh">Autonomy</div>
+         unsigned int  rawData[25] = {6500,900, 750,3550, 800,3500, 750,900, 800,850, 800,900, 750,900, 800,3550, 750,900, 800,900, 750,900, 800,850, 850};
+         <br><br>
+         <div>*When the Roboquad remote sends the Autonomy command, it is immediately followed by a command setting the Roboquad's Activity, Aggression, and Awareness levels. Below is a list of all the different potential combinations and their commands.</div>
+         <br><br>
+         <div class="gysh">Activity=Green, Aggression=Green, Awareness=Green,</div>
+         unsigned int  rawData[25] = {6600,900, 750,3550, 750,3550, 750,900, 750,3550, 750,3550, 750,950, 750,900, 750,900, 800,900, 750,900, 800,850, 800};
+         <br>
+         <div class="gysh">Activity=Green, Aggression=Green, Awareness=Orange,</div>
+         unsigned int  rawData[25] = {6600,850, 800,3500, 800,3500, 800,900, 750,3500, 850,3500, 800,850, 800,850, 800,850, 850,3450, 850,850, 800,850, 850};
+         <br>
+         <div class="gysh">Activity=Green, Aggression=Green, Awareness=Red,</div>
+         unsigned int  rawData[25] = {6600,850, 800,3500, 800,3500, 800,900, 750,3500, 850,3500, 800,850, 800,850, 800,850, 850,3450, 850,850, 800,850, 850};
+         <br>
+         <div class="gysh">Activity=Green, Aggression=Orange, Awareness=Green,</div>
+         unsigned int  rawData[25] = {6550,850, 800,3500, 800,3500, 800,850, 850,3500, 800,3450, 850,850, 800,3500, 800,900, 800,800, 850,850, 800,850, 850};
+         <br>
+         <div class="gysh">Activity=Green, Aggression=Orange, Awareness=Orange,</div>
+         unsigned int  rawData[25] = {6550,850, 800,3500, 800,3500, 800,850, 850,3500, 800,3450, 850,850, 800,3500, 800,900, 800,800, 850,850, 800,850, 850};
+         <br>
+         <div class="gysh">Activity=Green, Aggression=Orange, Awareness=Red,</div>
+         unsigned int  rawData[25] = {6550,850, 800,3500, 800,3500, 800,850, 850,3500, 800,3450, 850,850, 800,3500, 800,900, 800,800, 850,850, 800,850, 850};
+         <br>
+         <div class="gysh">Activity=Green, Aggression=Red, Awareness=Green,</div>
+         unsigned int  rawData[25] = {6550,900, 750,3550, 800,3500, 750,900, 750,3550, 800,3500, 800,3550, 750,900, 750,900, 800,850, 800,900, 750,900, 800};
+         <br>
+         <div class="gysh">Activity=Green, Aggression=Red, Awareness=Orange,</div>
+         unsigned int  rawData[25] = {6600,850, 750,3550, 750,3550, 750,900, 800,3500, 800,3550, 750,3550, 750,900, 750,900, 800,3500, 800,900, 750,900, 800};
+         <br>
+         <div class="gysh">Activity=Green, Aggression=Red, Awareness=Red,</div>
+         unsigned int  rawData[25] = {6600,850, 800,3550, 750,3500, 800,900, 800,3450, 850,3450, 850,3500, 800,850, 800,3550, 800,850, 800,900, 750,850, 850};
+         <br>
+         <br>
+         <div class="gysh">Activity=Orange, Aggression=Green, Awareness=Green,</div>
+         unsigned int  rawData[25] = {6550,850, 850,3450, 850,3450, 850,850, 800,3500, 800,3500, 800,850, 850,800, 850,850, 800,850, 850,850, 800,3500, 800};
+         <br>
+         <div class="gysh">Activity=Orange, Aggression=Green, Awareness=Orange,</div>
+         unsigned int  rawData[25] = {6550,850, 850,3450, 850,3450, 850,850, 800,3500, 800,3500, 800,850, 850,800, 850,850, 800,850, 850,850, 800,3500, 800};
+         <br>
+         <div class="gysh">Activity=Orange, Aggression=Green, Awareness=Red,</div>
+         unsigned int  rawData[25] = {6550,850, 850,3450, 850,3450, 850,850, 800,3500, 800,3500, 800,850, 850,800, 850,850, 800,850, 850,850, 800,3500, 800};
+         <br>
+         <div class="gysh">Activity=Orange, Aggression=Orange, Awareness=Green,</div>
+         unsigned int  rawData[25] = {6550,850, 850,3450, 850,3450, 850,850, 800,3500, 800,3500, 800,850, 850,800, 850,850, 800,850, 850,850, 800,3500, 800};
+         <br>
+         <div class="gysh">Activity=Orange, Aggression=Orange, Awareness=Orange,</div>
+         unsigned int  rawData[25] = {6550,850, 850,3450, 850,3450, 850,850, 800,3500, 800,3500, 800,850, 850,800, 850,850, 800,850, 850,850, 800,3500, 800};
+         <br>
+         <div class="gysh">Activity=Orange, Aggression=Orange, Awareness=Red,</div>
+         unsigned int  rawData[25] = {6550,850, 850,3450, 850,3450, 850,850, 800,3500, 800,3500, 800,850, 850,800, 850,850, 800,850, 850,850, 800,3500, 800};
+         <br>
+         <div class="gysh">Activity=Orange, Aggression=Red, Awareness=Green,</div>
+         unsigned int  rawData[25] = {6550,850, 850,3450, 850,3450, 850,850, 800,3500, 800,3500, 800,850, 850,800, 850,850, 800,850, 850,850, 800,3500, 800};
+         <br>
+         <div class="gysh">Activity=Orange, Aggression=Red, Awareness=Orange,</div>
+         unsigned int  rawData[25] = {6550,900, 800,3450, 850,3450, 850,850, 800,3500, 800,3500, 800,3500, 850,800, 850,850, 800,3500, 800,900, 800,3450, 850};
+         <br>
+         <div class="gysh">Activity=Orange, Aggression=Red, Awareness=Red,</div>
+         unsigned int  rawData[25] = {6550,900, 800,3450, 850,3450, 850,850, 800,3500, 800,3500, 800,3500, 850,800, 850,850, 800,3500, 800,900, 800,3450, 850};
+         <br>
+         <br>
+         <div class="gysh">Activity=Red, Aggression=Green, Awareness=Green,</div>
+         unsigned int  rawData[25] = {6600,850, 750,3550, 800,3500, 800,850, 800,3550, 750,3500, 850,800, 850,850, 800,850, 850,850, 800,3500, 800,850, 800};
+         <br>
+         <div class="gysh">Activity=Red, Aggression=Green, Awareness=Orange,</div>
+         unsigned int  rawData[25] = {6600,850, 750,3550, 800,3500, 800,850, 800,3550, 750,3500, 850,800, 850,850, 800,850, 850,850, 800,3500, 800,850, 800};
+         <br>
+         <div class="gysh">Activity=Red, Aggression=Green, Awareness=Red,</div>
+         unsigned int  rawData[25] = {6600,850, 750,3550, 800,3500, 800,850, 800,3550, 750,3500, 850,800, 850,850, 800,850, 850,850, 800,3500, 800,850, 800};
+         <br>
+         <div class="gysh">Activity=Red, Aggression=Orange, Awareness=Green,</div>
+         unsigned int  rawData[25] = {6600,850, 750,3550, 800,3500, 800,850, 800,3550, 750,3500, 850,800, 850,850, 800,850, 850,850, 800,3500, 800,850, 800};
+         <br>
+         <div class="gysh">Activity=Red, Aggression=Orange, Awareness=Orange,</div>
+         unsigned int  rawData[25] = {6600,900, 750,3500, 850,3450, 850,800, 850,3500, 800,3500, 800,850, 850,3450, 850,850, 800,3500, 800,3500, 800,900, 800};
+         <br>
+         <div class="gysh">Activity=Red, Aggression=Orange, Awareness=Red,</div>
+         unsigned int  rawData[25] = {6600,800, 850,3500, 800,3500, 800,850, 800,3550, 750,3550, 750,850, 850,3450, 850,3550, 750,850, 800,3550, 800,800, 850};
+         <br>
+         <div class="gysh">Activity=Red, Aggression=Red, Awareness=Green,</div>
+         unsigned int  rawData[25] = {6600,800, 850,3500, 800,3500, 800,850, 800,3550, 750,3550, 750,850, 850,3450, 850,3550, 750,850, 800,3550, 800,800, 850};
+         <br>
+         <div class="gysh">Activity=Red, Aggression=Red, Awareness=Orange,</div>
+         unsigned int  rawData[25] = {6600,800, 850,3500, 800,3500, 800,850, 800,3550, 750,3550, 750,850, 850,3450, 850,3550, 750,850, 800,3550, 800,800, 850};
+         <br>
+         <div class="gysh">Activity=Red, Aggression=Red, Awareness=Red,</div>
+         unsigned int  rawData[25] = {6600,850, 800,3500, 800,3500, 800,850, 850,3450, 850,3450, 850,3450, 850,850, 800,3500, 800,850, 850,3450, 850,850, 800};
+         <br>
+         <hr>
+         <div class="gysh">Program</div>
+         unsigned int  rawData[25] = {6600,850, 800,3500, 800,3500, 800,850, 850,3450, 850,3450, 850,3450, 850,850, 800,3500, 800,850, 850,3450, 850,850, 800};
+         <br>
+         <div class="gysh">Program play</div>
+         unsigned int  rawData[25] = {6600,900, 750,3550, 750,3550, 750,900, 800,850, 800,900, 750,900, 800,3500, 800,900, 800,3550, 750,850, 800,3550, 800};
+         <br>
+         <hr>
+         <div class="gysh">Dance demo</div>
+         unsigned int  rawData[25] = {6600,900, 750,3550, 750,3550, 750,900, 800,850, 800,900, 750,900, 800,3500, 800,900, 800,3550, 750,850, 800,3550, 800};
+         <br>
+         <hr>
+         <div class="gysh">Rotate clockwise*</div>
+         unsigned int  rawData[25] = {6650,850, 850,3450, 850,3450, 850,800, 850,800, 850,850, 850,800, 850,850, 850,3450, 850,800, 900,800, 850,3450, 850};
+         <br>
+         <div class="gysh">Rotate counter-clockwise*</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,850, 850,800, 850,850, 800,850, 850,3450, 850,850, 850,3450, 850,850, 800};
+         <br>
+         <div class="gysh">Walk forward*</div>
+         unsigned int  rawData[25] = {6550,850, 850,3450, 850,3450, 850,850, 800,850, 850,800, 850,850, 800,850, 850,850, 800,850, 850,900, 750,3500, 850};
+         <br>
+         <div class="gysh">Walk backward</div>
+         unsigned int  rawData[25] = {6550,850, 850,3450, 850,3450, 850,800, 850,800, 900,800, 850,800, 850,850, 850,800, 850,850, 850,3450, 850,850, 850};
+         <br>
+         <div class="gysh">Right crab walk*</div>
+         unsigned int  rawData[25] = {6600,850, 850,3400, 900,3450, 850,800, 850,800, 850,850, 850,800, 850,850, 850,800, 850,3450, 900,800, 850,850, 850};
+         <br>
+         <div class="gysh">Left crad walk*</div>
+         unsigned int  rawData[25] = {6600,800, 900,3450, 850,3450, 850,800, 850,800, 850,850, 850,800, 850,850, 850,800, 850,850, 850,3450, 850,3450, 850};
+         <br>
+         <div class="gysh">Stop (twice for full reset)</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 900,800, 850,800, 850,850, 850,800, 850,850, 850,800, 850,850, 850,800, 850};
+         <br>
+         <hr>
+         <div class="gysh">Top right shuffle</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 900,3400, 900,800, 850,800, 850,850, 850,850, 800,850, 850,800, 850,3500, 800,3500, 850,800, 850};
+         <br>
+         <div class="gysh">Top left shuffle</div>
+         unsigned int  rawData[25] = {6600,800, 850,3450, 850,3450, 900,800, 850,800, 850,850, 850,800, 850,850, 850,800, 850,3450, 850,850, 850,3450, 850};
+         <br>
+         <div class="gysh">Bottom right shuffle</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3500, 850,800, 850,800, 850,850, 850,800, 850,850, 850,3450, 850,800, 850,850, 850,800, 850};
+         <br>
+         <div class="gysh">Bottom left shuffle</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 900,850, 800,800, 850,850, 850,800, 850,850, 850,3500, 800,3450, 850,3500, 850};
+         <hr>
+         </p>
+         <h3>
+            <font color="green" ><strong>Green shifted commands</strong></font>
+         </h3>
+         <p>
+            <div class="gsh">Smart-scan</div>
+            unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,800, 900,800, 850,3450, 850,3450, 900,800, 850,800, 900,800, 850,3450, 850};
+            <br>
+            <div class="gsh">Roar</div>
+            unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,850, 850,800, 850,3450, 900,3450, 850,800, 850,850, 850,3450, 850,3450, 850};
+            <br>
+            <div class="gsh">Scan left for nearest object</div>
+            unsigned int  rawData[25] = {6600,800, 850,3450, 850,3450, 850,850, 850,800, 850,850, 850,3450, 850,3450, 850,850, 850,800, 850,3450, 850,850, 850};
+            <br>
+            <div class="gsh">Guard mode</div>
+            unsigned int  rawData[25] = {6600,800, 900,3400, 900,3450, 850,800, 850,800, 850,850, 850,3450, 850,3450, 850,850, 850,800, 850,850, 850,800, 800};
+            <br>
+            <div class="gsh">Program back</div>
+            unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,850, 800,850, 850,800, 850,3500, 800,3500, 850,850, 800,3500, 800,850, 850,850, 850};
+            <br>
+            <div class="gsh">Sound & vision sensors on/off</div>
+            unsigned int  rawData[25] = {6600,850, 850,3450, 850,3450, 850,800, 850,800, 900,800, 850,3450, 850,3450, 900,800, 850,3450, 850,850, 850,3450, 850};
+            <br>
+            <div class="gsh">Movement demo</div>
+            unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,850, 800,850, 850,3450, 850,3500, 850,800, 850,3450, 850,3500, 850,800, 850};
+         <hr>
+         <div class="gsh">Clockwise 4 steps</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,850, 850,800, 850,800, 900,3450, 850,800, 850,3450, 900,800, 850,800, 900,3450, 850};
+         <br>
+         <div class="gsh">Counter-Clockwise 4 steps</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,850, 850,800, 850,800, 900,3450, 800,850, 850,3500, 850,800, 850,3450, 850,850, 800};
+         <br>
+         <div class="gsh">Forward 4 steps</div>
+         unsigned int  rawData[25] = {6650,800, 850,3500, 850,3400, 900,800, 850,800, 850,850, 850,3450, 850,800, 850,850, 850,850, 800,850, 850,3450, 850};
+         <br>
+         <div class="gsh">Backward 4 steps</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 900,800, 850,800, 850,3500, 850,800, 850,850, 850,800, 850,3450, 850,850, 850};
+         <br>
+         <div class="gsh">Right crab 4 steps</div>
+         unsigned int  rawData[25] = {6600,800, 850,3450, 850,3450, 850,850, 850,800, 850,850, 850,3450, 850,800, 850,850, 850,3450, 850,850, 850,800, 850};
+         <br>
+         <div class="gsh">left crab 4 steps</div>
+         unsigned int  rawData[25] = {6650,850, 800,3450, 850,3450, 850,800, 900,800, 850,800, 850,3500, 850,800, 850,850, 850,800, 850,3450, 850,3500, 850};
+         <br>
+         <hr>
+         <div class="gsh">Leg reset</div>
+         unsigned int  rawData[25] = {6600,850, 850,3450, 850,3450, 850,800, 850,800, 850,850, 850,3450, 850,850, 850,800, 850,850, 850,800, 850,850, 850};
+         <br>
+         <div class="gsh">Right strafe</div>
+         unsigned int  rawData[25] = {6600,800, 850,3450, 850,3450, 850,850, 850,800, 850,800, 900,3450, 850,800, 850,850, 850,3450, 850,3450, 850,850, 850};
+         <br>
+         <div class="gsh">Left strafe</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,850, 850,800, 850,3500, 850,800, 850,800, 900,3450, 850,800, 850,3450, 900};
+         <br>
+         <div class="gsh">Right turn roll</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,850, 850,800, 850,3450, 850,850, 850,3450, 850,850, 850,800, 850,850, 850};
+         <br>
+         <div class="gsh">Left turn roll</div>
+         unsigned int  rawData[25] = {6600,800, 850,3450, 850,3450, 850,850, 850,800, 850,800, 900,3450, 850,800, 850,850, 850,3450, 850,3450, 850,3500, 850};
+         <hr>
+         <p/>
+         <h3>
+            <font color="orange"><strong>Orange shifted commands</strong></font>
+         </h3>
+         <p>
+            <div class="osh">Twitch BodyCon</div>
+            unsigned int  rawData[25] = {6650,800, 900,3450, 850,3450, 850,800, 850,800, 850,3500, 850,800, 850,3450, 850,850, 850,800, 850,850, 850,3450, 850};
+            <br>
+            <div class="osh">Attack</div>
+            unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,850, 850,800, 850,3450, 850,850, 850,3500, 800,800, 900,800, 850,3450, 850,3500, 850};
+            <br> 
+            <div class="osh">Scan right for nearest object</div>
+            unsigned int  rawData[25] = {6650,800, 850,3450, 900,3400, 900,800, 850,800, 850,3450, 900,800, 850,3450, 850,850, 850,800, 850,3450, 900,800, 850};
+            <br>
+            <div class="osh">Approach nearest object</div>
+            unsigned int  rawData[25] = {6600,800, 850,3450, 900,3450, 850,800, 850,800, 850,3500, 850,800, 850,3450, 850,850, 850,800, 850,850, 850,800, 850};
+         <hr>
+         <div class="osh">Program erase</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,850, 850,3450, 850,850, 800,3500, 850,800, 850,3450, 850,850, 850,800, 850};
+         <br>
+         <div class="osh">Dizzy BodyCon</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,850, 850,3450, 850,800, 900,3450, 850,800, 850,3450, 900,800, 850,3450, 850};
+         <br>
+         <div class="osh">Leg check</div>
+         unsigned int  rawData[25] = {6600,800, 850,3450, 900,3400, 900,800, 850,800, 850,3450, 900,800, 850,3450, 850,850, 850,3450, 850,3450, 850,850, 850};
+         <br>
+         <div class="osh">Single shot</div>
+         unsigned int  rawData[25] = {6600,850, 850,3450, 850,3450, 850,800, 850,800, 850,3500, 850,800, 850,850, 850,3450, 850,800, 850,850, 850,3450, 850};
+         <br>
+         <div class="osh">Burst</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,850, 850,800, 850,3450, 850,850, 850,800, 850,3450, 900,800, 850,3450, 850,850, 850};
+         <br>
+         <div class="osh">Stomp walk</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,800, 900,3450, 850,800, 850,850, 850,800, 850,850, 850,800, 850,3450, 900};
+         <br>
+         <div class="osh">Surprise BodyCon</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,850, 850,3450, 850,800, 900,800, 850,800, 850,850, 850,3450, 850,850, 850};
+         <br>
+         <div class="osh">Full reset</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 900,800, 850,3450, 850,850, 850,800, 850,850, 850,800, 850,850, 850,800, 850};
+         <hr>
+         <div class="osh">Right legs IN</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,850, 850,3450, 850,800, 850,850, 850,800, 850,3500, 850,800, 850,850, 850};
+         <br>
+         <div class="osh">Left legs IN</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,850, 850,3450, 850,850, 850,800, 850,800, 900,800, 850,3450, 850,3500, 850};
+         <br>
+         <div class="osh">Right forward leg IN</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,800, 900,3450, 850,800, 850,850, 850,800, 850,3450, 900,3450, 850,800, 850};
+         <br>
+         <div class="osh">Left forward leg IN</div>
+         unsigned int  rawData[25] = {6600,850, 850,3450, 850,3450, 850,800, 850,800, 900,3450, 850,800, 850,850, 850,800, 850,3450, 900,800, 850,3450, 850};
+         <br>
+         <div class="osh">Right backward leg IN</div>
+         unsigned int  rawData[25] = {6600,850, 850,3450, 850,3450, 850,800, 850,800, 850,3500, 800,850, 850,850, 800,3500, 850,800, 850,850, 850,800, 850};
+         <br>
+         <div class="osh">Left backward leg IN</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 900,3400, 900,800, 850,800, 850,3500, 850,800, 850,800, 900,800, 850,3450, 850,3450, 900,3450, 850};
+         </p>
+         <hr>
+         <h3>
+            <font color="red"><strong>Red shifted commands</strong></font>
+         </h3>
+         <p>
+            <div class="rsh">High stance</div>
+            unsigned int  rawData[25] = {6600,850, 850,3400, 900,3450, 850,800, 850,3450, 850,850, 850,800, 850,3450, 900,800, 850,800, 900,800, 850,3450, 850};
+            <br>
+            <div class="rsh">Aggressive stance</div>
+            unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,3450, 850,850, 850,800, 850,3500, 850,800, 850,800, 900,3450, 850,3450, 850};
+            <br>
+            <div class="rsh">Aware stance</div>
+            unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,850, 850,3450, 850,800, 850,850, 850,3450, 850,800, 900,800, 850,3450, 850,850, 850};
+         <hr>
+         <div class="rsh">Escape walk</div>
+         unsigned int  rawData[25] = {6650,850, 850,3450, 850,3450, 850,800, 850,3450, 850,850, 850,800, 850,3450, 850,850, 850,800, 850,850, 850,800, 850};
+         <hr>
+         <div class="rsh">Volume down</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 900,3450, 850,800, 850,850, 850,3450, 850,800, 900,3450, 850,800, 850,850, 850};
+         <br>
+         <div class="rsh">Volume up</div>
+         unsigned int  rawData[25] = {6650,800, 900,3450, 850,3450, 850,800, 850,3450, 850,850, 850,800, 850,3450, 900,800, 850,3450, 850,850, 850,3450, 850};
+         <hr>
+         <div class="rsh">Wave</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 900,3450, 850,800, 850,850, 850,3450, 850,800, 850,3500, 850,3450, 850,800, 850};
+         <hr>
+         <div class="rsh">Head clockwise</div>
+         unsigned int  rawData[25] = {6600,800, 900,3400, 900,3450, 850,800, 850,3450, 850,850, 850,800, 850,850, 850,3450, 850,800, 850,850, 850,3450, 850};
+         <br>
+         <div class="rsh">Head counter-clockwise</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,3450, 900,800, 850,800, 850,850, 850,3450, 850,850, 850,3450, 850,800, 850};
+         <br>
+         <div class="rsh">Head up</div>
+         unsigned int  rawData[25] = {6600,800, 850,3450, 850,3450, 850,800, 850,3450, 850,850, 850,800, 850,850, 850,800, 850,850, 850,800, 850,3450, 850};
+         <br>
+         <div class="rsh">Head down</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3500, 800,800, 900,3450, 850,800, 850,850, 850,800, 850,850, 800,850, 850,3450, 850,850, 850};
+         <br>
+         <div class="rsh">Right legs OUT</div>
+         unsigned int  rawData[25] = {6600,850, 850,3450, 850,3450, 850,800, 850,3450, 850,850, 850,800, 850,850, 850,800, 850,3450, 900,800, 850,850, 800};
+         <br>
+         <div class="rsh">Left legs OUT</div>
+         unsigned int  rawData[25] = {6650,800, 900,3400, 900,3450, 850,800, 850,3450, 850,850, 850,800, 850,800, 900,800, 850,800, 900,3450, 850,3450, 850};
+         <br>
+         <div class="rsh">Sleep mode toggle</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,3500, 800,850, 850,850, 800,850, 850,800, 850,850, 850,800, 850,850, 850};
+         <hr>
+         <div class="rsh">Right forward leg OUT</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,850, 850,3450, 850,800, 850,850, 850,800, 850,850, 850,3450, 800,3500, 850,850, 850};
+         <br>
+         <div class="rsh">Left forward leg OUT</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,3450, 850,850, 850,800, 850,850, 850,800, 850,3500, 850,800, 850,3450, 850};
+         <br>
+         <div class="rsh">Right backward leg OUT</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,800, 850,3500, 850,800, 850,850, 850,800, 850,3450, 850,850, 850,800, 850,850, 850};
+         <br>
+         <div class="rsh">Left backward leg OUT</div>
+         unsigned int  rawData[25] = {6650,800, 850,3450, 850,3450, 850,850, 850,3450, 850,800, 850,850, 850,800, 850,850, 800,3500, 850,3450, 850,3500, 850};
+         <br>
+         </div>
+      </div>
+</body>
+</html>

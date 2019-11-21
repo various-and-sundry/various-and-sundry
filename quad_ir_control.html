@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+   <title>Controling_the_Roboquad_With_Arduino</title>
+   <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+   <div id="navbar">
+      <img src="icons/banner-logo.png" alt="RobotPicture" id="banner">
+      <!-- Nav bar section -->
+         <nav>
+            <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="robots.html">Various Robots</a></li>
+               <li><a href="projects.html">Sundry Projects</a></li>
+               <li><a href="more.html">More</a></li>
+               <li><a href="about.html">About</a></li>
+            </ul>
+         </nav>
+   </div>
+   <div id="main">
+      <h1>Controlling a Roboquad with Arduino</h1>
+      <hr>
+      <img src="images/arduino/arduino_and_remote.jpg" alt="Arduino and Remote" class="centimage">
+      <p class="centext">
+         Controlling the Roboquad with and Arduino can be quite simple. The easiest method involves using the sendRaw function of the
+         <a href="https://github.com/z3t0/Arduino-IRremote"> Ken 
+         Shirriff IR library</a>
+         . The hardware is also very simple. Simply connect an IR LED to one of the digital I/O pins of an Arduino. When using an Arduino UNO, the Ken Shirriff IR library defaults to using pin 3, but when using an Arduino Leonardo (seen right) it defaults to using pin 13. Any IR LED should work, but
+         Adafruit supplies exceptionally good "super bright" IR LEDs. When driven in short bursts (such as for IR control) they can take up to a full amp, and when used for infrared illumination they should be driven at 10 milliamps. They are slightly
+         more expensive than standard IR LEDs, but the improvement in performance is generally worth it. They are available on
+         <a href="https://www.adafruit.com">Adafruit.com</a>
+         <a href="https://www.adafruit.com/product/387">individually</a> for $0.75 or in a
+         <a href="https://www.adafruit.com/product/388">25 
+         pack</a> for $7.95. Adafruit also retails them in a
+         <a href="https://www.amazon.com/Adafruit-Super-bright-5mm-LED-pack/dp/B00ULB0U44/">25 pack on Amazon</a>.
+      </p>
+      <hr>
+      <img src="images/arduino/arduino_ir_circuit.jpg" alt="Arduino IR Circuit" class="centimage">
+      <p class="centext">
+         I have created a list of all of the Roboquad IR command codes
+         <a href="quad_ir-code_list.html">here</a>
+         . I can't guarantee the accuracy of every code.</p>
+	<p class="centext">Below is an Arduino example that sends commands to the Roboquad based on commands sent to the Arduino through serial. It allows the Roboquad to walk in various directions and rotate its head. It accepts the commands headRight, headLeft, forward, backward, right, left, and stop. This program is easily expandable to include
+         more commands.
+      </p>
+      <br>
+      <br>
+	<hr>
+      <img src="images/arduino/how_to_send_quad_commands.gif" alt=" " class="centimage">
+      <br>
+      <h2><a href="roboquad_ir_control_program.html">Program can be found 
+         here</a>
+      </h2>
+      <br>
+      <br>
+   </div>
+</body>
+</html>
