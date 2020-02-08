@@ -21,7 +21,10 @@ body h3 {
 #main {
 	width: 100%;
 	background: white;
-	margin: 0 auto;
+	margin: 8px auto;
+	content: "";
+ 	clear: both;
+ 	display: table;
 }
 
 .container {
@@ -214,7 +217,7 @@ nav ul li {
 .rightimage {
 	width: 37%;
 	float: right;
-	padding: 0 10px 0 0;
+	padding: 10px;
 }
 
 .centerpaper {
