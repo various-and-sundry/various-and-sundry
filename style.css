@@ -91,6 +91,10 @@ body h3 {
 	border-radius: 25px;
 }
 
+.padded {
+	padding: 10px 42px;
+}
+
 body {
 	background: #ccfffc;
 	background: gray;
@@ -194,6 +198,10 @@ nav ul li {
 	font-family: "Liberation Serif";
 }
 
+.hide{
+	display: none;
+}
+
 .nodecor {
 	text-decoration: none;
 }
@@ -204,6 +212,70 @@ nav ul li {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+
+
+.doubleDiv {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+.doubleDiv div {
+	justify-content: center;
+	border-radius: 1em;
+	background: red;
+}
+
+#doubleDivOfCOM_U_PERS_CODE {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+#doubleDivOfCOM_U_PERS_CODE div.generator {
+	background: #377dc0;
+	border-radius: 0.3em;
+	padding-left-right: 1em;
+	margin: 1em;
+}
+
+#doubleDivOfCOM_U_PERS_CODE div.parser {
+	background: #c06937;
+	border-radius: 0.3em;
+	padding-left-right: 1em;
+	margin: 1em;
+}
+
+#doubleDivOfCOM_U_PERS_CODE div.generator:hover {
+	background: #2858ab;
+}
+
+#doubleDivOfCOM_U_PERS_CODE div.parser:hover {
+	background: #854c28;
+}
+
+#doubleDivOfCOM_U_PERS_CODE div a {
+	text-decoration: none;
+}
+
+.generatordiv {
+	width: 98%;
+	margin: 0 auto;
+	background: #377dc0;
+}
+
+.parserdiv {
+	width: 98%;
+	margin: 0, auto;
+	background: #c06937;
+}
+
+th.thborder{
+	border: 1px solid black; 
+}
+
+
+
+
 
 @media only screen and (max-width: 1000px) {}
 
@@ -237,9 +309,23 @@ mark {
   color: #242a2b;
 }
 
+table.leftable{
+	width: 100%;
+	text-align: left;
+}
 
+table.centable{
+	width: 100%;
+	text-align: center;
+}
 
+th.leftcolumn{
+	text-align: left;
+}
 
+th.rightcolumn{
+    text-align: right;
+}
 
 
 
