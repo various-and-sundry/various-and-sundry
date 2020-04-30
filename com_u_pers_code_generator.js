@@ -34,7 +34,7 @@ function getcode() {
 	var adas = document.getElementById("Ada*");
 
 	if (ada.checked == true) {
-		L = L.concat(" AD");
+		L = L.concat("Ad");
 
 		if (adap.checked == true) {
 			L = L.concat("+");
@@ -72,7 +72,7 @@ function getcode() {
 
 
 	if (algol.checked == true) {
-		L = L.concat(" A");
+		L = L.concat("A");
 
 		if (algolp.checked == true) {
 			L = L.concat("+");
@@ -110,7 +110,7 @@ function getcode() {
 
 
 	if (bash.checked == true) {
-		L = L.concat(" B");
+		L = L.concat("Ba");
 
 		if (bashp.checked == true) {
 			L = L.concat("+");
@@ -147,10 +147,10 @@ function getcode() {
 
 
 	if (basic.checked == true) {
-		L = L.concat(" BA");
+		L = L.concat(" B");
 
 		if (basicp.checked == true) {
-			L = L.concat("+");
+			L = L.concat("");
 		} else if (basicpp.checked == true) {
 			L = L.concat("++");
 		} else if (basicppp.checked == true) {
@@ -192,7 +192,7 @@ function getcode() {
 
 
 	if (c.checked == true) {
-		L = L.concat(" C");
+		L = L.concat("C");
 
 		if (cp.checked == true) {
 			L = L.concat("+");
@@ -231,7 +231,7 @@ function getcode() {
 
 
 	if (cpp.checked == true) {
-		L = L.concat(" CP");
+		L = L.concat("Cp");
 
 		if (cppp.checked == true) {
 			L = L.concat("+");
@@ -270,7 +270,7 @@ function getcode() {
 
 
 	if (co.checked == true) {
-		L = L.concat(" C#");
+		L = L.concat("Ch");
 
 		if (cop.checked == true) {
 			L = L.concat("+");
@@ -309,7 +309,7 @@ function getcode() {
 
 
 	if (caml.checked == true) {
-		L = L.concat(" CA");
+		L = L.concat("Ca");
 
 		if (camlp.checked == true) {
 			L = L.concat("+");
@@ -348,7 +348,7 @@ function getcode() {
 
 
 	if (clojure.checked == true) {
-		L = L.concat(" CJ");
+		L = L.concat("Cj");
 
 		if (clojurep.checked == true) {
 			L = L.concat("+");
@@ -387,7 +387,7 @@ function getcode() {
 
 
 	if (cobol.checked == true) {
-		L = L.concat(" CO");
+		L = L.concat("Co");
 
 		if (cobolp.checked == true) {
 			L = L.concat("+");
@@ -426,7 +426,7 @@ function getcode() {
 
 
 	if (coffeescript.checked == true) {
-		L = L.concat(" CF");
+		L = L.concat("Cf");
 
 		if (coffeescriptp.checked == true) {
 			L = L.concat("+");
@@ -465,7 +465,7 @@ function getcode() {
 
 
 	if (commonlisp.checked == true) {
-		L = L.concat(" CL");
+		L = L.concat("Cl");
 
 		if (commonlispp.checked == true) {
 			L = L.concat("+");
@@ -504,7 +504,7 @@ function getcode() {
 
 
 	if (css.checked == true) {
-		L = L.concat(" CS");
+		L = L.concat("Cs");
 
 		if (cssp.checked == true) {
 			L = L.concat("+");
@@ -543,7 +543,7 @@ function getcode() {
 
 
 	if (dart.checked == true) {
-		L = L.concat(" D");
+		L = L.concat("D");
 
 		if (dartp.checked == true) {
 			L = L.concat("+");
@@ -582,7 +582,7 @@ function getcode() {
 
 
 	if (eiffel.checked == true) {
-		L = L.concat(" EI");
+		L = L.concat("Ei");
 
 		if (eiffelp.checked == true) {
 			L = L.concat("+");
@@ -621,7 +621,7 @@ function getcode() {
 
 
 	if (elixir.checked == true) {
-		L = L.concat(" EX");
+		L = L.concat("Ex");
 
 		if (elixirp.checked == true) {
 			L = L.concat("+");
@@ -660,7 +660,7 @@ function getcode() {
 
 
 	if (emacslisp.checked == true) {
-		L = L.concat(" EL");
+		L = L.concat("El");
 
 		if (emacslispp.checked == true) {
 			L = L.concat("+");
@@ -699,7 +699,7 @@ function getcode() {
 
 
 	if (erlang.checked == true) {
-		L = L.concat(" E");
+		L = L.concat("E");
 
 		if (erlangp.checked == true) {
 			L = L.concat("+");
@@ -738,7 +738,7 @@ function getcode() {
 
 
 	if (fo.checked == true) {
-		L = L.concat(" F#");
+		L = L.concat("Fs");
 
 		if (fop.checked == true) {
 			L = L.concat("+");
@@ -777,7 +777,7 @@ function getcode() {
 
 
 	if (flowmatic.checked == true) {
-		L = L.concat(" FM");
+		L = L.concat("Fm");
 
 		if (flowmaticp.checked == true) {
 			L = L.concat("+");
@@ -816,7 +816,7 @@ function getcode() {
 
 
 	if (forth.checked == true) {
-		L = L.concat(" FH");
+		L = L.concat("Fh");
 
 		if (forthp.checked == true) {
 			L = L.concat("+");
@@ -855,7 +855,7 @@ function getcode() {
 
 
 	if (fortran.checked == true) {
-		L = L.concat(" FT");
+		L = L.concat("Ft");
 
 		if (fortranp.checked == true) {
 			L = L.concat("+");
@@ -894,7 +894,7 @@ function getcode() {
 
 
 	if (go.checked == true) {
-		L = L.concat(" G");
+		L = L.concat("G");
 
 		if (gop.checked == true) {
 			L = L.concat("+");
@@ -933,7 +933,7 @@ function getcode() {
 
 
 	if (groovy.checked == true) {
-		L = L.concat(" GR");
+		L = L.concat("Gr");
 
 		if (groovyp.checked == true) {
 			L = L.concat("+");
@@ -972,7 +972,7 @@ function getcode() {
 
 
 	if (haskell.checked == true) {
-		L = L.concat(" HK");
+		L = L.concat("Hk");
 
 		if (haskellp.checked == true) {
 			L = L.concat("+");
@@ -1011,7 +1011,7 @@ function getcode() {
 
 
 	if (html.checked == true) {
-		L = L.concat(" H");
+		L = L.concat("H");
 
 		if (htmlp.checked == true) {
 			L = L.concat("+");
@@ -1050,7 +1050,7 @@ function getcode() {
 
 
 	if (hypertalk.checked == true) {
-		L = L.concat(" HT");
+		L = L.concat("Hy");
 
 		if (hypertalkp.checked == true) {
 			L = L.concat("+");
@@ -1089,7 +1089,7 @@ function getcode() {
 
 
 	if (ibmrpg.checked == true) {
-		L = L.concat(" IR");
+		L = L.concat("Ir");
 
 		if (ibmrpgp.checked == true) {
 			L = L.concat("+");
@@ -1128,7 +1128,7 @@ function getcode() {
 
 
 	if (j.checked == true) {
-		L = L.concat(" JY");
+		L = L.concat("Jy");
 
 		if (jp.checked == true) {
 			L = L.concat("+");
@@ -1167,7 +1167,7 @@ function getcode() {
 
 
 	if (jo.checked == true) {
-		L = L.concat(" J#");
+		L = L.concat("Jh");
 
 		if (jop.checked == true) {
 			L = L.concat("+");
@@ -1206,7 +1206,7 @@ function getcode() {
 
 
 	if (jpp.checked == true) {
-		L = L.concat(" JP");
+		L = L.concat("Jp");
 
 		if (jppp.checked == true) {
 			L = L.concat("+");
@@ -1245,7 +1245,7 @@ function getcode() {
 
 
 	if (java.checked == true) {
-		L = L.concat(" J");
+		L = L.concat("J");
 
 		if (javap.checked == true) {
 			L = L.concat("+");
@@ -1284,7 +1284,7 @@ function getcode() {
 
 
 	if (javascript.checked == true) {
-		L = L.concat(" JS");
+		L = L.concat("Js");
 
 		if (javascriptp.checked == true) {
 			L = L.concat("+");
@@ -1323,7 +1323,7 @@ function getcode() {
 
 
 	if (jscript.checked == true) {
-		L = L.concat(" JT");
+		L = L.concat("Jt");
 
 		if (jscriptp.checked == true) {
 			L = L.concat("+");
@@ -1362,7 +1362,7 @@ function getcode() {
 
 
 	if (julia.checked == true) {
-		L = L.concat(" JU");
+		L = L.concat("Ju");
 
 		if (juliap.checked == true) {
 			L = L.concat("+");
@@ -1401,7 +1401,7 @@ function getcode() {
 
 
 	if (labview.checked == true) {
-		L = L.concat(" LV");
+		L = L.concat("Lv");
 
 		if (labviewp.checked == true) {
 			L = L.concat("+");
@@ -1440,7 +1440,7 @@ function getcode() {
 
 
 	if (lisp.checked == true) {
-		L = L.concat(" L");
+		L = L.concat("L");
 
 		if (lispp.checked == true) {
 			L = L.concat("+");
@@ -1479,7 +1479,7 @@ function getcode() {
 
 
 	if (lua.checked == true) {
-		L = L.concat(" LU");
+		L = L.concat("Lu");
 
 		if (luap.checked == true) {
 			L = L.concat("+");
@@ -1518,7 +1518,7 @@ function getcode() {
 
 
 	if (machinecode.checked == true) {
-		L = L.concat(" MC");
+		L = L.concat("Mc");
 
 		if (machinecodep.checked == true) {
 			L = L.concat("+");
@@ -1557,7 +1557,7 @@ function getcode() {
 
 
 	if (mathematica.checked == true) {
-		L = L.concat(" MM");
+		L = L.concat("Mm");
 
 		if (mathematicap.checked == true) {
 			L = L.concat("+");
@@ -1596,7 +1596,7 @@ function getcode() {
 
 
 	if (matlab.checked == true) {
-		L = L.concat(" ML");
+		L = L.concat("Ml");
 
 		if (matlabp.checked == true) {
 			L = L.concat("+");
@@ -1635,7 +1635,7 @@ function getcode() {
 
 
 	if (objectivec.checked == true) {
-		L = L.concat(" OJ");
+		L = L.concat("Oj");
 
 		if (objectivecp.checked == true) {
 			L = L.concat("+");
@@ -1674,7 +1674,7 @@ function getcode() {
 
 
 	if (ocaml.checked == true) {
-		L = L.concat(" OC");
+		L = L.concat("Oc");
 
 		if (ocamlp.checked == true) {
 			L = L.concat("+");
@@ -1713,7 +1713,7 @@ function getcode() {
 
 
 	if (pascal.checked == true) {
-		L = L.concat(" PA");
+		L = L.concat("Pa");
 
 		if (pascalp.checked == true) {
 			L = L.concat("+");
@@ -1752,7 +1752,7 @@ function getcode() {
 
 
 	if (perl.checked == true) {
-		L = L.concat(" PL");
+		L = L.concat("Pl");
 
 		if (perlp.checked == true) {
 			L = L.concat("+");
@@ -1791,7 +1791,7 @@ function getcode() {
 
 
 	if (perl6.checked == true) {
-		L = L.concat("P6 ");
+		L = L.concat("P6");
 
 		if (perl6p.checked == true) {
 			L = L.concat("+");
@@ -1830,7 +1830,7 @@ function getcode() {
 
 
 	if (powershell.checked == true) {
-		L = L.concat(" PS");
+		L = L.concat("Ps");
 
 		if (powershellp.checked == true) {
 			L = L.concat("+");
@@ -1869,7 +1869,7 @@ function getcode() {
 
 
 	if (python.checked == true) {
-		L = L.concat(" P");
+		L = L.concat("P");
 
 		if (pythonp.checked == true) {
 			L = L.concat("+");
@@ -1908,7 +1908,7 @@ function getcode() {
 
 
 	if (r.checked == true) {
-		L = L.concat(" R");
+		L = L.concat("R");
 
 		if (rp.checked == true) {
 			L = L.concat("+");
@@ -1946,10 +1946,10 @@ function getcode() {
 
 
 	if (ruby.checked == true) {
-		L = L.concat(" RB");
+		L = L.concat(" Rb");
 
 		if (rubyp.checked == true) {
-			L = L.concat("+");
+			L = L.concat("");
 		} else if (rubypp.checked == true) {
 			L = L.concat("++");
 		} else if (rubyppp.checked == true) {
@@ -1988,7 +1988,7 @@ function getcode() {
 
 
 	if (rust.checked == true) {
-		L = L.concat(" RT");
+		L = L.concat("Rt");
 
 		if (rustp.checked == true) {
 			L = L.concat("+");
@@ -2027,7 +2027,7 @@ function getcode() {
 
 
 	if (scala.checked == true) {
-		L = L.concat(" SL");
+		L = L.concat("Sl");
 
 		if (scalap.checked == true) {
 			L = L.concat("+");
@@ -2066,7 +2066,7 @@ function getcode() {
 
 
 	if (scheme.checked == true) {
-		L = L.concat(" SC");
+		L = L.concat("Sc");
 
 		if (schemep.checked == true) {
 			L = L.concat("+");
@@ -2105,7 +2105,7 @@ function getcode() {
 
 
 	if (smalltalk.checked == true) {
-		L = L.concat(" ST");
+		L = L.concat("St");
 
 		if (smalltalkp.checked == true) {
 			L = L.concat("+");
@@ -2144,7 +2144,7 @@ function getcode() {
 
 
 	if (swift.checked == true) {
-		L = L.concat(" S");
+		L = L.concat("S");
 
 		if (swiftp.checked == true) {
 			L = L.concat("+");
@@ -2183,7 +2183,7 @@ function getcode() {
 
 
 	if (unixshell.checked == true) {
-		L = L.concat(" US");
+		L = L.concat("Us");
 
 		if (unixshellp.checked == true) {
 			L = L.concat("+");
@@ -2222,7 +2222,7 @@ function getcode() {
 
 
 	if (visualbasic.checked == true) {
-		L = L.concat(" VB");
+		L = L.concat("Vb");
 
 		if (visualbasicp.checked == true) {
 			L = L.concat("+");
@@ -2261,7 +2261,7 @@ function getcode() {
 
 
 	if (wolfram.checked == true) {
-		L = L.concat(" W");
+		L = L.concat("W");
 
 		if (wolframp.checked == true) {
 			L = L.concat("+");
@@ -2323,7 +2323,7 @@ function getcode() {
 
 
 	if (chromeos.checked == true) {
-		O = O.concat(" C");
+		O = O.concat("C");
 
 		if (chromeosp.checked == true) {
 			O = O.concat("+");
@@ -2362,7 +2362,7 @@ function getcode() {
 
 
 	if (linux.checked == true) {
-		O = O.concat(" L");
+		O = O.concat("L");
 
 		if (linuxp.checked == true) {
 			O = O.concat("+");
@@ -2401,7 +2401,7 @@ function getcode() {
 
 
 	if (macos.checked == true) {
-		O = O.concat(" M");
+		O = O.concat("M");
 
 		if (macosp.checked == true) {
 			O = O.concat("+");
@@ -2440,7 +2440,7 @@ function getcode() {
 
 
 	if (minux.checked == true) {
-		O = O.concat(" MI");
+		O = O.concat("Mi");
 
 		if (minuxp.checked == true) {
 			O = O.concat("+");
@@ -2479,7 +2479,7 @@ function getcode() {
 
 
 	if (msdos.checked == true) {
-		O = O.concat(" MD");
+		O = O.concat("Md");
 
 		if (msdosp.checked == true) {
 			O = O.concat("+");
@@ -2518,7 +2518,7 @@ function getcode() {
 
 
 	if (unix.checked == true) {
-		O = O.concat(" U");
+		O = O.concat("U");
 
 		if (unixp.checked == true) {
 			O = O.concat("+");
@@ -2558,7 +2558,7 @@ function getcode() {
 
 
 	if (windows.checked == true) {
-		O = O.concat(" W");
+		O = O.concat("W");
 
 		if (windowsp.checked == true) {
 			O = O.concat("+");
@@ -2598,7 +2598,7 @@ function getcode() {
 
 
 	if (other.checked == true) {
-		O = O.concat(" O");
+		O = O.concat("O");
 
 		if (otherp.checked == true) {
 			O = O.concat("+");
@@ -2645,7 +2645,7 @@ function getcode() {
 
 
 	if (android.checked == true) {
-		P = P.concat(" A");
+		P = P.concat("A");
 
 		if (androidp.checked == true) {
 			P = P.concat("+");
@@ -2689,7 +2689,7 @@ function getcode() {
 
 
 	if (ios.checked == true) {
-		P = P.concat(" I");
+		P = P.concat("I");
 
 		if (iosp.checked == true) {
 			P = P.concat("+");
@@ -2733,7 +2733,7 @@ function getcode() {
 
 
 	if (firefoxos.checked == true) {
-		P = P.concat(" F");
+		P = P.concat("F");
 
 		if (firefoxosp.checked == true) {
 			P = P.concat("+");
@@ -2777,7 +2777,7 @@ function getcode() {
 
 
 	if (ubuntutouch.checked == true) {
-		P = P.concat(" U");
+		P = P.concat("U");
 
 		if (ubuntutouchp.checked == true) {
 			P = P.concat("+");
@@ -2822,7 +2822,7 @@ function getcode() {
 
 
 	if (otherphone.checked == true) {
-		P = P.concat(" O");
+		P = P.concat("O");
 
 		if (otherphonep.checked == true) {
 			P = P.concat("+");
@@ -2866,7 +2866,7 @@ function getcode() {
 
 
 	if (windowsphone.checked == true) {
-		P = P.concat(" W");
+		P = P.concat("W");
 
 		if (windowsphonep.checked == true) {
 			P = P.concat("+");
@@ -2909,7 +2909,7 @@ function getcode() {
 
 
 	if (idonthaveaphone.checked == true) {
-		P = P.concat(" N");
+		P = P.concat("N");
 
 		/*if (idonthaveaphonep.checked == true) {
 			P = P.concat("+");
@@ -2933,6 +2933,12 @@ function getcode() {
 
 
 
+
+
+
+
+
+										//Education
 
 	var elementary = document.getElementById("Elementary School");
 	if (elementary.checked == true){
@@ -2985,6 +2991,8 @@ function getcode() {
 
 
 
+											//Field
+
 	var chemengineering = document.getElementById("Chemical Engineering");		//Chemical Engineering
 	if (chemengineering.checked == true){
 	F = F.concat("Ch");
@@ -3020,7 +3028,7 @@ function getcode() {
 	F = F.concat("F");
 	}
 
-	var hobbyist = document.getElementById("Hobbyist");				//Hobbiest
+	var hobbyist = document.getElementById("Hobbyist");				//Hobbyiest
 	if (hobbyist.checked == true){
 	F = F.concat("H");
 	}
@@ -3039,6 +3047,9 @@ function getcode() {
 
 
 
+
+											//Color
+
 	C  = document.getElementById("color").value;
 
 
@@ -3053,12 +3064,7 @@ function getcode() {
 
 
 
-
-
-
-
-
-
+											//Social Media
 
 	var facebook = document.getElementById("Facebook");		//Facebook
 	if (facebook.checked == true){
@@ -3084,7 +3090,7 @@ function getcode() {
 	}
 
 
-	var gnusocial = document.getElementById("GNU social");			//GitHub
+	var gnusocial = document.getElementById("GNU social");		//GNU Social
 	if (gnusocial.checked == true){
 	S = S.concat("Gs");
 	}
@@ -3121,7 +3127,7 @@ function getcode() {
 
 	var pwp = document.getElementById("Personal Web Page");		//Personal Web Page
 	if (pwp.checked == true){
-	S = S.concat("Wp");
+	S = S.concat("W");
 	}
 
 
@@ -3201,6 +3207,7 @@ function getcode() {
 
 
 
+										//Hobbies
 
 	var art = document.getElementById("Art");				//Art
 	var artp = document.getElementById("Art+");
