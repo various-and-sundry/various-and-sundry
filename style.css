@@ -265,16 +265,23 @@ nav ul li {
 
 .parserdiv {
 	width: 98%;
-	margin: 0, auto;
+	margin: 0 auto;
 	background: #c06937;
+	border-radius: 10px;
 }
 
 th.thborder{
 	border: 1px solid black; 
 }
 
+#input_com_u_pers_code {
+	width: 100%;
+}
 
 
+#output_com_u_pers_code {
+	width: 100%;
+}
 
 
 @media only screen and (max-width: 1000px) {}

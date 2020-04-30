@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <title>COM_U_PERS_CODE Parser</title>
+   <link href="style.css" type="text/css" rel="stylesheet">
+   <link rel="shortcut icon" type="image/png" href="icons/favicon.png">
+</head>
+<body>
+   <div id="navbar">
+      <img src="icons/banner-logo.png" alt="" id="banner">
+      <!-- Nav bar section -->
+         <nav>
+            <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="robots.html">Various Robots</a></li>
+               <li><a href="projects.html">Sundry Projects</a></li>
+               <li><a href="more.html">More</a></li>
+               <li><a href="about.html">About</a></li>
+            </ul>
+         </nav>
+   </div>
+   <div id="main">
+		<h1>The Computer User Personality Code Parser</h1>
+		<p class="centext">
+		Welcome to the Computer User Personality Code Parser! <a href="com_u_pers_code.html">Computer User Personality Code</a> (abbreviated COM_U_PERS_CODE) is a means of encoding your digital preferences in a terse string of characters. You can decode anyone's COM_U_PERS_CODE simply by pasting it into the box below and clicking "Decode". You can create your own COM_U_PERS_CODE with the <a href="com_u_pers_code_generator.html">COM_U_PERS_CODE Generator</a>. 
+		</p>
+
+		<h2><label for="input_com_u_pers_code">Paste Any COM_U_PERS_CODE</label></h2>
+		  <div class="parserdiv"> 
+			  <p class="centext">
+
+		      		  <button class="center" onclick="parse()">
+				      <label for="out_com_u_pers_code">Decode</label>
+				  </button>
+				<textarea id="input_com_u_pers_code" rows="4"></textarea>
+			  </p>
+		  </div>
+	</p>
+
+	
+		  <div id="outputdiv" class="parserdiv hide"> 
+			  <p class="centext">
+				Here is the translation.
+				<textarea id="output_com_u_pers_code" rows="10"></textarea>
+			  </p>
+		  </div>
+   </div>
+
+		<script src="com_u_pers_code_parser.js"></script>
+</body>
+</html>
