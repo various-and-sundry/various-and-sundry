@@ -2975,7 +2975,7 @@ function getcode() {
 	E = E.concat("D");
 	}
 
-	var phd = document.getElementById("PHD");
+	var phd = document.getElementById("PhD");
 	if (phd.checked == true){
 	E = E.concat("P");
 	}
@@ -3532,6 +3532,6 @@ function getcode() {
 
         document.getElementById("thankyou").style.display = "block";
     
-document.getElementById("display").innerHTML = "<---COM_U_PERS_CODE---Version[Alpha]---E[".concat(E, "] F[", F, "] L[", L, "] O[", O, "] P[", P, "] C[", C, "] S[", S, "] H[", H, "]>");
+document.getElementById("display").innerHTML = "<---COM_U_PERS_CODE---Version[Beta]---E[".concat(E, "] F[", F, "] L[", L, "] O[", O, "] P[", P, "] C[", C, "] S[", S, "] H[", H, "]>");
 
 }
