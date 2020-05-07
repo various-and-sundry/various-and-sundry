@@ -54,8 +54,8 @@ function parse() {
 	}
 
 
-	if(/[A-Za-z0-9]/.test(parse_field(field))) {
-		output = output.concat("I am a ", parse_field(field), ". ");
+	if(/[A-Za-z0-9]/.test(parse_field(field))) {					//Field
+		output = output.concat("I am ", parse_field(field), ". ");
 	}
 
 
