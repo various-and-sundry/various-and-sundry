@@ -343,7 +343,10 @@ function interpret_field(word) {					//Accepts the code for a single field and r
 		output = output.concat("a mechanical engineer");
 	} else if(/O$/.test(word)) {
 		output = output.concat("another type of engineer");
+	} else if(/S$/.test(word)) {
+		output = output.concat("involved in sales");
 	}
+
 	return output;
 }
 
@@ -506,6 +509,10 @@ function interpret_languages(word) {					//Accepts the code for a single program
 		output = output.concat("Julia");
 	} else if(/Lv$/.test(word)) {
 		output = output.concat("LabVIEW");
+	} else if(/Ll$/.test(word)) {
+		output = output.concat("ladder logic");
+	} else if(/Lx$/.test(word)) {
+		output = output.concat("LaTeX");
 	} else if(/L$/.test(word)) {
 		output = output.concat("Lisp");
 	} else if(/Lu$/.test(word)) {
@@ -544,6 +551,8 @@ function interpret_languages(word) {					//Accepts the code for a single program
 		output = output.concat("Smalltalk");
 	} else if(/S$/.test(word)) {
 		output = output.concat("Swift");
+	} else if(/T$/.test(word)) {
+		output = output.concat("TeX");
 	} else if(/Us$/.test(word)) {
 		output = output.concat("Unix shell");
 	} else if(/Vb$/.test(word)) {

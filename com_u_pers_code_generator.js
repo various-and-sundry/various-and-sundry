@@ -1425,6 +1425,84 @@ function getcode() {
 
 
 
+	//ladderlogic
+
+
+	var ladderlogic = document.getElementById("ladderlogic");
+	var ladderlogicp = document.getElementById("ladderlogic+");
+	var ladderlogicpp = document.getElementById("ladderlogic++");
+	var ladderlogicppp = document.getElementById("ladderlogic+++");
+	var ladderlogicpppp = document.getElementById("ladderlogic++++");
+	var ladderlogicppppp = document.getElementById("ladderlogic+++++");
+	var ladderlogicpppppp = document.getElementById("ladderlogic++++++");
+	var ladderlogics = document.getElementById("ladderlogic*");
+
+
+
+	if (ladderlogic.checked == true) {
+		L = L.concat("Ll");
+
+		if (ladderlogicp.checked == true) {
+			L = L.concat("+");
+		} else if (ladderlogicpp.checked == true) {
+			L = L.concat("++");
+		} else if (ladderlogicppp.checked == true) {
+			L = L.concat("+++");
+		} else if (ladderlogicpppp.checked == true) {
+			L = L.concat("++++");
+		} else if (ladderlogicppppp.checked == true) {
+			L = L.concat("+++++");
+		} else if (ladderlogicpppppp.checked == true) {
+			L = L.concat("++++++");
+		}
+	}
+ 	if (ladderlogics.checked == true && ladderlogic.checked == true) {
+		L = L.concat("*");
+	}
+
+
+
+
+
+	//LaTeX
+
+
+	var latex = document.getElementById("LaTeX");
+	var latexp = document.getElementById("LaTeX+");
+	var latexpp = document.getElementById("LaTeX++");
+	var latexppp = document.getElementById("LaTeX+++");
+	var latexpppp = document.getElementById("LaTeX++++");
+	var latexppppp = document.getElementById("LaTeX+++++");
+	var latexpppppp = document.getElementById("LaTeX++++++");
+	var latexs = document.getElementById("LaTeX*");
+
+
+
+	if (latex.checked == true) {
+		L = L.concat("Lx");
+
+		if (latexp.checked == true) {
+			L = L.concat("+");
+		} else if (latexpp.checked == true) {
+			L = L.concat("++");
+		} else if (latexppp.checked == true) {
+			L = L.concat("+++");
+		} else if (latexpppp.checked == true) {
+			L = L.concat("++++");
+		} else if (latexppppp.checked == true) {
+			L = L.concat("+++++");
+		} else if (latexpppppp.checked == true) {
+			L = L.concat("++++++");
+		}
+	}
+ 	if (latexs.checked == true && latex.checked == true) {
+		L = L.concat("*");
+	}
+
+
+
+
+
 	//Lisp
 
 
@@ -2161,6 +2239,45 @@ function getcode() {
 		}
 	}
  	if (swifts.checked == true && swift.checked == true) {
+		L = L.concat("*");
+	}
+
+
+
+
+
+	//TeX
+
+
+	var tex = document.getElementById("TeX");
+	var texp = document.getElementById("TeX+");
+	var texpp = document.getElementById("TeX++");
+	var texppp = document.getElementById("TeX+++");
+	var texpppp = document.getElementById("TeX++++");
+	var texppppp = document.getElementById("TeX+++++");
+	var texpppppp = document.getElementById("TeX++++++");
+	var texs = document.getElementById("TeX*");
+
+
+
+	if (tex.checked == true) {
+		L = L.concat("T");
+
+		if (texp.checked == true) {
+			L = L.concat("+");
+		} else if (texpp.checked == true) {
+			L = L.concat("++");
+		} else if (texppp.checked == true) {
+			L = L.concat("+++");
+		} else if (texpppp.checked == true) {
+			L = L.concat("++++");
+		} else if (texppppp.checked == true) {
+			L = L.concat("+++++");
+		} else if (texpppppp.checked == true) {
+			L = L.concat("++++++");
+		}
+	}
+ 	if (texs.checked == true && tex.checked == true) {
 		L = L.concat("*");
 	}
 
@@ -3028,7 +3145,7 @@ function getcode() {
 	F = F.concat("F");
 	}
 
-	var hobbyist = document.getElementById("Hobbyist");				//Hobbyiest
+	var hobbyist = document.getElementById("Hobbyist");				//Hobbyist
 	if (hobbyist.checked == true){
 	F = F.concat("H");
 	}
@@ -3043,7 +3160,10 @@ function getcode() {
 	F = F.concat("O");
 	}
 
-
+	var sales = document.getElementById("Sales");					//Sales
+	if (sales.checked == true){
+	F = F.concat("S");
+	}
 
 
 
