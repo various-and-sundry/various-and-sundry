@@ -283,6 +283,17 @@ th.thborder{
 	width: 100%;
 }
 
+#decodeButton {
+	color: black;
+	background-color: #2858ab;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+#decodeButton:hover {
+	color: white;
+}
+
 
 @media only screen and (max-width: 1000px) {}
 
