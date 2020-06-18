@@ -141,6 +141,14 @@ nav ul li {
 	padding: 5px 15px;
 }
 
+.centerlist {
+	color:black;
+	text-align: center;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
 .gysh {
 	color: #555555;
 	font-weight: 700;
