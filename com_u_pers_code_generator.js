@@ -219,14 +219,14 @@ function getcode() {
 	//C++
 
 
-	var cpp = document.getElementById("C++");
-	var cppp = document.getElementById("C+++");
-	var cpppp = document.getElementById("C++++");
-	var cppppp = document.getElementById("C+++++");
-	var cpppppp = document.getElementById("C++++++");
-	var cppppppp = document.getElementById("C+++++++");
-	var cpppppppp = document.getElementById("C++++++++");
-	var cpps = document.getElementById("C++*");
+	var cpp = document.getElementById("Cpp");
+	var cppp = document.getElementById("Cpp+");
+	var cpppp = document.getElementById("Cpp++");
+	var cppppp = document.getElementById("Cpp+++");
+	var cpppppp = document.getElementById("Cpp++++");
+	var cppppppp = document.getElementById("Cpp+++++");
+	var cpppppppp = document.getElementById("Cpp++++++");
+	var cpps = document.getElementById("Cpp*");
 
 
 
@@ -364,7 +364,7 @@ function getcode() {
 			L = L.concat("++++++");
 		}
 	}
- 	if (clojure.checked == true && clojure.checked == true) {
+ 	if (clojure.checked == true && clojures.checked == true) {
 		L = L.concat("*");
 	}
 
@@ -1194,14 +1194,14 @@ function getcode() {
 	//J++
 
 
-	var jpp = document.getElementById("J++");
-	var jppp = document.getElementById("J+++");
-	var jpppp = document.getElementById("J++++");
-	var jppppp = document.getElementById("J+++++");
-	var jpppppp = document.getElementById("J++++++");
-	var jppppppp = document.getElementById("J+++++++");
-	var jpppppppp = document.getElementById("J++++++++");
-	var jpps = document.getElementById("J++*");
+	var jpp = document.getElementById("Jpp");
+	var jppp = document.getElementById("Jpp+");
+	var jpppp = document.getElementById("Jpp++");
+	var jppppp = document.getElementById("Jpp+++");
+	var jpppppp = document.getElementById("Jpp++++");
+	var jppppppp = document.getElementById("Jpp+++++");
+	var jpppppppp = document.getElementById("Jpp++++++");
+	var jpps = document.getElementById("Jpp*");
 
 
 
