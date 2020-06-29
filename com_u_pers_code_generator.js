@@ -3652,6 +3652,6 @@ function getcode() {
 
         document.getElementById("thankyou").style.display = "block";
     
-document.getElementById("display").innerHTML = "<---COM_U_PERF_CODE---Version[Beta]---E[".concat(E, "] F[", F, "] L[", L, "] O[", O, "] P[", P, "] C[", C, "] S[", S, "] H[", H, "]>");
+document.getElementById("display").innerHTML = "<---COM_U_PROF_CODE---Version[Beta]---E[".concat(E, "] F[", F, "] L[", L, "] O[", O, "] P[", P, "] C[", C, "] S[", S, "] H[", H, "]>");
 
 }

@@ -234,34 +234,34 @@ nav ul li {
 	background: red;
 }
 
-#doubleDivOfCOM_U_PERS_CODE {
+#doubleDivOfCOM_U_PROF_CODE {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 }
 
-#doubleDivOfCOM_U_PERS_CODE div.generator {
+#doubleDivOfCOM_U_PROF_CODE div.generator {
 	background: #377dc0;
 	border-radius: 0.3em;
 	padding-left-right: 1em;
 	margin: 1em;
 }
 
-#doubleDivOfCOM_U_PERS_CODE div.parser {
+#doubleDivOfCOM_U_PROF_CODE div.parser {
 	background: #c06937;
 	border-radius: 0.3em;
 	padding-left-right: 1em;
 	margin: 1em;
 }
 
-#doubleDivOfCOM_U_PERS_CODE div.generator:hover {
+#doubleDivOfCOM_U_PROF_CODE div.generator:hover {
 	background: #2858ab;
 }
 
-#doubleDivOfCOM_U_PERS_CODE div.parser:hover {
+#doubleDivOfCOM_U_PROF_CODE div.parser:hover {
 	background: #854c28;
 }
 
-#doubleDivOfCOM_U_PERS_CODE div a {
+#doubleDivOfCOM_U_PROF_CODE div a {
 	text-decoration: none;
 }
 
@@ -282,12 +282,12 @@ th.thborder{
 	border: 1px solid black; 
 }
 
-#input_com_u_pers_code {
+#input_com_u_prof_code {
 	width: 100%;
 }
 
 
-#output_com_u_pers_code {
+#output_com_u_prof_code {
 	width: 100%;
 }
 

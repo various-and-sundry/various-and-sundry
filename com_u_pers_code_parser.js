@@ -1,6 +1,6 @@
 function parse() {
 
-	var code = document.getElementById("input_com_u_pers_code").value;
+	var code = document.getElementById("input_com_u_prof_code").value;
 
 
 
@@ -210,7 +210,7 @@ function parse() {
 
         document.getElementById("outputdiv").style.display = "block";		//Display answer box
 
-	document.getElementById("output_com_u_pers_code").value = output;
+	document.getElementById("output_com_u_prof_code").value = output;
 
 	window.scrollTo(0,document.body.scrollHeight);				//Scroll to show answer
 
