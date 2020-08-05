@@ -554,7 +554,7 @@ function interpret_languages(word) {					//Accepts the code for a single program
 	} else if(/T$/.test(word)) {
 		output = output.concat("TeX");
 	} else if(/Us$/.test(word)) {
-		output = output.concat("Unix shell");
+		output = output.concat("UNIX Shell");
 	} else if(/Vb$/.test(word)) {
 		output = output.concat("Visual Basic");
 	} else if(/W$/.test(word)) {
@@ -655,7 +655,7 @@ function interpret_operating_system(word) {					//Accepts the code for a single 
 	if(word === "C") {
 		output = output.concat("Chrome OS");
 	} else if(word === "L") {
-		output = output.concat("Linux");
+		output = output.concat("GNU/Linux");
 	} else if(word === "M") {
 		output = output.concat("Mac OS");
 	} else if(word === "Mi") {
