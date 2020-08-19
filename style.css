@@ -302,6 +302,16 @@ th.thborder{
 	color: white;
 }
 
+#copyButton {
+	color: black;
+	background-color: #2858ab;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+#copyButton:hover {
+	color: white;
+}
 
 @media only screen and (max-width: 1000px) {}
 

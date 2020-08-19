@@ -181,7 +181,7 @@ function parse() {
 	
 	
 	if(/[A-Za-z0-9]/.test(parse_hobbies(hobbies, 0))) {				//Hobbies
-		output = output.concat("I do ", parse_hobbies(hobbies, 0), ".  ");
+		output = output.concat("I do ", parse_hobbies(hobbies, 0), ". ");
 	}
 	if(/[A-Za-z0-9]/.test(parse_hobbies(hobbies, 1))) {
 		output = output.concat("I like ", parse_hobbies(hobbies, 1), ". ");
@@ -206,7 +206,7 @@ function parse() {
 
 
 
-
+	output = output.substring(0,output.length-1);				//Remove the last character of the output because it is a space.
 
         document.getElementById("outputdiv").style.display = "block";		//Display answer box
 
@@ -2042,4 +2042,12 @@ function parse_color(code) {                         //Accepts a HEX Triplet and
 	}
 
 	return output;
+}
+
+function copy() {
+	var text = document.getElementById("output_com_u_prof_code");
+
+	text.select();
+	text.setSelectionRange(0, 99999);
+	document.execCommand("copy");
 }
