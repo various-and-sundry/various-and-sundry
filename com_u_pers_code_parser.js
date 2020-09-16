@@ -652,7 +652,9 @@ function interpret_operating_system(word) {					//Accepts the code for a single 
 
 	var output = '';
 
-	if(word === "C") {
+	if(word === "B") {
+		output = output.concat("BSD");
+	} else if(word === "C") {
 		output = output.concat("Chrome OS");
 	} else if(word === "L") {
 		output = output.concat("GNU/Linux");

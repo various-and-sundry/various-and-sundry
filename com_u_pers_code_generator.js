@@ -2424,6 +2424,44 @@ function getcode() {
 
 
 
+	//BSD
+
+
+	var bsd = document.getElementById("BSD");
+	var bsdp = document.getElementById("BSD+");
+	var bsdpp = document.getElementById("BSD++");
+	var bsdppp = document.getElementById("BSD+++");
+	var bsdpppp = document.getElementById("BSD++++");
+	var bsdppppp = document.getElementById("BSD+++++");
+	var bsdpppppp = document.getElementById("BSD++++++");
+	var bsds = document.getElementById("BSD*");
+
+
+
+	if (bsd.checked == true) {
+		O = O.concat("B");
+
+		if (bsdp.checked == true) {
+			O = O.concat("+");
+		} else if (bsdpp.checked == true) {
+			O = O.concat("++");
+		} else if (bsdppp.checked == true) {
+			O = O.concat("+++");
+		} else if (bsdpppp.checked == true) {
+			O = O.concat("++++");
+		} else if (bsdppppp.checked == true) {
+			O = O.concat("+++++");
+		} else if (bsdpppppp.checked == true) {
+			O = O.concat("++++++");
+		}
+	}
+ 	if (bsds.checked == true && bsd.checked == true) {
+		O = O.concat("*");
+	}
+
+
+
+
 
 	//Chrome OS
 
@@ -2464,7 +2502,7 @@ function getcode() {
 
 
 
-	//Linux
+	//GNU Linux
 
 
 	var linux = document.getElementById("Linux");
