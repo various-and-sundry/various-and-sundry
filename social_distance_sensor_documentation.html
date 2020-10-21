@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <title>Social Distance Sensor Documentation</title>
+   <link href="style.css" type="text/css" rel="stylesheet">
+   <link rel="shortcut icon" type="image/png" href="icons/favicon.png">
+</head>
+<body>
+   <div id="navbar">
+      <img src="icons/banner-logo.png" alt="" id="banner">
+      <!-- Nav bar section -->
+         <nav>
+            <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="robots.html">Various Robots</a></li>
+               <li><a href="projects.html">Sundry Projects</a></li>
+               <li><a href="more.html">More</a></li>
+               <li><a href="about.html">About</a></li>
+            </ul>
+         </nav>
+   </div>
+   <div id="main">
+      <h1>Social Distance Sensor Construction</h1>
+      <p class="centext">The microcontroller that I decided to use in this project was a Digispark. Any small micro controller should work, but I chose the Digispark because it is inexpensive, and I had a few of them lying around. The Digispark does not come with pre-soldered headers, so I needed to solder them on by hand.</p>
+      <img src="images/social_distance_sensor/digispark_without_headers.jpg" alt="Digispark without headers" class="centimage">
+      <br>
+      <p class="centext">I secured the headers to a breadboard to keep them and the Digispark from moving while I soldered them.</p>
+      <img src="images/social_distance_sensor/soldering_headers.jpg" alt="Digispark with headers ready to be soldered" class="centimage">
+      <br>
+      <p class="centext">I didn't do a particularly clean job, but at least I didn't short anything.</p>
+      <img src="images/social_distance_sensor/digispark_with_headers.jpg" alt="Digispark Board" class="centimage">
+      <br>
+      <p class="centext">Here is the circuit diagram.</p>
+      <p class="centext">An HC-SR04 ultrasonic sensor is used to measure range. The sensor's trigger and echo pins are connected to pin 0 and 3 of the Digispark respectively. There is also a speaker connected to pin 1 and grounded via a 22k Ohm resister. Different speakers may require different resister values (I used a speaker from a broken pair of headphones). The speaker could also be replaced by a piezo buzzer (also needing a different resister).</p>
+      <img src="images/social_distance_sensor/circuit.png" alt="Schematic of Social Distance Sensor" class="centimage">
+      <br>
+      <p class="centext">I put together a prototype to test the concept. It certainly would not fit on the side of a mask, but it allowed me to troubleshoot the electronics and software.</p>
+      <img src="images/social_distance_sensor/0056.jpg" alt="social distance sensor prototype" class="centimage">
+      <br>
+      <p class="centext">Here is the completed Arduino program. It causes the speaker to emit a tone when the HC-SR04 detects an surface within six feet. The pitch of the tone becomes higher as the distance to the surface becomes smaller.</p>
+    <div>
+<pre>
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Serial.begin(9600);</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">0</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">1</font><font color="#434f54">,</font><font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">3</font><font color="#434f54">,</font><font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;
+ &nbsp;<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;define integers</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00979c">int</font> <font color="#000000">duration</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00979c">double</font> <font color="#000000">distance</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;send ping</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">0</font><font color="#434f54">,</font><font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">delayMicroseconds</font><font color="#000000">(</font><font color="#000000">3000</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">0</font><font color="#434f54">,</font><font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;wait for pig to be received and find the time of arrival</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">duration</font><font color="#434f54">=</font><font color="#d35400">pulseIn</font><font color="#000000">(</font><font color="#000000">3</font><font color="#434f54">,</font><font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;calculate the distance in inches</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">distance</font><font color="#434f54">=</font><font color="#000000">duration</font><font color="#434f54">&#47;</font><font color="#000000">2</font><font color="#434f54">&#47;</font><font color="#000000">73.91</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">distance</font> <font color="#434f54">&lt;</font> <font color="#000000">72</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">distance</font> <font color="#434f54">&gt;</font> <font color="#000000">3</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Generate a tone proportional to the measured distance</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">tone</font><font color="#000000">(</font><font color="#000000">1</font><font color="#434f54">,</font> <font color="#000000">(</font><font color="#000000">72</font><font color="#434f54">-</font><font color="#000000">distance</font><font color="#000000">)</font><font color="#434f54">*</font><font color="#000000">20</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">}</font> <font color="#5e6d03">else</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Stop generating a tone</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">noTone</font><font color="#000000">(</font><font color="#000000">1</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#95a5a6">&#47;*Serial.print(distance); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#47;&#47;Serial print distances</font>
+<font color="#95a5a6"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Serial.print(&#34; ft\n&#34;);</font>
+<font color="#95a5a6"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delay(200);*&#47;</font>
+ &nbsp;<font color="#000000">}</font>
+</pre>
+   </div>
+      <br>
+      <p class="centext">Uploading a program to the Digispark can be a bit troublesome, but I will not document that in detail here. Suffice it to say, http://digistump.com/package_digistump_index.json must be added to the 'Additional Board Manger URLs, Digistump boards must be added in the Boards Manager, and the Digispark must be plugged into the computer after the Upload process has already begun.</p>
+      <img src="images/social_distance_sensor/0061.jpg" alt="social distance sensor under prototype" class="centimage">
+      <br>
+      <p class="centext">The program worked, so I disassembled the prototype and began to construct a version that can be worn on the side of a mask. I began by soldering most everything to a 14x20 protoboard. I added headers for both the Digispark and HCSR-04 so that I can remove them if I need to.</p>
+      <img src="images/social_distance_sensor/0091.jpg" alt="social distance sensor under construction" class="centimage">
+      <br>
+      <p class="centext">Oops, I forget to add a power switch. I never did add one to the prototype. I will salvage one from this thing.</p>
+      <img src="images/social_distance_sensor/copd_machine_board.jpg" alt="social distance sensor switch" class="centimage">
+      <br>
+      <p class="centext"> Here is the place from which I desoldered the switch and a picture of the switch itself.</p>
+      <img src="images/social_distance_sensor/switch.jpg" alt="social distance sensor switch" class="centimage">
+      <br>
+      <p class="centext">After I soldered the switch onto the device, I also added some hot glue to the connections so that they will be especially robust because they will have to flex when the battery is changed. I also used hot glue to affix the switch to the top of the protoboard.</p>
+      <img src="images/social_distance_sensor/adding_switch_to_social_distance_sensor.jpg" alt="social distance sensor switch" class="centimage">
+      <br>
+      <p class="centext">I needed something to hold the battery and protoboard to the speaker. I would 3D print a custom part for this, but the facility at which I normally 3D print parts is closed due to the pandemic.</p>
+      <p class="centext">However, I have a bin of discarded 3D printed parts in which I found <a href="downloads/vorp/4-vorp-base/vorp's-motor-holder.stl">a part that worked.</a> It was meant to be one of <a href="vorp.html">VORP</a>'s motor holders, but apparently it was warped and discarded. At some point in the past, I must have covered it with aluminum tape for some reason. If it were not warped and covered in tape, it may not have ended up holding the batter as well as it did.</p>
+           <img src="images/social_distance_sensor/3d_part_that_holds_the_battery.jpg" alt="3D part for social distance sensor" class="centimage">
+      <br>
+      <p class="centext">Then I took some nice pictures of it for some reason. Perhaps I forgot that it wasn't finished?</p>
+      <img src="images/social_distance_sensor/social_distance_sensor_without_power_switch.jpg" alt="social distance sensor without power switch" class="centimage">
+      <br>
+      <p class="centext">Then I needed to find a way to strap the device to a mask. I considered adding a Velcro strap, but I decided to use a plastic hook instead.</p>
+      <p class="centext">I found another two discarded 3D printed parts that worked. One is <a href="downloads/vorp/4-vorp-base/vorp's-motor-holder.stl">another discarded VORP motor mount</a>, and the other is a <a href="downloads/social_distance_sensor/large_servo_mount.stl">test print for a servo mount</a>.
+      <p class="centext">I thought that the VORP motor mount was white, but I discovered that it is really light sensitive color changing plastic. It looks white inside, but in the sun, it becomes pink.<p/>
+      <img src="images/social_distance_sensor/parts_from_which_hook_can_be_constructed.jpg" alt="social distance sensor hood" class="centimage">
+      <br>
+      <p class="centext">I used hot glue to construct a hook from them.</p>
+      <img src="images/social_distance_sensor/hook.jpg" alt="social distance sensor hood" class="centimage">
+      <br>
+      <p class="centext">Then I used hot glue to attach that hook to the speaker</p>
+      <img src="images/social_distance_sensor/social_distance_sensor_with_hook.jpg" alt="social distance sensor hood" class="centimage">
+      <br>
+      <p class="centext">Here are some images of the finished device</p>
+      <img src="images/social_distance_sensor/finished_social_distance_sensor.jpg" alt="finished social distance sensor" class="centimage">
+      <br>
+      <p class="centext">Here is one final, large image. I should probably also include an image of it attached to a mask, but I do not have one yet.</p>
+      <img src="images/social_distance_sensor/social_distance_sensor_high_resolution.jpg" alt="finished social distance sensor" class="centimage">
+      <br>
+   </div>
+</body>
+</html>
