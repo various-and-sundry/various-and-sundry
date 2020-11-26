@@ -71,17 +71,16 @@ body h3 {
 /* Centered text */
 .centered {
   position: absolute;
-  top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
 }
 
 #fullPageImageDesktop {
- width: 100%;
+	display: block;
+	width: 100%;
 }
 
 #fullPageImageMobile {
- width: 0;
+	display: none;
 }
 
 .Bluesector {
@@ -519,10 +518,11 @@ th.rightcolumn{
 	}
 
 	#fullPageImageDesktop {
-	 width: 0;
+		display: none;
 	}
 
 	#fullPageImageMobile {
-	width: 100%;
+		display: block;
+		width: 100%;
 	}
 }
