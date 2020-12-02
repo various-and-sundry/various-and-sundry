@@ -197,6 +197,11 @@ nav ul li {
 	font-family: "Liberation Serif";
 }
 
+.centext code {
+	font-size: 80%;
+	color: grey;
+}
+
 .Bluesector .centext {
 	padding: 5px 45px;
 	color: #FFFFFF;
@@ -334,6 +339,44 @@ th.thborder{
 	margin-right: auto;
 	border: 1px solid #c1cee3;
 }
+
+.term {
+	background: black;
+	margin: 20px;
+	padding: 6px 10px 0px 10px;
+}
+
+.prompt {
+	color: green;
+}
+
+.pihostname {
+	color: #0ad500;
+	font-weight: bold;
+}
+
+.picol {
+	color: white;
+	font-weight: bold;
+}
+
+.pitil {
+	color: #3933aa;
+	font-weight: bold;
+}
+
+.command {
+	color: white;
+	font-weight: bold;
+}
+
+.term pre {
+	background: black;
+	color: lightgreen;
+	padding: 2px 10px;
+}
+
+
 
 hr.large {
   border: 2px solid gray;

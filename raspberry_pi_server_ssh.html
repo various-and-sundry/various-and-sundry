@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <title>Raspberry Pi Server -- SSH</title>
+   <link href="style.css" type="text/css" rel="stylesheet">
+   <link rel="shortcut icon" type="image/png" href="icons/favicon.png">
+</head>
+<body>
+   <div id="navbar">
+      <img src="icons/banner-logo.png" alt="" id="banner">
+      <!-- Nav bar section -->
+         <nav>
+            <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="robots.html">Various Robots</a></li>
+               <li><a href="projects.html">Sundry Projects</a></li>
+               <li><a href="more.html">More</a></li>
+               <li><a href="about.html">About</a></li>
+            </ul>
+         </nav>
+   </div>
+   <div id="main">
+      <h1>Connecting to the Raspberry Pi Server Via SSH</h1>
+      <p class="centext"><a href="https://ssh.com/ssh">SSH</a>, which stands for Secure Shell, is a network protocol that enables secure system administration over a network. Since the Raspberry Pi is connected to a wireless network, we can use SSH to control it from another device connected to the same network.</p>
+
+      <h2>Notes</h2>
+      <p class="centext">To be clear, this article assumes that both the Raspberry Pi and the computer used to log into it are on the same local network! I might write an article in the future about connecting over the internet from a remote network, but that is beyond the scope of this particular article.</p>
+      <p class="centext">It is also worth mentioning that the instructions in this article are design to allow a computer on which Debian GNU/Linux is install to log into the Pi remotely, but they have not been tested with other operating systems. However, they should work with most other GNU/Linux distributions, and they may even be somewhat applicable to BSD, Mac OS, and Windows.</p>
+
+      <h2>Determining the Network ID</h2>
+      <p class="centext">Before SSH can be used to log into the Pi, the Pi's local IP address must be determined. Before we can do that, we must first determine the ID of the network to which the Pi is connected. Assuming that the computer that we will use to log into the Pi is also connected to the same network, we can find the network ID with the <code>ip</code>, <code>hostname</code>, or <code>ifconfig</code> command. This article will only show how to do so with the <code>ip</code> command, but you may use whichever command you prefer.</p>
+      <p class="centext">The network ID is contained within the local IP addresses of all devices connected to the network, so it can be determined by finding the IP address of any of those devices. We will find the IP address of the computer which we are going to use to log into the Raspberry Pi. We will do that via the command <code>ip a</code>. Some example output from this command is shown below, and I have made the IP address a darker shade of green so that it is easier to see. To be clear, the command is <code>ip a</code> not <code>ip -a</code>! I found that to be confusing, sort of like differentiating between the words "Pi" and "IP" when typing this article.</p>
+      
+      <div class="term">
+	      <code class="prompt">user@debian:~$</code> <code class="command">ip a</code>
+	      <pre>
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp2s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN group default qlen 1000
+    link/ether 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
+3: wlp3s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:00:00:00:00:a1 brd ff:ff:ff:ff:ff:ff
+    inet <font color="darkgreen">192.168.1.4/24</font> brd 192.168.1.255 scope global dynamic noprefixroute wlp3s0
+       valid_lft 000000sec preferred_lft 000000sec
+    inet6 0000::0000:0000:0000:0000/00 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+	      </pre>
+      </div>
+
+      <p class="centext">Once you have determined the IP address of the computer which we will use to connect to the Pi (<font color="darkgreen">192.168.1.4/24</font> in this case), we can move onto the next step. However, since we only really need the network ID, the host ID of the computer itself really does not matter. Therefore, <font color="darkgreen">192.168.1.</font><font color="black">0</font><font color="darkgreen">/24</font>, <font color="darkgreen">192.168.1.</font><font color="black">5</font><font color="darkgreen">/24</font>, and <font color="darkgreen">192.168.1.</font><font color="black">27</font><font color="darkgreen">/24</font> would all work.</p>
+
+      <h2>Determining the Raspberry Pi's IP Address</h2>
+      <p class="centext">Now, we must scan the network in order to determine the local IP address of the Raspberry Pi. Sadly, in order to do this, we must install a network scanning program. In this article, I will use <a href="https://nmap.org">Nmap</a>, which is a powerful, free, cross-platform network scanning tool. I think that it is unfortunate that I must install a whole 26.3 MB program just to find the IP address of one device. I could uninstall it, but then I will probably need it again.</p>
+      <p class="centext">Assuming that you have now installed Nmap (via <code>sudo apt-get install nmap</code> on Debian and its derivatives), it can now be used to find the IP address of the Pi. In my case, the command was <code>nmap -sn 192.168.1.4/24</code> because 192.168.1.4/24 was the IP address found in the prior step. You will need to use the IP address that you found for your network.</p>
+
+
+      <div class="term">
+	      <code class="prompt">user@debian:~$</code> <code class="command">nmap -sn 192.168.1.4/24</code>
+	      <pre>
+Starting Nmap 7.70 ( https://nmap.org ) at 2020-11-15 19:43 UTC
+Nmap scan report for router.home (192.168.1.1)
+Host is up (0.0023s latency).
+Nmap scan report for computer.home (192.168.1.2)
+Host is up (0.00027s latency).
+Nmap scan report for stoneTablet.home (192.168.1.3)
+Host is up (7.9523h latency).
+Nmap scan report for debian.home (192.168.1.4)
+Host is up (0.00023s latency).
+<font color="darkgreen">Nmap scan report for raspberrypi.home (192.168.1.5)
+Host is up (0.055s latency).</font>
+Nmap done: 256 IP addresses (5 hosts up) scanned in 2.65 seconds
+	      </pre>
+      </div>
+
+      <p class="centext">As seen above this paragraph, Nmap returns the names and IP addresses of all of the devices on the network. Included among these is the Raspberry Pi, which I have made a darker shade of green so that you can see it more easily. Nmap shows that its IP address is 192.168.1.5.</p>
+
+      <h2>Logging Into the Pi Via SSH</h2>
+      <p class="centext">Now that we know the Raspberry Pi's IP address&mdash;192.168.1.5 in this case&mdash;we are ready to access it via SSH. This can be done by issuing the ssh command followed by the name of the account that you would like to log in with at the IP address of the Raspberry Pi. As example is shown below this paragraph.</p>
+
+      <div class="term">
+	      <code class="prompt">user@debian:~$</code> <code class="command">ssh pi@192.168.1.4</code>
+	      <pre>
+	      pi@192.168.1.4's password:
+	      </pre>
+      </div>
+
+      <p class="centext">Once the command is issued, the user will be prompted for a password. The default account on the Raspberry Pi is "pi", and its password is "raspberry". Once the password is submitted, the user will be logged into the Pi and presented with a shell prompt as seen below.</p>
+
+      <div class="term">
+	      <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code>
+	      <pre>
+	      </pre>
+      </div>
+
+      <p class="centext">It should be noted that the IP address of the Raspberry Pi may change if lots of additional devices are added to the network. However, it should not change very often.</p>
+
+      <p class="centext">We can now control the Raspberry Pi remotely via SSH. In the next article, we will use SSH to add a user to the Pi and configure various other items.</p>
+     
+	   <hr>
+	   <table class="centable">
+		   <tr>
+			   <th><a href="raspberry_pi_server_operating_system_install.html">Previous</a></th>
+			   <th>Published November 11, 2020</th>
+			   <th><!--<a href="#">Next</a>--></th>
+		   </tr>
+	   </table>
+	   <br>
+   </div>
+</body>
+</html>
