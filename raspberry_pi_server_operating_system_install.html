@@ -21,36 +21,43 @@
          </nav>
    </div>
    <div id="main">
-      <h1>Raspberry Pi Server Operating System Install</h1>
+	   <h1>Raspberry Pi Server Operating System Install</h1>
+	   <h2>Flashing SD Card</h2>
+	   <p class="centext">This article documents the installation of the August 2020, Debian 10 based release of Raspberry Pi OS Lite, available on the <a href="https://www.raspberrypi.org/downloads/">Raspberry Pi Downloads Page</a>.</p>
+	   <p class="centext">The Raspberry Pi OS ISO file must be flashed to a microSD card (I am using an eight gigabyte Kingston MicroSDHC card). There are a variety of tools that can be used to flash ISO files, but, at the time of this article's creation, the Raspberry Pi Foundation recommends using <a href="https://www.balena.io/etcher/">Etcher</a>. Etcher is a cross platform image flashing utility, and I have found it to be very very reliable.</p>
+	   <img src="images/raspberry_pi_server/operating_system_install/etcher_flash.png" alt="Etcher Flashing Raspberry Pi OS" class="centimage">
 
-      <h2>Flashing SD Card</h2>
-      <p class="centext">This article documents the installation of the August 2020, Debian 10 based release of Raspberry Pi OS Lite, available on the <a href="https://www.raspberrypi.org/downloads/">Raspberry Pi Downloads Page</a>.</p>
-      <p class="centext">The Raspberry Pi OS ISO file must be flashed to a microSD card (I am using an eight gigabyte Kingston MicroSDHC card). There are a variety of tools that can be used to flash ISO files, but, at the time of this article's creation, the Raspberry Pi Foundation recommends using <a href="https://www.balena.io/etcher/">Etcher</a>. Etcher is a cross platform image flashing utility, and I have found it to be very very reliable.</p>
-      <img src="images/raspberry_pi_server/operating_system_install/etcher_flash.png" alt="Etcher Flashing Raspberry Pi OS" class="centimage">
-
-      <h2>Connecting to a Wireless Network</h2>
-      <p class="centext">Raspberry Pi OS can easily be configured to connect to a wireless network by adding a wpa_supplicant.conf file to the root of the boot partition of the SD card. That file must contain the text below this paragraph. This assumes that the network uses WPA.</p>
-<pre>
+	   <h2>Connecting to a Wireless Network</h2>
+	   <p class="centext">Raspberry Pi OS can easily be configured to connect to a wireless network by adding a wpa_supplicant.conf file to the root of the boot partition of the SD card. That file must contain the text below this paragraph. This assumes that the network uses WPA.</p>
+	   <pre>
 	country=US
 	ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 	update_config=1
-	
+
 	network={
 	ssid="<font color="#ff0000">name of network</font>"
 	scan_ssid=1
 	psk="<font color="#ff0000">password</font>"
 	key_mgmt=WPA-PSK
 	}
-</pre>
+	   </pre>
 
-      <h2>Enabling SSH</h2>
-      <p class="centext">Because this will be a headless server, SSH should be enabled. That can be accomplished by simply adding an empty file named "ssh" to the boot partition of the SD card. This file can be added to the SD card before it is inserted into the Raspberry Pi.</p>
-      <p class="centext">To Be clear, the contents of the "ssh" file do not matter; it simply needs to exist.</p>
+	   <h2>Enabling SSH</h2>
+	   <p class="centext">Because this will be a headless server, SSH should be enabled. That can be accomplished by simply adding an empty file named "ssh" to the boot partition of the SD card. This file can be added to the SD card before it is inserted into the Raspberry Pi.</p>
+	   <p class="centext">To Be clear, the contents of the "ssh" file do not matter; it simply needs to exist.</p>
 
-      <br>
-      <p class="centext">Now the SD card can be inserted into the Raspberry Pi. When supplied with power, it will boot, attempt to connect to a wireless network, and enable SSH. In the next article, we will log into the Pi via SSH and configure it further.</p>
+	   <br>
+	   <p class="centext">Now the SD card can be inserted into the Raspberry Pi. When supplied with power, it will boot, attempt to connect to a wireless network, and enable SSH. In the next article, we will log into the Pi via SSH and configure it further.</p>
 
-      <p>Published November 11, 2020</p>
+	   <hr>
+	   <table class="centable">
+		   <tr>
+			   <th><a href="raspberry_pi_server_hardware_setup.html">Previous</a></th>
+			   <th>Published November 11, 2020</th>
+			   <th><a href="raspberry_pi_server_ssh.html">Next</a></th>
+		   </tr>
+	   </table>
+	   <br>
    </div>
 </body>
 </html>
