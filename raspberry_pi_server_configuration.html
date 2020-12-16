@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <title>Raspberry Pi Server -- General Configuration</title>
+   <link href="style.css" type="text/css" rel="stylesheet">
+   <link rel="shortcut icon" type="image/png" href="icons/favicon.png">
+</head>
+<body>
+   <div id="navbar">
+      <img src="icons/banner-logo.png" alt="" id="banner">
+      <!-- Nav bar section -->
+         <nav>
+            <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="robots.html">Various Robots</a></li>
+               <li><a href="projects.html">Sundry Projects</a></li>
+               <li><a href="more.html">More</a></li>
+               <li><a href="about.html">About</a></li>
+            </ul>
+         </nav>
+   </div>
+   <div id="main">
+	   <h1>Raspberry Pi Server General Configuration</h1>
+
+	   <h2>Changing Password</h2>
+	   <p class="centext">The default Raspberry Pi OS user is named <code>pi</code>, and the default password is <code>raspberry</code>. Any responsible person will at least change the password. That can be done with the <code>passwd</code> command.</p>
+	   <p class="centext">The <code>passwd</code> command followed by no arguments will change the password of the current user account. The account whose password is to be changed can also be specified, but that requires root privilege.</p>
+
+	   <div class="term">
+		   <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">passwd</code>
+		   <pre>
+Changing password for pi
+Current password:
+		   </pre>
+	   </div>
+
+	   <p class="centext">The user will then be prompted for his or her current password, which is <code>raspberry</code> in this case. However, if he or she has root privilege (is the root user or uses <code>sudo</code>) no password is needed.</p>
+
+	   <div class="term">
+		   <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">passwd pi</code>
+		   <pre>
+Changing password for pi
+Current password:
+New password:
+Retype new password:
+passwd: password updated successfully
+		   </pre>
+	   </div>
+
+	   <p class="centext">Then the user will be prompted to enter a new password and then confirm it by entering it again. If that is done successfully, the new password will be in place.</p>
+
+
+	   <h2>Changing User Account</h2>
+	   <p class="centext">As mentioned in the section above, the default user password should always be changed. Optionally, the default user account itself can also be changed. Although this is not necessary, a means of doing so is documented here.</p>
+	   <p class="centext">The <code>adduser</code> command can be used to create a new user account. It must be run with root privilege and can be passed the name of the new account that is to be created. The command shown below creates a new account call <code>my-new-account</code>.</p>
+
+	   <div class="term">
+		   <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">sudo adduser my-new-account</code>
+		   <pre>
+Adding user `my-new-account' ...
+Adding new group `my-new-account' (1001) ...
+Adding new user `my-new-account' (1001) with group `my-new-account' ...
+Creating home directory `/home/my-new-account' ...
+Copying files from `/etc/skel' ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for test
+Enter the new value, or press ENTER for the default
+	Full Name []: Various And Sundry
+	Room Number []: 27
+	Work Phone []: 1-800-ITS-UNIX
+	Home Phone []: 1-800-MYHOUSE
+	Other []: 
+Is the information correct? [Y/n] Y
+		   </pre>
+	   </div>
+
+	   <p class="centext">Once a new user has been created, it should be added to all of the groups that the user <code>pi</code> was a part of. That can be done by editing the file <code>/etc/group</code>. Editing this file requires root privilege. Assuming that the user <code>pi</code> will be deleted, we can modify each line that ends with <code>pi</code> by replacing <code>pi</code> with the name of our new user. Below is a before and after table in which <code>pi</code> is replaced with an account called <code>my-new-account</code>.</p>
+
+	   <table>
+		   <tr>
+			   <th><h3>Before</h3></th>
+			   <th><h3>After</h3></th>
+		   </tr>
+		   <tr>
+			   <th>
+				   <p>
+				   <code>root:x:0:</code><br>
+				   <code>daemon:x:1:</code><br>
+				   <code>bin:x:2:</code><br>
+				   <code>sys:x:3:</code><br>
+				   <code>adm:x:4:pir</code><br>
+				   <code>tty:x:5:</code><br>
+				   <code>disk:x:6:</code><br>
+				   <code>lp:x:7:</code><br>
+				   <code>mail:x:8:</code><br>
+				   <code>news:x:9:</code><br>
+				   <code>uucp:x:10:</code><br>
+				   <code>man:x:12:</code><br>
+				   <code>proxy:x:13:</code><br>
+				   <code>kmem:x:15:</code><br>
+				   <code>dialout:x:20:pi</code><br>
+				   <code>fax:x:21:</code><br>
+				   <code>voice:x:22:</code><br>
+				   <code>cdrom:x:24:pi</code><br>
+				   <code>floppy:x:25:</code><br>
+				   <code>tape:x:26:</code><br>
+				   <code>sudo:x:27:pi</code><br>
+				   <code>audio:x:29:pi</code><br>
+				   <code>dip:x:30:</code><br>
+				   <code>www-data:x:33:</code><br>
+				   <code>backup:x:34:</code><br>
+				   <code>operator:x:37:</code><br>
+				   <code>list:x:38:</code><br>
+				   <code>irc:x:39:</code><br>
+				   <code>src:x:40:</code><br>
+				   <code>gnats:x:41:</code><br>
+				   <code>shadow:x:42:</code><br>
+				   <code>utmp:x:43:</code><br>
+				   <code>video:x:44:pi</code><br>
+				   <code>sasl:x:45:</code><br>
+				   <code>plugdev:x:46:pi</code><br>
+				   <code>staff:x:50:</code><br>
+				   <code>games:x:60:pi</code><br>
+				   <code>users:x:100:pi</code><br>
+				   <code>nogroup:x:65534:</code><br>
+				   <code>systemd-journal:x:101:</code><br>
+				   <code>systemd-timesync:x:102:</code><br>
+				   <code>systemd-network:x:103:</code><br>
+				   <code>systemd-resolve:x:104:</code><br>
+				   <code>input:x:105:pi</code><br>
+				   <code>kvm:x:106:</code><br>
+				   <code>render:x:107:</code><br>
+				   <code>crontab:x:108:</code><br>
+				   <code>netdev:x:109:pi</code><br>
+				   <code>messagebus:x:110:</code><br>
+				   <code>ssh:x:111:</code><br>
+				   <code>bluetooth:x:112:</code><br>
+				   <code>avahi:x:113:</code><br>
+				   <code>spi:x:999:pi</code><br>
+				   <code>i2c:x:998:pi</code><br>
+				   <code>gpio:x:997:pi</code><br>
+				   <code>systemd-coredump:x:996:</code><br>
+				   <code>pi:x:1000:</code><br>
+				   <code>my-new-account:x:1001:</code><br>
+				   </p>
+			   </th>
+			   <th>
+				   <p>
+				   <code>root:x:0:</code><br>
+				   <code>daemon:x:1:</code><br>
+				   <code>bin:x:2:</code><br>
+				   <code>sys:x:3:</code><br>
+				   <code>adm:x:4:my-new-account</code><br>
+				   <code>tty:x:5:</code><br>
+				   <code>disk:x:6:</code><br>
+				   <code>lp:x:7:</code><br>
+				   <code>mail:x:8:</code><br>
+				   <code>news:x:9:</code><br>
+				   <code>uucp:x:10:</code><br>
+				   <code>man:x:12:</code><br>
+				   <code>proxy:x:13:</code><br>
+				   <code>kmem:x:15:</code><br>
+				   <code>dialout:x:20:my-new-account</code><br>
+				   <code>fax:x:21:</code><br>
+				   <code>voice:x:22:</code><br>
+				   <code>cdrom:x:24:my-new-account</code><br>
+				   <code>floppy:x:25:</code><br>
+				   <code>tape:x:26:</code><br>
+				   <code>sudo:x:27:my-new-account</code><br>
+				   <code>audio:x:29:my-new-account</code><br>
+				   <code>dip:x:30:</code><br>
+				   <code>www-data:x:33:</code><br>
+				   <code>backup:x:34:</code><br>
+				   <code>operator:x:37:</code><br>
+				   <code>list:x:38:</code><br>
+				   <code>irc:x:39:</code><br>
+				   <code>src:x:40:</code><br>
+				   <code>gnats:x:41:</code><br>
+				   <code>shadow:x:42:</code><br>
+				   <code>utmp:x:43:</code><br>
+				   <code>video:x:44:my-new-account</code><br>
+				   <code>sasl:x:45:</code><br>
+				   <code>plugdev:x:46:my-new-account</code><br>
+				   <code>staff:x:50:</code><br>
+				   <code>games:x:60:my-new-account</code><br>
+				   <code>users:x:100:my-new-account</code><br>
+				   <code>nogroup:x:65534:</code><br>
+				   <code>systemd-journal:x:101:</code><br>
+				   <code>systemd-timesync:x:102:</code><br>
+				   <code>systemd-network:x:103:</code><br>
+				   <code>systemd-resolve:x:104:</code><br>
+				   <code>input:x:105:my-new-account</code><br>
+				   <code>kvm:x:106:</code><br>
+				   <code>render:x:107:</code><br>
+				   <code>crontab:x:108:</code><br>
+				   <code>netdev:x:109:my-new-account</code><br>
+				   <code>messagebus:x:110:</code><br>
+				   <code>ssh:x:111:</code><br>
+				   <code>bluetooth:x:112:</code><br>
+				   <code>avahi:x:113:</code><br>
+				   <code>spi:x:999:my-new-account</code><br>
+				   <code>i2c:x:998:my-new-account</code><br>
+				   <code>gpio:x:997:my-new-account</code><br>
+				   <code>systemd-coredump:x:996:</code><br>
+				   <code>pi:x:1000:</code><br>
+				   <code>my-new-account:x:1001:</code><br>
+				   </p>			   
+			   </th>
+		   </tr>
+	   </table>
+
+	   <p class="centext">Then log into the new account and delete the old account. The commands needed to do this are shown below.</p>
+
+	   <div class="term">
+		   <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">sudo su my-new-user</code>
+		   <br>
+		   <br>
+		   <code class="pihostname">my-new-user@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">sudo userdel pi</code>
+		   <br>
+		   <br>
+	   </div>
+
+	   <h2>Updating the System</h2>
+	   <p class="centext">Finally, we shall update the system.</p>
+	   <p class="centext">We will run <code>sudo apt-get update</code> to update the local list of available packages.</p>
+	   <p class="centext">We can also run <code>sudo apt-get upgrade</code> to update all of the installed packages. This is not necessary, and it can take quite a while and use a reasonable amount of disk space, depending on how old the operating system is. I often omit this step, but I am using a reasonably up-to-date version of Raspberry Pi OS, so I ran it this time.</p>
+	   <div class="term">
+		   <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">sudo apt-get update</code>
+		   <pre>
+  Lots of output that I will not put in this web page.
+		   </pre>
+		   <code class="pihostname">my-new-user@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">sudo apt-get upgrade</code>
+		   <pre>
+  Lots and lots of output that I will not put in this web page.
+		   </pre>
+	   </div>
+
+	   <p class="centext">Now I consider the Pi to be configured. The next article will discuss installing the Apache Web Server, something actually related to web development.</p>
+
+	   <hr>
+	   <table class="centable">
+		   <tr>
+			   <th><a href="raspberry_pi_server_ssh.html">Previous</a></th>
+			   <th>Published December 16, 2020</th>
+			   <th><!--<a href="#">Next</a>--></th>
+		   </tr>
+	   </table>
+	   <br>
+   </div>
+</body>
+</html>
