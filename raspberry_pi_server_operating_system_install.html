@@ -29,18 +29,19 @@
 
 	   <h2>Connecting to a Wireless Network</h2>
 	   <p class="centext">Raspberry Pi OS can easily be configured to connect to a wireless network by adding a wpa_supplicant.conf file to the root of the boot partition of the SD card. That file must contain the text below this paragraph. This assumes that the network uses WPA.</p>
-	   <pre>
-	country=US
-	ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-	update_config=1
 
-	network={
-	ssid="<font color="#ff0000">name of network</font>"
-	scan_ssid=1
-	psk="<font color="#ff0000">password</font>"
-	key_mgmt=WPA-PSK
-	}
-	   </pre>
+	   <div class="padded">
+	   	<code>country=US</code><br>
+	   	<code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</code><br>
+		<code>update_config=1</code><br><br>
+
+	   	<code>network={</code><br>
+	   	<code>&emsp;&emsp;ssid="<font color="#ff0000">name of network</font>"</code><br>
+	   	<code>&emsp;&emsp;scan_ssid=1</code><br>
+	   	<code>&emsp;&emsp;psk="<font color="#ff0000">password</font>"</code><br>
+	   	<code>&emsp;&emsp;key_mgmt=WPA-PSK</code><br>
+	   	<code>}</code><br>
+	   </div>
 
 	   <h2>Enabling SSH</h2>
 	   <p class="centext">Because this will be a headless server, SSH should be enabled. That can be accomplished by simply adding an empty file named "ssh" to the boot partition of the SD card. This file can be added to the SD card before it is inserted into the Raspberry Pi.</p>

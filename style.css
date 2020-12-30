@@ -370,7 +370,7 @@ th.thborder{
 	font-weight: bold;
 }
 
-.term pre {
+.term div {
 	background: black;
 	color: lightgreen;
 	padding: 2px 10px;

@@ -34,22 +34,22 @@
       
       <div class="term">
 	      <code class="prompt">user@debian:~$</code> <code class="command">ip a</code>
-	      <pre>
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host 
-       valid_lft forever preferred_lft forever
-2: enp2s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN group default qlen 1000
-    link/ether 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
-3: wlp3s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-    link/ether 00:00:00:00:00:a1 brd ff:ff:ff:ff:ff:ff
-    inet <font color="darkgreen">192.168.1.4/24</font> brd 192.168.1.255 scope global dynamic noprefixroute wlp3s0
-       valid_lft 000000sec preferred_lft 000000sec
-    inet6 0000::0000:0000:0000:0000/00 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-	      </pre>
+	      <div>
+			<code>1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</code><br>
+			<code>&emsp;&emsp;link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</code><br>
+			<code>&emsp;&emsp;inet 127.0.0.1/8 scope host lo</code><br>
+			<code>&emsp;&emsp;&emsp;&emsp;valid_lft forever preferred_lft forever</code><br>
+			<code>&emsp;&emsp;inet6 ::1/128 scope host </code><br>
+			<code>&emsp;&emsp;&emsp;&emsp;valid_lft forever preferred_lft forever</code><br>
+			<code>2: enp2s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN group default qlen 1000</code><br>
+			<code>&emsp;&emsp;link/ether 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff</code><br>
+			<code>3: wlp3s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000</code><br>
+			<code>&emsp;&emsp;link/ether 00:00:00:00:00:a1 brd ff:ff:ff:ff:ff:ff</code><br>
+			<code>&emsp;&emsp;inet <font color="darkgreen">192.168.1.4/24</font> brd 192.168.1.255 scope global dynamic noprefixroute wlp3s0</code><br>
+			<code>&emsp;&emsp;&emsp;&emsp;valid_lft 000000sec preferred_lft 000000sec</code><br>
+			<code>&emsp;&emsp;inet6 0000::0000:0000:0000:0000/00 scope link noprefixroute </code><br>
+			<code>&emsp;&emsp;&emsp;&emsp;valid_lft forever preferred_lft forever</code><br><br>
+	      </div>
       </div>
 
       <p class="centext">Once you have determined the IP address of the computer which we will use to connect to the Pi (<font color="darkgreen">192.168.1.4/24</font> in this case), we can move onto the next step. However, since we only really need the network ID, the host ID of the computer itself really does not matter. Therefore, <font color="darkgreen">192.168.1.</font><font color="black">0</font><font color="darkgreen">/24</font>, <font color="darkgreen">192.168.1.</font><font color="black">5</font><font color="darkgreen">/24</font>, and <font color="darkgreen">192.168.1.</font><font color="black">27</font><font color="darkgreen">/24</font> would all work.</p>
@@ -61,20 +61,20 @@
 
       <div class="term">
 	      <code class="prompt">user@debian:~$</code> <code class="command">nmap -sn 192.168.1.4/24</code>
-	      <pre>
-Starting Nmap 7.70 ( https://nmap.org ) at 2020-11-15 19:43 UTC
-Nmap scan report for router.home (192.168.1.1)
-Host is up (0.0023s latency).
-Nmap scan report for computer.home (192.168.1.2)
-Host is up (0.00027s latency).
-Nmap scan report for stoneTablet.home (192.168.1.3)
-Host is up (7.9523h latency).
-Nmap scan report for debian.home (192.168.1.4)
-Host is up (0.00023s latency).
-<font color="darkgreen">Nmap scan report for raspberrypi.home (192.168.1.5)
-Host is up (0.055s latency).</font>
-Nmap done: 256 IP addresses (5 hosts up) scanned in 2.65 seconds
-	      </pre>
+	      <div>
+		      <code>Starting Nmap 7.70 ( https://nmap.org ) at 2020-11-15 19:43 UTC</code><br>
+		      <code>Nmap scan report for router.home (192.168.1.1)</code><br>
+		      <code>Host is up (0.0023s latency).</code><br>
+		      <code>Nmap scan report for computer.home (192.168.1.2)</code><br>
+		      <code>Host is up (0.00027s latency).</code><br>
+		      <code>Nmap scan report for stoneTablet.home (192.168.1.3)</code><br>
+		      <code>Host is up (7.9523h latency).</code><br>
+		      <code>Nmap scan report for debian.home (192.168.1.4)</code><br>
+		      <code>Host is up (0.00023s latency).</code><br>
+		      <code><font color="darkgreen">Nmap scan report for raspberrypi.home (192.168.1.5)</code><br>
+		      <code>Host is up (0.055s latency).</font></code><br>
+	      	      <code>Nmap done: 256 IP addresses (5 hosts up) scanned in 2.65 seconds</code><br><br>
+	      </div>
       </div>
 
       <p class="centext">As seen above this paragraph, Nmap returns the names and IP addresses of all of the devices on the network. Included among these is the Raspberry Pi, which I have made a darker shade of green so that you can see it more easily. Nmap shows that its IP address is 192.168.1.5.</p>
@@ -84,17 +84,18 @@ Nmap done: 256 IP addresses (5 hosts up) scanned in 2.65 seconds
 
       <div class="term">
 	      <code class="prompt">user@debian:~$</code> <code class="command">ssh pi@192.168.1.4</code>
-	      <pre>
-	      pi@192.168.1.4's password:
-	      </pre>
+	      <div>
+		      <code>pi@192.168.1.4's password:</code><br><br>
+	      </div>
       </div>
 
       <p class="centext">Once the command is issued, the user will be prompted for a password. The default account on the Raspberry Pi is "pi", and its password is "raspberry". Once the password is submitted, the user will be logged into the Pi and presented with a shell prompt as seen below.</p>
 
       <div class="term">
 	      <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code>
-	      <pre>
-	      </pre>
+	      <div>
+		      <br><br>
+	      </div>
       </div>
 
       <p class="centext">It should be noted that the IP address of the Raspberry Pi may change if lots of additional devices are added to the network. However, it should not change very often.</p>

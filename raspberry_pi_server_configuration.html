@@ -29,23 +29,23 @@
 
 	   <div class="term">
 		   <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">passwd</code>
-		   <pre>
-Changing password for pi
-Current password:
-		   </pre>
+		   <div>
+			   <code>Changing password for pi</code><br>
+			   <code>Current password:</code><br><br>
+		   </div>
 	   </div>
 
 	   <p class="centext">The user will then be prompted for his or her current password, which is <code>raspberry</code> in this case. However, if he or she has root privilege (is the root user or uses <code>sudo</code>) no password is needed.</p>
 
 	   <div class="term">
 		   <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">passwd</code>
-		   <pre>
-Changing password for pi
-Current password:
-New password:
-Retype new password:
-passwd: password updated successfully
-		   </pre>
+		   <div>
+			   <code>Changing password for pi</code><br>
+			   <code>Current password:</code><br>
+			   <code>New password:</code><br>
+			   <code>Retype new password:</code><br>
+			   <code>passwd: password updated successfully</code><br><br>
+		   </div>
 	   </div>
 
 	   <p class="centext">Then the user will be prompted to enter a new password and then confirm it by entering it again. If that is done successfully, the new password will be in place.</p>
@@ -57,24 +57,24 @@ passwd: password updated successfully
 
 	   <div class="term">
 		   <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">sudo adduser my-new-account</code>
-		   <pre>
-Adding user `my-new-account' ...
-Adding new group `my-new-account' (1001) ...
-Adding new user `my-new-account' (1001) with group `my-new-account' ...
-Creating home directory `/home/my-new-account' ...
-Copying files from `/etc/skel' ...
-New password: 
-Retype new password: 
-passwd: password updated successfully
-Changing the user information for test
-Enter the new value, or press ENTER for the default
-	Full Name []: Various And Sundry
-	Room Number []: 27
-	Work Phone []: 1-800-ITS-UNIX
-	Home Phone []: 1-800-MYHOUSE
-	Other []: 
-Is the information correct? [Y/n] Y
-		   </pre>
+		   <div>
+			   <code>Adding user `my-new-account' ...</code><br>
+			   <code>Adding new group `my-new-account' (1001) ...</code><br>
+			   <code>Adding new user `my-new-account' (1001) with group `my-new-account' ...</code><br>
+			   <code>Creating home directory `/home/my-new-account' ...</code><br>
+			   <code>Copying files from `/etc/skel' ...</code><br>
+			   <code>New password: </code><br>
+			   <code>Retype new password: </code><br>
+			   <code>passwd: password updated successfully</code><br>
+			   <code>Changing the user information for test</code><br>
+			   <code>Enter the new value, or press ENTER for the default</code><br>
+			   <code>&emsp;&emsp;&emsp;&emsp;Full Name []: Various And Sundry</code><br>
+			   <code>&emsp;&emsp;&emsp;&emsp;Room Number []: 27</code><br>
+			   <code>&emsp;&emsp;&emsp;&emsp;Work Phone []: 1-800-ITS-UNIX</code><br>
+			   <code>&emsp;&emsp;&emsp;&emsp;Home Phone []: 1-800-MYHOUSE</code><br>
+			   <code>&emsp;&emsp;&emsp;&emsp;Other []: </code><br>
+			   <code>Is the information correct? [Y/n] Y</code><br><br>
+		   </div>
 	   </div>
 
 	   <p class="centext">Once a new user has been created, it should be added to all of the groups that the user <code>pi</code> was a part of. That can be done by editing the file <code>/etc/group</code>. Editing this file requires root privilege. Assuming that the user <code>pi</code> will be deleted, we can modify each line that ends with <code>pi</code> by replacing <code>pi</code> with the name of our new user. Below is a before and after table in which <code>pi</code> is replaced with an account called <code>my-new-account</code>.</p>
@@ -229,13 +229,13 @@ Is the information correct? [Y/n] Y
 	   <p class="centext">We can also run <code>sudo apt-get upgrade</code> to update all of the installed packages. This is not necessary, and it can take quite a while and use a reasonable amount of disk space, depending on how old the operating system is. I often omit this step, but I am using a reasonably up-to-date version of Raspberry Pi OS, so I ran it this time.</p>
 	   <div class="term">
 		   <code class="pihostname">my-new-user@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">sudo apt-get update</code>
-		   <pre>
-  Lots of output that I will not put in this web page.
-		   </pre>
+		   <div>
+			   <code>Lots of output that I will not put in this web page.</code><br>
+		   </div>
 		   <code class="pihostname">my-new-user@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">sudo apt-get upgrade</code>
-		   <pre>
-  Lots and lots of output that I will not put in this web page.
-		   </pre>
+		   <div>
+			   <code>Lots and lots of output that I will not put in this web page.</code><br><br>
+		   </div>
 	   </div>
 
 	   <p class="centext">Now I consider the Pi to be configured. The next article will discuss installing the Apache Web Server, something actually related to web development.</p>
