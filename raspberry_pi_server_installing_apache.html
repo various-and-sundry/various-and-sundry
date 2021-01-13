@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <title>Raspberry Pi Server -- SSH</title>
+   <link href="style.css" type="text/css" rel="stylesheet">
+   <link rel="shortcut icon" type="image/png" href="icons/favicon.png">
+</head>
+<body>
+   <div id="navbar">
+      <img src="icons/banner-logo.png" alt="" id="banner">
+      <!-- Nav bar section -->
+         <nav>
+            <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="robots.html">Various Robots</a></li>
+               <li><a href="projects.html">Sundry Projects</a></li>
+               <li><a href="more.html">More</a></li>
+               <li><a href="about.html">About</a></li>
+            </ul>
+         </nav>
+   </div>
+   <div id="main">
+      <h1>Installing Apache on the Raspberry Pi Server</h1>
+      <p class="centext">The <a href="https://httpd.apache.org">Apache Web Server</a> is an secure and open-source HTTP server, which works well on the Raspberry Pi. According to its website, it was launched in 1995 and has been the world's most popular web server since April 1996. In this article, we will install Apache2, allowing the Raspberry Pi to serve web pages.</p>
+
+      <h2>Installing  Apache2</h2>
+      <p class="centext">Installing Apache within Raspberry Pi OS can be done directly via apt-get as shown below.</p>
+      
+      <div class="term">
+	      <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get update</code>
+	      <div>
+			<code>Get:1 http://raspbian.raspberrypi.org/raspbian buster InRelease [15.0 kB]</code><br>
+			<code>Get:2 http://archive.raspberrypi.org/debian buster InRelease [32.6 kB]</code><br>
+			<code>Get:3 http://raspbian.raspberrypi.org/raspbian buster/main armhf Packages [13.0 MB]</code><br>
+			<code>Get:4 http://archive.raspberrypi.org/debian buster/main armhf Packages [351 kB]</code><br>
+			<code>Fetched 13.4 MB in 35s (386 kB/s)</code><br>
+			<code>Reading package lists... Done</code><br>
+	      </div>
+
+	      <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install apache2</code>
+	      <div>
+		      <code>Reading package lists... Done</code><br>
+		      <code>Building dependency tree       </code><br>
+		      <code>Reading state information... Done</code><br>
+		      <code>apache2 is already the newest version (2.4.38-3+deb10u4).</code><br>
+		      <code>0 upgraded, 0 newly installed, 0 to remove and 52 not upgraded.</code><br>
+	      </div>
+      </div>
+
+      <p class="centext">The install package should be nice to us by setting up the ports and assigning Apache to start on boot. In other words, it should all work automatically.</p>
+
+      <h2>Testing</h2>
+      <p class="centext">To test that it is functioning properly, Apache includes a default web page, which should be accessible to any computer on the same network as the Pi.</p>
+      <p class="centext">Open the web browser of any computer on the network (probably the one that you are using to control the Raspberry Pi) and type <code>http://</code> and then the IP address of the Pi into the address bar. Then press enter, and a web page like the one below should appear.</p>
+      <p class="centext">If the web browser says that the web page does not exist, then you probably typed the address in incorrectly. Check that the IP address matches the IP address of YOUR Raspberry Pi and remember, you most use <code>http</code> not <code>https</code>&mdash;we have not added encryption yet. If you are sure that you typed the address in correctly but still do not see the web page, then you still probably typed it in incorrectly. If you check it another five times and still believe that it is correct, then you are permitted to consider the possibility of there being a problem with the Apache Web Server configuration.</p>
+      <img src="images/raspberry_pi_server/installing_apache/default_apache_web_page.png" alt="Default Apache Web Page" class="centimage">
+
+      <h2>Modifying the Web Page</h2>
+      <p class="centext">Of course we can replace or modify the default web page seen above. The default web page is stored in <code>/var/www/html/index.html</code>. We can create a whole website within the <code>/var/www/html/</code> directory, and <code>index.html</code> will be the default landing page.</p>
+      <p class="centext">Navigate to <code>/var/www/html/</code> and delete the default <code>index.html</code> file (or you could rename or move it if you prefer).
+
+      <div class="term">
+	      <code class="prompt">user@debian:~$</code> <code class="command">cd /var/www/html</code>
+	      <div>
+			<code></code><br>
+	      </div>
+
+	      <code class="prompt">user@debian:~$</code> <code class="command">rm index.html</code>
+	      <div>
+		      <code></code><br>
+	      </div>
+      </div>
+
+      <p class="centext">Now we can write a new <code>index.html</code>. I will install and use vim, but any editor should work (nano is installed by default or you could install Emacs).</p>
+
+      <div class="term">
+	      <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install vim</code>
+	      <div>
+			<code>Reading package lists... Done</code><br>
+			<code>After this operation, 32.6 MB of additional disk space will be used.</code><br>
+			<code>Do you want to continue? [Y/n] y</code><br>
+			<code></code><br>
+	      </div>
+
+	      <code class="prompt">user@debian:~$</code> <code class="command">vim index.html</code>
+	      <div>
+			<code></code><br>
+	      </div>
+      </div>
+
+      <p class="centext">Then an HTML page can be written. Here is an example (please pardon the lack of syntax highlighting).</p>
+       <div class="term">
+	      <div>
+			<code>&lt;!doctype html&gt;</code><br>
+			<br>
+			<code>&lt;head&gt;</code><br>
+			<code>&emsp;&emsp;&emsp;&emsp;&lt;title&gt;various-and-sundry&lt;/title&gt;</code><br>
+			<code>&lt;/head&gt;</code><br>
+			<br>
+			<code>&emsp;&emsp;&emsp;&emsp;&lt;body&gt;</code><br>
+			<code>&emsp;&emsp;&emsp;&emsp;&lt;h1&gt;Various-and_Sundry.com&lt;/h1&gt;</code><br>
+			<code>&emsp;&emsp;&emsp;&emsp;&lt;p&gt;The hidden gem of the Web.&lt;/p&gt;</code><br>
+			<code>&lt;/body&gt;</code><br>
+	      </div>
+      </div>
+
+      <p class="centext">Once the file is saved, Apache will serve it as the default web page. Refresh your web browser, and you should see a page similar to the one below.</p>
+      <img src="images/raspberry_pi_server/installing_apache/various-and-sundry_web_page.png" alt="Example Various-and-Sundry Web Page" class="centimage">
+      
+      <p class="centext">In the next article, we will try to transfer files directly to the Raspberry Pi over the network. I have never done that before, so I do not know how it will be done. Tune in next time to find out.</p>
+
+
+	   <hr>
+	   <table class="centable">
+		   <tr>
+			   <th><a href="raspberry_pi_server_configuration.html">Previous</a></th>
+			   <th>Published January 13, 2021</th>
+			   <!-- <th><a href="#">Next</a></th> -->
+		   </tr>
+	   </table>
+	   <br>
+   </div>
+</body>
+</html>
+
+
