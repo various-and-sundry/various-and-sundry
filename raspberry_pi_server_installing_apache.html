@@ -28,7 +28,7 @@
       <p class="centext">Installing Apache within Raspberry Pi OS can be done directly via apt-get as shown below.</p>
       
       <div class="term">
-	      <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get update</code>
+	      <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">sudo apt-get update</code>
 	      <div>
 			<code>Get:1 http://raspbian.raspberrypi.org/raspbian buster InRelease [15.0 kB]</code><br>
 			<code>Get:2 http://archive.raspberrypi.org/debian buster InRelease [32.6 kB]</code><br>
@@ -38,7 +38,7 @@
 			<code>Reading package lists... Done</code><br>
 	      </div>
 
-	      <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install apache2</code>
+	      <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">sudo apt-get install apache2</code>
 	      <div>
 		      <code>Reading package lists... Done</code><br>
 		      <code>Building dependency tree       </code><br>
@@ -61,12 +61,12 @@
       <p class="centext">Navigate to <code>/var/www/html/</code> and delete the default <code>index.html</code> file (or you could rename or move it if you prefer).
 
       <div class="term">
-	      <code class="prompt">user@debian:~$</code> <code class="command">cd /var/www/html</code>
+	      <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">cd /var/www/html</code>
 	      <div>
 			<code></code><br>
 	      </div>
 
-	      <code class="prompt">user@debian:~$</code> <code class="command">rm index.html</code>
+	      <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">rm index.html</code>
 	      <div>
 		      <code></code><br>
 	      </div>
@@ -75,7 +75,7 @@
       <p class="centext">Now we can write a new <code>index.html</code>. I will install and use vim, but any editor should work (nano is installed by default or you could install Emacs).</p>
 
       <div class="term">
-	      <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install vim</code>
+	      <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">sudo apt-get install vim</code>
 	      <div>
 			<code>Reading package lists... Done</code><br>
 			<code>After this operation, 32.6 MB of additional disk space will be used.</code><br>
@@ -83,7 +83,7 @@
 			<code></code><br>
 	      </div>
 
-	      <code class="prompt">user@debian:~$</code> <code class="command">vim index.html</code>
+	      <code class="pihostname">pi@raspberrypi</code><code class="picol">:</code><code class="pitil">~$</code> <code class="command">vim index.html</code>
 	      <div>
 			<code></code><br>
 	      </div>
