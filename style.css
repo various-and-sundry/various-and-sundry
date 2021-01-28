@@ -406,6 +406,47 @@ th.rightcolumn{
 }
 
 
+table.dictabhead {
+	width: 90%;
+	text-align: center;
+	padding: 7px 5% 7px 5%;
+	margin: 30px 5% 0 5%;
+	border: 2px solid gray;
+}
+
+table.dictabhead tr th {
+	font-size: 20px;
+}
+
+table.dictabhead tr th.word {
+	font-size: 40px;
+	text-align: left;
+	padding-left: 20px;
+}
+
+table tr th.number {
+	font-size: 20px;
+	text-align: left;
+	padding: 10px;
+}
+
+table.dictabdefs {
+	width: 90%;
+	text-align: left;
+	padding: 7px 5% 7px 5%;
+	margin: 0 5% 30px 5%;
+	border: 2px solid gray;
+}
+
+table.dictabdefs tr th {
+	font-weight: 100;
+}
+
+table.dictabdefs tr th.example {
+	color: gray;
+	padding-bottom: 20px;
+}
+
 
 
 
