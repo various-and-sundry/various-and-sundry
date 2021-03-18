@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <title>Raspberry Pi Server -- SSH</title>
+   <link href="style.css" type="text/css" rel="stylesheet">
+   <link rel="shortcut icon" type="image/png" href="icons/favicon.png">
+</head>
+<body>
+   <div id="navbar">
+      <img src="icons/banner-logo.png" alt="" id="banner">
+      <!-- Nav bar section -->
+         <nav>
+            <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="robots.html">Various Robots</a></li>
+               <li><a href="projects.html">Sundry Projects</a></li>
+               <li><a href="more.html">More</a></li>
+               <li><a href="about.html">About</a></li>
+            </ul>
+         </nav>
+   </div>
+   <div id="main">
+      <h1>My Primary Operating System &mdash; 2021</h1>
+      <img src="images/operating_systems/1/operating_system--emacs_mixer_firefox.png" alt="Screenshot of Window Manger" class="centimage">
+      
+      <h2>Operating System and Hardware</h2>
+      <h3>Operating System Type</h3>
+      <p>I currently use <a href="https://debian.org">Debian 10</a>, specifically <code>Debian-live-10.6.0-amd64-standard+nonfree</code>, which I installed in 2020. I am not pleased that I used a nonfree version of Debian, but I did so because of past difficulty configuring Wi-Fi. Even when using the nonfree version&mdash;with its preinstalled, proprietary drivers&mdash;it took some time to properly connect to a network. I documented the process, and in the future, I should be able to configure Wi-Fi on free Debian. In fact I have now done so on another Debian USB stick, but it forces me to manually activate Wi-Fi upon each boot. Assuming that I choose Debian when I eventually reinstall my main operating system, I will use a free version, but I will probably install a proprietary wireless driver.</p>
+      
+      <h3>Installed to an External USB Drive</h3>
+      <p>The operating system is not installed to an internal hard drive. It is installed to a <a href="https://www.amazon.com/SanDisk-64GB-Cruzer-Flash-Drive/dp/B07MDXBTL1/ref=sr_1_7">SanDisk 64GB Cruzer Fit USB 2.0 Flash Drive</a> with persistence. In the past, I always used persistent USB drives of 16 Gigabytes or less, but this time I chose a 64 Gigabyte drive because it happen to be available to me when I installed the operating system. It also has a very portable form factor.</p>.
+      
+      <h3>Installation and Persistence</h3>
+      <p>I have not found a way of creating a persistent Debian USB stick using only dd, so I created this one with <a href="https://help.ubuntu.com/community/mkusb">mkusb</a>. As far as I know, mkusb can only be installed to <ahref="https://ubuntu.com/">Ubuntu</a>systems, but it can be used to create either persistent Debian or Ubuntu USB sticks. It allows for an extra FAT partition to be added to the drive which allows a portion of the drive to be accessed as if it were a standard removable storage volume. I allocated 10 Gigabytes for this purpose, but I have never used them. In fact, I never tested them. It seems like a useful feature because it would prevent me for having to carry both a storage USB stick and bootable USB stick. However, since I am at home in the middle of a pandemic, portability is not particularly important right now.</p>
+
+      <h3>Why A 64bit Persistent USB Drive</h3>	
+      <p>Using a persistent USB stick as a primary operating system is unusual, but its portability provides me with the option of basically carrying my computer anywhere in my pocket. Up until now I have almost exclusively used 32bit bootable operating systems so that I could use them on almost any computer. However, this time I used a 64bit operating system because I had to use Android Studio, which is a program that I do not like and does not support 32bit architecture. Out of the three 64bit machines on which I have attempted to boot it, only one worked. That prevents it from being effectively portable, unlike most of the bootable USB sticks that I have used in the past. Anyhow, portability is not particularly useful during this pandemic.</p>
+      <p>A reason for using an external USB drive, which is relevant even during a pandemic, is that I do not own the computer which I have been primarily using. Windows 7 (which is no longer supported by M$) is installed on its internal hard drive. I cannot overwrite Windows because I do not own the computer. However, I can use Debian on my external USB drive. Even though I am using USB 2.0, it still boots in under one minute, which is significantly faster than when booting Windows.</p>
+
+      <h2>Software That I Use and Like</h2>
+      <p>Coming soon. . .</p>
+      <h2>Software That I Use and Dislike</h2>
+      <p>Coming soon. . .</p>
+      <h2>Software That I Use Now but Might Not in the Future</h2>
+      <p>Coming soon. . .</p>
+      <h2>System Configuration</h2>
+      <p>Coming soon. . .</p>
+      <h2>Software That I May Begin Using in the Future</h2>
+      <p>Coming soon. . .</p>
+   </div>
+</body>
+</html>
+
+
+
+
+
+
