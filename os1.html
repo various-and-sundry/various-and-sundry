@@ -23,6 +23,11 @@
    <div id="main">
       <h1>My Primary Operating System &mdash; 2021</h1>
       <img src="images/operating_systems/1/operating_system--emacs_mixer_firefox.png" alt="Screenshot of Window Manger" class="centimage">
+
+      
+      <br><br><hr>
+
+
       
       <h2>Operating System and Hardware</h2>
       <h3>Operating System Type</h3>
@@ -38,22 +43,161 @@
       <p>Using a persistent USB stick as a primary operating system is unusual, but its portability provides me with the option of basically carrying my computer anywhere in my pocket. Up until now I have almost exclusively used 32bit bootable operating systems so that I could use them on almost any computer. However, this time I used a 64bit operating system because I had to use Android Studio, which is a program that I do not like and does not support 32bit architecture. Out of the three 64bit machines on which I have attempted to boot it, only one worked. That prevents it from being effectively portable, unlike most of the bootable USB sticks that I have used in the past. Anyhow, portability is not particularly useful during this pandemic.</p>
       <p>A reason for using an external USB drive, which is relevant even during a pandemic, is that I do not own the computer which I have been primarily using. Windows 7 (which is no longer supported by M$) is installed on its internal hard drive. I cannot overwrite Windows because I do not own the computer. However, I can use Debian on my external USB drive. Even though I am using USB 2.0, it still boots in under one minute, which is significantly faster than when booting Windows.</p>
 
-      <h2>Software That I Use and Like</h2>
-      <p>Coming soon. . .</p>
-      <h2>Software That I Use and Dislike</h2>
-      <p>Coming soon. . .</p>
-      <h2>Software That I Use Now but Might Not in the Future</h2>
-      <p>Coming soon. . .</p>
+
+
+      <br><hr>
+
+
+
+
+
       <h2>System Configuration</h2>
+
+      <h3>Window Manager &mdash; i3</h3>
+      <p>My window manager is currently <a href="https://www.i3wm.org">i3</a>. It is the first and only tiling window manager that I have used. I chose it over other tiling window managers because it is written in <a href="http://www.catb.org/jargon/html/C/C.html">C</a> (fast/efficient), its configuration files are not written in Lua (Why would they be?), and it seemed easy to install (i.e. not dwm). I first tried it on another Debian installation, which required something light. Rather than installing <a href="https://www.lxde.org/">LXDE</a> or <a href="https://xfce.org/">XFCE</a>, I tried i3. I assumed that using it would be a fun experience for a few months.</p>
+<p>Unsurprisingly, this is how I installed Xorg and i3.</p>
+
+      <div class="term">
+	<code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install xorg</code>
+	<br>
+	<code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install i3</code>
+	<div>
+	</div>
+      </div>
+
+      <p>After using i3 for several months, it I still did not think that it provided any real benefits. Then, I tried to move back to LXDE. Wow, it felt arduous. I had not realized how much more efficient I had become when using i3. I am now using i3 as my primary window manager, and I think that tiling window managers are much more efficient (in more cases) and easy to use (easy to use != easy to learn) than stacking window managers. Stacked/floating windows are useful sometimes, but i3 is capable of creating floating windows when necessary. I am sure that other tiling window managers are very good, and I will probably try <a href="http://dwm.suckless.org">dwm</a> in the future.</p>
+<p>I use the default i3 keybindings, with the Windows key as the $mod key. I think that the default keybindings are fine, which is probably why they are the defaults. It is slightly confusing that the movement keybindings are slightly different than vim's ('j', 'k', 'l', and ';' instead of 'h', 'j', 'k', and 'l'). I do find that to be confusing, but I do not like to unnecessarily change keybindings because if I become accustom to nonstandard keybindings and then use some other installation of i3, I will become confused. Then again, it is not often that I find myself using other people's i3 installations. As far as I know, I have not yet met another person who even knows what i3 is.</p>
+<p>For some strange reason, the color scheme of the default terminal emulator (mlterm) is black on white. I have changed it to white on black, which is much nicer for my eyes. This change can be made with in the <code>/etc/mlterm/main</code> configuration file. <code>fg_color=black</code> and <code>bg_color=white</code> needed to be uncommented, and then I switched their colors. I also reduced the font size to 14 and removed the scrollbar.</p>
+
+      <div class="term">
+	<code class="prompt">user@debian:~$</code> <code class="command">sudo sudo vi /etc/mlterm/main</code>
+	<div>
+	</div>
+      </div>
+
+      <img src="images/operating_systems/1/terminal_colors.png" alt="Example of Inverted Terminal Colors" class="centimage">
+      <br><br><br>
+
+
+
+      <h3>Setting Up Wi-Fi</h3>
+<p>I used a nonfree version of Debian, so I did not need to install any Wi-Fi drivers. Next time I install Debian, I will use the free versions.</p>
+<p>Even with preinstalled drivers, I had difficulty connecting to a network. I issued all of the commands seen below, and then Debian connected to the network. Most of those commands probably did not do anything useful. I have underlined the commands that I believe actually connected the system to the network, but I could be wrong. A few of the other commands might be helpful to see whether the wireless card is properly configured.</p>
+<p>Next time I install Debian, I hope to better understand how to connect to a network. I will then document the process in a future article</p>
+
+  <div class="term">
+    <code class="prompt">users@debian:~$</code> <code class="command">sudo wpa_supplicant -iwlp3s0 -c/etc/wpa_supplicant.conf -B</code><br><br>
+	      <code class="prompt">user@debian:~$</code> <code class="command"><u>sudo apt-get install network-manager</u></code><br>
+	      <code class="prompt">user@debian:~$</code> <code class="command"><u>sudo systemctl start network-manager.service</u></code><br>
+	      <code class="prompt">user@debian:~$</code> <code class="command">nmcli general status</code><br>
+	      <code class="prompt">user@debian:~$</code> <code class="command">nmcli connection show </code><br>
+	      <code class="prompt">user@debian:~$</code> <code class="command">nmcli device status</code><br>
+	      <code class="prompt">user@debian:~$</code> <code class="command">nmcli dev wifi list</code><br>
+	      <code class="prompt">user@debian:~$</code> <code class="command">nmcli con add con-name WiFi ifname wlp3s0 type wifi ssid <font color="red">network name</font></code><br>
+	      <code class="prompt">user@debian:~$</code> <code class="command">nmcli con modify WiFi wifi-sec.psk <font color="red">network password</font></code><br><br>
+
+	      <code class="prompt">user@debian:~$</code> <code class="command">nmcli connection add type wifi con-name "<font color="red">network name</font>" ifname wlp3s0 ssid "<font color="red">network name</font>" -- wifi-sec.key-mgmt wpa-eap 802-1x.eap tls 802-1x.identity "<font color="red">network password</font>" 802-1x.ca-cert ~/ca.pem 802-1x.client-cert ~/cert.per 802-1x.private-key-password "<font color="red">network password</font>" 802-1x.private-key ~key.pem</code><br><br>
+
+	      <code class="prompt">user@debian:~$</code> <code class="command">nmcli connection </code><br>
+	      <code class="prompt">user@debian:~$</code> <code class="command">nmcli device wifi connect <font color="red">network name</font> <font color="red">network password</font></code><br>
+	      <code class="prompt">user@debian:~$</code> <code class="command">nmcli device wifi connect <font color="red">network name</font> password <font color="red">network password</font></code><br>
+	      <code class="prompt">user@debian:~$</code> <code class="command">ping debian.org</code><br>
+	      <code class="prompt">user@debian:~$</code> <code class="command"><u>nmcli radio wifi on</u></code><br>
+	      <code class="prompt">user@debian:~$</code> <code class="command"><u>nmcli device wifi connect <font color="red">network name</font> password <font color="red">network password</font></u></code><br>
+	      <code class="prompt">user@debian:~$</code> <code class="command">ping debian.org</code><br>
+	<div>
+	</div>
+      </div>
+<br><br><br>
+
+  <h3>Configuring /etc/fstab</h3>
+<p>I configured my <code>/etc/fstab</code> file so that my USB drives can be mounted automatically. For example, my primary storage drive mounts to <code>/media/j<code> and my photos drive mounts to <code>/media/p</code>.</p>
+<p>They are automatically mounted when the system boots or when I tell the system to mount everything that it recognizes. If I plug a drive in and do nothing, it will not automatically mount. Even when I do tell it to mount everything, it will only mount drives that I have explicitly listed in <code>/etc/fstab</code>. If I need to use a drive that I have not listed in <code>/etc/fstab</code>, I have to mount it manually. That can be somewhat inconvenient, and I may look for an alternative in the future.</p>
+
+<p>As an example, here is how I would configure the system to automatically mount my main drive.</p>
+<p>First, I make sure that <code>/media</code> and <code>/mnt</code> are accessible to all users. I do not want to have to use <code>sudo</code> to access mounted drives.</p>
+  <div class="term">
+      <code class="prompt">user@debian:~$</code> <code class="command">sudo chmod 777 /media</code><br>
+      <code class="prompt">user@debian:~$</code> <code class="command">sudo chmod 777 /mnt</code><br>
+      <div>
+      </div>
+  </div>
+
+<p>Then, I create a mount point for the drive. In this case, I chose <code>/media/j</code>, the most accessible letter on the qwerty keyboard, because this is my primary drive.</p>
+
+  <div class="term">
+        <code class="prompt">user@debian:~$</code> <code class="command">mkdir /media/j<mount_point_name></code><br>
+        <div>
+      </div>
+  </div>
+
+  <p>I then open <code>/etc/fstab</code> in a text editor in order to assign my primary drive to the mount point <code>/media/j</code>.</p>
+  <div class="term">
+      <code class="prompt">user@debian:~$</code> <code class="command">sudo vi /etc/fstab</code><br>
+      <div>
+      </div>
+  </div>
+
+
+  <p>Then I add the following line. I have color the UUID, mount point, and file system type are in red because they will be different for different drives.
+  <div class="term">
+    <code class="command">UUID=<font color="red">ED9E-45B7</font> /media/<font color="red">j</font> <font color="red">vfat</font> auto,nofail,user,umask=0000 0 0</code>
+    <div>
+    </div>
+  </div>
+  
+<p>In order to determine the UUID of a drive the following command can be used. Unfortunately, if multiple drives are available to the system, it can be difficult to tell which UUID is assigned to which drive. I generally run the command with the drive plugged in, run it again after removing the drive, and see which UUID disappears.</p>
+  <div class="term">
+      <code class="prompt">user@debian:~$</code> <code class="command">ls /dev/disk/by-uuid</code><br>
+      <div>
+      </div>
+  </div>
+
+  <p>If vim is installed it can be used, as shown below, to check the UUID of drives. Unlike using <code>ls</code>, vim shows which UUID is associated with which device.</p>
+    <div class="term">
+      <code class="prompt">user@debian:~$</code> <code class="command">vi /dev/disk/by-uuid</code><br>
+      <div>
+      </div>
+    </div>
+    <br><br><br>
+
+
+    <h3>Audio System</h3>
+    <p>There is nothing surprising about my audio system. I just use <a href="https://www.freedesktop.org/wiki/Software/PulseAudio/">PulseAudio</a> (the alsa-utils package was also needed). PulseAudio requires about 96 megabytes of space and alsa-utils only uses a few kilobytes. I installed them with apt-get, as shown below, and I do not think that any configuration was required.</p>
+
+    <div class="term">
+      <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install pulseaudio</code><br>
+      <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install alsa-utils</code><br>
+      <div>
+      </div>
+    </div>
+    <br><br><br>
+
+
+    <h3>Numlockx</h3>
+<p>By default, <a href="https://en.wikipedia.org/wiki/Num_Lock">Num Lock</a> is disabled every time Debian boots. I do not know why that is considered a good default. It was especially inconvenient for me, because I use the numeric keypad to control the system volume via alsamixer. If Num Lock is disabled, pressing a key on the numeric keypad closes alsamixer. When trying to change the volume, it is annoying when the alsamixer closes.</p>
+<p>I installed the <a href="https://software.opensuse.org/package/numlockx">numlockx</a> package which enables Num Lock by default. It can also be used to turn Num Lock on or off.</p>
+    <div class="term">
+      <code class="prompt">user@debian:~$</code> <code class="command">dsudo apt-get install numlockx</code><br>
+      <div>
+      </div>
+    </div>
+    <br><br><br>
+
+
+
+
+
+
+
+      <h2>Scripts</h2>
+      <p>Coming soon. . .</p>        
+      <h2>Applications That I Use and Like</h2>
       <p>Coming soon. . .</p>
-      <h2>Software That I May Begin Using in the Future</h2>
+      <h2>Applications That I Use and Dislike</h2>
+      <p>Coming soon. . .</p>
+      <h2>Applications That I May Begin Using in the Future</h2>
       <p>Coming soon. . .</p>
    </div>
 </body>
 </html>
-
-
-
-
-
-
