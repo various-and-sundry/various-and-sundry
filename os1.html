@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-   <title>Raspberry Pi Server -- SSH</title>
+   <title>Primary Operating System &mdash; 2021</title>
    <link href="style.css" type="text/css" rel="stylesheet">
    <link rel="shortcut icon" type="image/png" href="icons/favicon.png">
 </head>
@@ -67,6 +67,17 @@
 
       <p>After using i3 for several months, it I still did not think that it provided any real benefits. Then, I tried to move back to LXDE. Wow, it felt arduous. I had not realized how much more efficient I had become when using i3. I am now using i3 as my primary window manager, and I think that tiling window managers are much more efficient (in more cases) and easy to use (easy to use != easy to learn) than stacking window managers. Stacked/floating windows are useful sometimes, but i3 is capable of creating floating windows when necessary. I am sure that other tiling window managers are very good, and I will probably try <a href="http://dwm.suckless.org">dwm</a> in the future.</p>
 <p>I use the default i3 keybindings, with the Windows key as the $mod key. I think that the default keybindings are fine, which is probably why they are the defaults. It is slightly confusing that the movement keybindings are slightly different than vim's ('j', 'k', 'l', and ';' instead of 'h', 'j', 'k', and 'l'). I do find that to be confusing, but I do not like to unnecessarily change keybindings because if I become accustom to nonstandard keybindings and then use some other installation of i3, I will become confused. Then again, it is not often that I find myself using other people's i3 installations. As far as I know, I have not yet met another person who even knows what i3 is.</p>
+<p>When daylight saving time began, the clock on my i3 status bar did not move forwards an hour even though the system time had been updated. I solved that by opening my <code>/etc/13statis.conf</code> file and commenting-out the line that specified which time zone is to be used. I suppose that this caused it to default to the system time.</p>
+
+      <div class="term">
+	<div>
+	  <code>tztime local {</code><br>
+	  <code>#&emsp;&emsp;timezone = "EST"</code><br>
+	  <code>&emsp;&emsp;&emsp;format = "%Y-%m-%d %I:%M:%S"</code><br>
+	  <code>}</code><br>
+	</div>
+      </div>
+
 <p>For some strange reason, the color scheme of the default terminal emulator (mlterm) is black on white. I have changed it to white on black, which is much nicer for my eyes. This change can be made with in the <code>/etc/mlterm/main</code> configuration file. <code>fg_color=black</code> and <code>bg_color=white</code> needed to be uncommented, and then I switched their colors. I also reduced the font size to 14 and removed the scrollbar.</p>
 
       <div class="term">
