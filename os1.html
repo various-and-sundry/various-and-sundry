@@ -193,7 +193,7 @@
       <div>
       </div>
     </div>
-    <br><br><br>
+    <br><hr>
 
 
 
@@ -202,7 +202,89 @@
 
 
       <h2>Scripts</h2>
-      <p>Coming soon. . .</p>        
+<p>I have written a number of scripts that complete useful functions for me. I am hesitant to call them scripts, because most of them only run one-line commands. I store all of them in <code>/bin</code> because dmenu will not run files that are anywhere else, even if they are in my <code>$PATH</code>.</p>
+<p>When I need to execute a command often, I sometimes write a one letter script that executes it. This is convenient, especially because I can easily run in from dmenu (dmenu does not prove TAB-auto-complete with multipart command such as commands that require <code>sudo</code>, options, or other arguments).
+
+      <h3>m</h3>
+<p>I have to mount external drives quite often, so I have written a script called <code>m</code> that mounts everything in <code>/etc/fstab</code>. If simply runs the command <code>sudo mount -a</code>.</p>
+      <div class="term">
+	      <div>
+		      <code>#!/bin/sh</code><br>
+		      <br>
+		      <code>sudo mount -a</code>
+	      </div>
+      </div>
+
+      <h3>u</h3>
+      <p>I have created a script called <code>u</code> in order to easily unmount everything in my <code>/media</code> directory. This is useful because I generally only mount one external drive at a time, so I can unmount any drive with this command. I could just type <code>sudo umount /media/*</code> instead, but just typing <code>u</code> is faster.</p>
+      <div class="term">
+	      <div>
+		      <code>#!/bin/sh</code><br>
+		      <br>
+		      <code>sudo umount /media/*</code>
+	      </div>
+      </div>
+      
+      <h3>remove-git-credentials</h3>
+      
+<p>As mentioned below, I have installed Android Studio this year because I need it for <a href="https://en.wikipedia.org/wiki/FIRST_Tech_Challenge">FIRST Tech Challenge</a>. My FIRST Tech Challenge team has a GitHub page that I must push commits to through Android Studio. That is separate from my personal GitHub page, to which I push commits on a weekly basis.</p>
+<p>Previously, I would remember the passwords of both accounts and use the appropriate one depending on what I was pushing. Then, GitHub decided that it would no longer allow me to use passwords, and it instead forced be to use automatically generated tokens.</p>
+<p>I was not going to memorize and type those tokens, so I attempted to automate the process. I used git from the command-line to push changes to my account, and I used git within Android Studio to push changes to my team's account. Therefore, I assigned a token for my personal account to the git credential helper, and I stored the team token within Android Studio.</p>
+<p>However, git always overrode Android Studio and forced it to attempt to use my personal token. Therefore, I needed a convenient way to turn off the git credential helper when I was pushing with Android Studio. That is what this script, <code>remove-git-credentials</code>, does. I also have a script called <code>configure-git-credentials</code> that does the opposite task.</p>
+      <div class="term">
+	      <div>
+		      <code>#!/bin/sh</code><br>
+		      <br>
+		      <code>git config --global --unset credential.helper</code>
+	      </div>
+      </div>
+
+
+
+      <h3>configure-git-credentials</h3>
+
+      <p>This script activates the git credential helper. The reason why it is useful is documented in the section regarding the <code>remove-git-credentials</code> script, which is shown above.</p>
+
+      <div class="term">
+	      <div>
+		      <code>#!/bin/sh</code><br>
+		      <br>
+		      <code>git config --global credential.helper store</code><br>
+	      </div>
+      </div>
+
+            <h3>v</h3>
+      <p>I use <code>alsamixer</code> to control my system volume, which is something that I have to do very often. Because I have to open <code>alsamixer</code> often, it is inconvenient to open an new terminal window, type <code>alsamixer</code>, and press enter. Therefore, I have created a script called <code>v</code> that opens <code>alsamixer</code>. Consequently, I can simply type <code>v</code> into dmenu  in order to open <code>alsamixer</code>.
+      <div class="term">
+	      <div>
+		      <code>#!/bin/sh</code><br>
+		      <br>
+		      <code>mlterm -e alsamixer</code>
+	      </div>
+      </div>
+
+<h3>andriod-studio</h3>
+<p>I needed to install Android Studio this year because I am on a <a href="https://en.wikipedia.org/wiki/FIRST_Tech_Challenge">FIRST Tech Challenge</a> team. (Because of the pandemic, I am working on the team's software remotely.) Android Studio, which is an obnoxiously huge program created by Google, was not in the Debian repository, so I had to down load and install it myself. It did not add itself to my <code>$PATH</code>, so I initially had no proper way of starting it (it was probably expecting some sort of graphical applications menu). Therefore, I wrote this tiny script called <code>android-studio</code> that simply starts the program. That allows me to start Android Studio from dmenu.</p>
+      <div class="term">
+	      <div>
+		      <code>#!/bin/sh</code><br>
+		      <br>
+		      <code>exec /opt/android-studio/bin/studio.sh</code>
+	      </div>
+      </div>
+      
+      <h3>fixzoom</h3>
+      <p>Because of <a href="https://en.wikipedia.org/wiki/FIRST_Tech_Challenge">FIRST Tech Challenge</a>, I have had to use <a href="https://en.wikipedia.org/wiki/Zoom_(software)">Zoom</a> quite frequently (although I do not recommend it). In order for the White Board or Annotation features to work, I had to install <code>xcompmgr</code>. If I need to use either of the before mentioned Zoom features, I must first run <code>xcompmgr -c -l0 -t0 -r0 -o.00</code>, otherwise, I am presented with a black screen and cannot see what I am drawing. The command changes the back of my desktop from black to gray until I reboot. I am not exactly sure what it does, but I put it in a script called <code>fixzoom</code> so that I do not need to remember the full command and associated arguments</p>
+      <div class="term">
+	      <div>
+		      <code>#!/bin/sh</code><br>
+		      <br>
+		      <code>xcompmgr -c -l0 -t0 -r0 -o.00</code>
+	      </div>
+      </div>
+      <br><hr>
+
+
       <h2>Applications That I Use and Like</h2>
       <p>Coming soon. . .</p>
       <h2>Applications That I Use and Dislike</h2>
