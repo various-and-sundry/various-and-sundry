@@ -37,7 +37,7 @@
       <p>The operating system is not installed to an internal hard drive. It is installed to a <a href="https://www.amazon.com/SanDisk-64GB-Cruzer-Flash-Drive/dp/B07MDXBTL1/ref=sr_1_7">SanDisk 64GB Cruzer Fit USB 2.0 Flash Drive</a> with persistence. In the past, I always used persistent USB drives of 16 Gigabytes or less, but this time I chose a 64 Gigabyte drive because it happen to be available to me when I installed the operating system. It also has a very portable form factor.</p>.
       
       <h3>Installation and Persistence</h3>
-      <p>I have not found a way of creating a persistent Debian USB stick using only dd, so I created this one with <a href="https://help.ubuntu.com/community/mkusb">mkusb</a>. As far as I know, mkusb can only be installed to <ahref="https://ubuntu.com/">Ubuntu</a>systems, but it can be used to create either persistent Debian or Ubuntu USB sticks. It allows for an extra FAT partition to be added to the drive which allows a portion of the drive to be accessed as if it were a standard removable storage volume. I allocated 10 Gigabytes for this purpose, but I have never used them. In fact, I never tested them. It seems like a useful feature because it would prevent me for having to carry both a storage USB stick and bootable USB stick. However, since I am at home in the middle of a pandemic, portability is not particularly important right now.</p>
+      <p>I have not found a way of creating a persistent Debian USB stick using only dd, so I created this one with <a href="https://help.ubuntu.com/community/mkusb">mkusb</a>. As far as I know, mkusb can only be installed to <a href="https://ubuntu.com/">Ubuntu</a>systems, but it can be used to create either persistent Debian or Ubuntu USB sticks. It allows for an extra FAT partition to be added to the drive which allows a portion of the drive to be accessed as if it were a standard removable storage volume. I allocated 10 Gigabytes for this purpose, but I have never used them. In fact, I never tested them. It seems like a useful feature because it would prevent me for having to carry both a storage USB stick and bootable USB stick. However, since I am at home in the middle of a pandemic, portability is not particularly important right now.</p>
 
       <h3>Why A 64bit Persistent USB Drive</h3>	
       <p>Using a persistent USB stick as a primary operating system is unusual, but its portability provides me with the option of basically carrying my computer anywhere in my pocket. Up until now I have almost exclusively used 32bit bootable operating systems so that I could use them on almost any computer. However, this time I used a 64bit operating system because I had to use Android Studio, which is a program that I do not like and does not support 32bit architecture. Out of the three 64bit machines on which I have attempted to boot it, only one worked. That prevents it from being effectively portable, unlike most of the bootable USB sticks that I have used in the past. Anyhow, portability is not particularly useful during this pandemic.</p>
@@ -122,7 +122,7 @@
 <br><br><br>
 
   <h3>Configuring /etc/fstab</h3>
-<p>I configured my <code>/etc/fstab</code> file so that my USB drives can be mounted automatically. For example, my primary storage drive mounts to <code>/media/j<code> and my photos drive mounts to <code>/media/p</code>.</p>
+<p>I configured my <code>/etc/fstab</code> file so that my USB drives can be mounted automatically. For example, my primary storage drive mounts to <code>/media/j</code> and my photos drive mounts to <code>/media/p</code>.</p>
 <p>They are automatically mounted when the system boots or when I tell the system to mount everything that it recognizes. If I plug a drive in and do nothing, it will not automatically mount. Even when I do tell it to mount everything, it will only mount drives that I have explicitly listed in <code>/etc/fstab</code>. If I need to use a drive that I have not listed in <code>/etc/fstab</code>, I have to mount it manually. That can be somewhat inconvenient, and I may look for an alternative in the future.</p>
 
 <p>As an example, here is how I would configure the system to automatically mount my main drive.</p>
@@ -254,12 +254,22 @@
       </div>
 
             <h3>v</h3>
-      <p>I use <code>alsamixer</code> to control my system volume, which is something that I have to do very often. Because I have to open <code>alsamixer</code> often, it is inconvenient to open an new terminal window, type <code>alsamixer</code>, and press enter. Therefore, I have created a script called <code>v</code> that opens <code>alsamixer</code>. Consequently, I can simply type <code>v</code> into dmenu  in order to open <code>alsamixer</code>.
+	    <p>I use <code>alsamixer</code> to control my system volume, which is something that I have to do very often. Because I have to open <code>alsamixer</code> often, it is inconvenient to open an new terminal window, type <code>alsamixer</code>, and press enter. Therefore, I have created a script called <code>v</code> that opens <code>alsamixer</code>. Consequently, I can simply type <code>v</code> into dmenu  in order to open <code>alsamixer</code>.</p>
       <div class="term">
 	      <div>
 		      <code>#!/bin/sh</code><br>
 		      <br>
 		      <code>mlterm -e alsamixer</code>
+	      </div>
+      </div>
+
+      <h3>l</h3>
+      <p>The purpose of this script is to activate <code>i3lock</code> quickly and with a black rather than white background.</p>
+      <div class="term">
+	      <div>
+		      <code>#!/bin/sh</code><br>
+		      <br>
+		      <code>i3lock -c 000000</code>
 	      </div>
       </div>
 
@@ -274,7 +284,7 @@
       </div>
       
       <h3>fixzoom</h3>
-      <p>Because of <a href="https://en.wikipedia.org/wiki/FIRST_Tech_Challenge">FIRST Tech Challenge</a>, I have had to use <a href="https://en.wikipedia.org/wiki/Zoom_(software)">Zoom</a> quite frequently (although I do not recommend it). In order for the White Board or Annotation features to work, I had to install <code>xcompmgr</code>. If I need to use either of the before mentioned Zoom features, I must first run <code>xcompmgr -c -l0 -t0 -r0 -o.00</code>, otherwise, I am presented with a black screen and cannot see what I am drawing. The command changes the back of my desktop from black to gray until I reboot. I am not exactly sure what it does, but I put it in a script called <code>fixzoom</code> so that I do not need to remember the full command and associated arguments</p>
+      <p>Because of <a href="https://en.wikipedia.org/wiki/FIRST_Tech_Challenge">FIRST Tech Challenge</a>, I have had to use <a href="https://en.wikipedia.org/wiki/Zoom_(software)">Zoom</a> quite frequently (although I do not recommend it). In order for the White Board or Annotation features to work, I had to install <code>xcompmgr</code>. If I need to use either of the before mentioned Zoom features, I must first run <code>xcompmgr -c -l0 -t0 -r0 -o.00</code>, otherwise, I am presented with a black screen and cannot see what I am drawing. The command changes the back of my desktop from black to gray until I reboot. I am not exactly sure what it does, but I put it in a script called <code>fixzoom</code> so that I do not need to remember the full command and associated arguments.</p>
       <div class="term">
 	      <div>
 		      <code>#!/bin/sh</code><br>
