@@ -295,12 +295,360 @@
       <br><hr>
 
 
-      <h2>Applications That I Use and Like</h2>
-      <p>Coming soon. . .</p>
-      <h2>Applications That I Use and Dislike</h2>
-      <p>Coming soon. . .</p>
-      <h2>Applications That I May Begin Using in the Future</h2>
-      <p>Coming soon. . .</p>
+
+
+
+
+      <h2>Software That I Use and Like</h2>
+      
+
+      <h3>Vim and Emacs</h3>
+      <p>I feel that it is necessary to address both Vim and Emacs under the same heading. I use both of them almost everyday, but every few months, I decide that Vim is so superior to Emacs that I should only use Vim. Then, I find some Emacs features that I did not know about, and I decide that Emacs is so superior to Vim that I should only use Emacs. Then I find another Vim feature that. . .</p>
+      <p>I use Vim and Emacs for different purposes, and the best summary of my opinion of these programs is this: <i>"If I could only use one text editor for the rest of my life, I would use Vim, but if I could only use one program for the rest of my life, I would use Emacs."</i></p>
+
+      <h4>Vim</h4>
+      <img src="images/operating_systems/1/vim.png" alt="Vim" class="centimage">
+      <p>Vim is generally my favorite program for programming and general editing . I installed it from the Debian repository as shown below. It required about 33.2 MB of disk space.</p>
+
+      <div class="term">
+	      <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install vim</code>
+	      <div>
+	      </div>
+      </div>
+
+      <p>This is my <code>~/.vimrc</code> file.</p>
+
+      <div class="term">
+	      <div>
+		      <code>runtime! debian.vimsyntax on</code><br>
+		      <code>set background=dark</code><br>
+		      <code>au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif</code><br>
+		      <code>filetype plugin indent on</code><br>
+		      <code></code><br>
+		      <code>set showcmd		" Show (partial) command in status line.</code><br>
+		      <code>set showmatch		" Show matching brackets.</code><br>
+		      <code>set ignorecase		" Do case insensitive matching</code><br>
+		      <code>set smartcase		" Do smart case matching</code><br>
+		      <code>set incsearch		" Incremental search</code><br>
+		      <code>set autowrite		" Automatically save before commands like :next and :make</code><br>
+		      <code>set hidden		" Hide buffers when they are abandoned</code><br>
+		      <code>set mouse=a		" Enable mouse usage (all modes)</code><br>
+		      <code>set spell</code><br>
+		      <code>set nu</code><br>
+		      <code>set rnu</code><br>
+		      <code>set nowrap</code><br>
+		      <code>set smartcase</code><br>
+		      <code></code><br>
+		      <code>" Source a global configuration file if available</code><br>
+		      <code>if filereadable("/etc/vim/vimrc.local")</code><br>
+		      <code>source /etc/vim/vimrc.local</code><br>
+		      <code>endif</code><br>
+	      </div>
+      </div>
+
+      <h4>Emacs</h4>
+      <img src="images/operating_systems/1/emacs.png" alt="Emacs" class="centimage">
+      <p>Emacs is not really a text editor. It is a Lisp interpreter preloaded with many programs/modes/features, some of which are used for text editing. It is my favorite "text editor" for writing, and I also benefit from the file management and bulk rename functions of <code>dired</code> and many other exotic features.</p>
+      <p>I installed Emacs from the Debian repository as shown below. It used 255MB of disk space.</p>
+
+      <div class="term">
+	      <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install emacs</code>
+	      <div>
+	      </div>
+      </div>
+
+      <p><code>Alpell-en</code> also had to be installed in order to make <code>flyspell-mode</code> work.</p>
+      <div class="term">
+	      <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install aspell-en</code>
+	      <div>
+	      </div>
+      </div>
+
+      <p>Here is my <code>~/.emacs.d/init.el</code> file.</p>
+
+      <div class="term">
+	      <div>
+		      <code>;; Added by Package.el.  This must come before configurations of</code><br>
+		      <code>;; installed packages.  Don't delete this line.  If you don't want it,</code><br>
+		      <code>;; just comment it out by adding a semicolon to the start of the line.</code><br>
+		      <code>;; You may delete these explanatory comments.</code><br>
+		      <code>(package-initialize)</code><br>
+		      <code></code><br>
+		      <code>(custom-set-variables</code><br>
+		      <code>;; custom-set-variables was added by Custom.</code><br>
+		      <code>;; If you edit it by hand, you could mess it up, so be careful.</code><br>
+		      <code>;; Your init file should contain only one such instance.</code><br>
+		      <code>;; If there is more than one, they won't work right.</code><br>
+		      <code>'(ansi-color-names-vector</code><br>
+		      <code>["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])</code><br>
+		      <code>'(custom-enabled-themes (quote (manoj-dark)))</code><br>
+		      <code>'(image-dired-append-when-browsing t)</code><br>
+		      <code>'(inhibit-startup-screen t)</code><br>
+		      <code>'(package-selected-packages (quote (org coffee-mode cl-lib chess))))</code><br>
+		      <code>(custom-set-faces</code><br>
+		      <code>;; custom-set-faces was added by Custom.</code><br>
+		      <code>;; If you edit it by hand, you could mess it up, so be careful.</code><br>
+		      <code>;; Your init file should contain only one such instance.</code><br>
+		      <code>;; If there is more than one, they won't work right.</code><br>
+		      <code>)</code><br>
+		      <code></code><br>
+		      <code>(tool-bar-mode 0)</code><br>
+		      <code>(menu-bar-mode 0)</code><br>
+		      <code>(toggle-scroll-bar 0)</code><br>
+		      <code></code><br>
+		      <code>(add-hook 'text-mode-hook 'flyspell-mode)</code><br>
+		      <code>(add-hook 'prog-mode-hook 'flyspell-prog-mode)</code><br>
+		      <code></code><br>
+		      <code>(add-hook 'text-mode-hook 'abbrev-mode)</code><br>
+	      </div>
+      </div>
+
+      <p>I also have quite a large collection of <code>abbrev-mode</code> abbreviations stored in my <code>~/.emacs.d/abbrev_defs</code> file, which I used for the 2020&ndash;2021 FTC season. The file is shown below.</p>
+      <div class="term">
+	      <div>
+		      <code>;;-*-coding: utf-8;-*-</code><br>
+		      <code>(define-abbrev-table 'Buffer-menu-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'Custom-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'apropos-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'awk-mode-abbrev-table</code><br>
+		      <code>'(</code><br>
+		      <code>))</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'bookmark-bmenu-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'bookmark-edit-annotation-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'c++-mode-abbrev-table</code><br>
+		      <code>'(</code><br>
+		      <code>))</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'c-mode-abbrev-table</code><br>
+		      <code>'(</code><br>
+		      <code>))</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'calendar-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'comint-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'completion-list-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'css-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'diff-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'edit-abbrevs-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'elisp-byte-code-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'emacs-lisp-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'eww-bookmark-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'eww-buffers-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'eww-history-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'eww-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'fundamental-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'global-abbrev-table</code><br>
+		      <code>'(</code><br>
+		      <code>("3ing" "3D printing" nil 0)</code><br>
+		      <code>("3p" "3D printer" nil 6)</code><br>
+		      <code>("3ps" "3D printers" nil 0)</code><br>
+		      <code>("a3" "AndyMark NeveRest 3.7:1 Motor" nil 0)</code><br>
+		      <code>("a40" "AndyMark NeveRest 40:1 Motor" nil 1)</code><br>
+		      <code>("a60" "AndyMark NeveRest 60:1 Motor" nil 8)</code><br>
+		      <code>("ah" "axle hub" nil 0)</code><br>
+		      <code>("ahs" "axle hubs" nil 1)</code><br>
+		      <code>("am" "AndyMark" nil 12)</code><br>
+		      <code>("ands" "Android Studio" nil 2)</code><br>
+		      <code>("ans" "Android Studio" nil 9)</code><br>
+		      <code>("ap" "Autonomous Period" nil 5)</code><br>
+		      <code>("auto" "autonomous" nil 1)</code><br>
+		      <code>("c" "chassis" nil 34)</code><br>
+		      <code>("cc" "c-channel" nil 19)</code><br>
+		      <code>("chm" "Core Hex Motor" nil 4)</code><br>
+		      <code>("conf" "configuration" nil 8)</code><br>
+		      <code>("cw" "compliant wheel" nil 1)</code><br>
+		      <code>("dcp" "Driver-Controlled Period" nil 1)</code><br>
+		      <code>("ds" "Driver Station" nil 10)</code><br>
+		      <code>("dz" "Drop Zone" nil 10)</code><br>
+		      <code>("ee" "end effector" nil 68)</code><br>
+		      <code>("ef" "electronics frame" nil 5)</code><br>
+		      <code>("eg" "End Game" nil 21)</code><br>
+		      <code>("fl" "Fayetteville Library" nil 2)</code><br>
+		      <code>("fp" "field perimeter" nil 11)</code><br>
+		      <code>("fsc" "Fayetteville Senior Center" nil 2)</code><br>
+		      <code>("fw" "flywheel" nil 32)</code><br>
+		      <code>("fws" "flywheels" nil 1)</code><br>
+		      <code>("ged" "gyroEncoderDrive" nil 1)</code><br>
+		      <code>("gh" "GitHub" nil 3)</code><br>
+		      <code>("gr" "gear ratio" nil 4)</code><br>
+		      <code>("ha" "holding area" nil 1)</code><br>
+		      <code>("hg" "High Goal" nil 14)</code><br>
+		      <code>("hm" "Hardware Map" nil 8)</code><br>
+		      <code>("hp" "hole pattern" nil 12)</code><br>
+		      <code>("hps" "hole patterns" nil 3)</code><br>
+		      <code>("ic" "Innovation Challenge" nil 0)</code><br>
+		      <code>("la" "Lift Arm" nil 1)</code><br>
+		      <code>("lg" "Low Goal" nil 1)</code><br>
+		      <code>("ll" "Launch Line" nil 10)</code><br>
+		      <code>("lz" "Launch Zone" nil 1)</code><br>
+		      <code>("lza" "Launch Zone Area" nil 6)</code><br>
+		      <code>("m" "mechanism" nil 32)</code><br>
+		      <code>("mg" "Mid Goal" nil 2)</code><br>
+		      <code>("mr" "Modern Robotics" nil 2)</code><br>
+		      <code>("mrrs" "Modern Robotics range sensor" nil 1)</code><br>
+		      <code>("nr" "NeveRest" nil 0)</code><br>
+		      <code>("ocv" "OpenCV" nil 0)</code><br>
+		      <code>("om" "OpMode" nil 8)</code><br>
+		      <code>("oms" "OpModes" nil 0)</code><br>
+		      <code>("os" "Onshape" nil 13)</code><br>
+		      <code>("owga" "One Wobble Goal Autonomous" nil 3)</code><br>
+		      <code>("p.m" "p.m." nil 0)</code><br>
+		      <code>("pf" "Playing Field" nil 3)</code><br>
+		      <code>("pg" "Plexiglas" nil 2)</code><br>
+		      <code>("pled" "Pre-Loaded" nil 8)</code><br>
+		      <code>("pm" "phone mount" nil 1)</code><br>
+		      <code>("ps" "Power Shot" nil 1)</code><br>
+		      <code>("pst" "Power Shot Target" nil 4)</code><br>
+		      <code>("psts" "Power Shot Targets" nil 1)</code><br>
+		      <code>("r" "Ring" nil 58)</code><br>
+		      <code>("rc" "Robot Controller" nil 13)</code><br>
+		      <code>("rchm" "REV Core Hex Motor" nil 6)</code><br>
+		      <code>("reh" "REV Expansion Hub" nil 9)</code><br>
+		      <code>("rg" "Ring kicker" nil 0)</code><br>
+		      <code>("ri" "ring intake" nil 1)</code><br>
+		      <code>("rk" "Ring kicker" nil 1)</code><br>
+		      <code>("rl" "Ring launch" nil 1)</code><br>
+		      <code>("rom" "\"RobotOpMode\"" nil 13)</code><br>
+		      <code>("rr" "Rover Ruckus" nil 0)</code><br>
+		      <code>("rs" "Rings" nil 109)</code><br>
+		      <code>("rtm" "Ring translation mechanism" nil 2)</code><br>
+		      <code>("rum" "REV ULTRAPLANETARY 1:1 HEX MOTOR" nil 1)</code><br>
+		      <code>("sc" "starting configuration" nil 9)</code><br>
+		      <code>("sl" "Start Line" nil 0)</code><br>
+		      <code>("ss" "Starter Stack" nil 36)</code><br>
+		      <code>("ssc" "Starter Stack configuration " nil 0)</code><br>
+		      <code>("sss" "Starter Stacks" nil 0)</code><br>
+		      <code>("t" "TETRIX" nil 35)</code><br>
+		      <code>("tele" "teleOp" nil 18)</code><br>
+		      <code>("tg" "Tower Goal" nil 0)</code><br>
+		      <code>("tm" "translation mechanism" nil 7)</code><br>
+		      <code>("tmasc" "TETRIX MAX Axle Set Collars" nil 0)</code><br>
+		      <code>("tmfb" "TETRIX MAX Flat Bracket" nil 4)</code><br>
+		      <code>("tr" "translation ramp" nil 36)</code><br>
+		      <code>("twga" "Two Wobble Goal Autonomous" nil 1)</code><br>
+		      <code>("tx" "TETRIX" nil 1)</code><br>
+		      <code>("tz" "Target Zone" nil 20)</code><br>
+		      <code>("tzs" "Target Zones" nil 1)</code><br>
+		      <code>("ug" "ULTIMATE GOAL" nil 3)</code><br>
+		      <code>("wg" "Wobble Goal" nil 170)</code><br>
+		      <code>("wgcg" "Wobble Goal capture gate" nil 2)</code><br>
+		      <code>("wgla" "Wobble Goal lift arm" nil 0)</code><br>
+		      <code>("wgp" "Wobble Goal placer" nil 28)</code><br>
+		      <code>("wgpa" "Wobble Goal placer arm" nil 13)</code><br>
+		      <code>("wgs" "Wobble Goals" nil 47)</code><br>
+		      <code>))</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'help-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'html-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'idl-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'image-dired-display-image-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'image-dired-thumbnail-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'java-mode-abbrev-table</code><br>
+		      <code>'(</code><br>
+		      <code>))</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'js-jsx-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'js-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'lisp-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'messages-buffer-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'mhtml-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'mpc-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'mpc-songs-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'mpc-status-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'mpc-tagbrowser-dir-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'mpc-tagbrowser-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'objc-mode-abbrev-table</code><br>
+		      <code>'(</code><br>
+		      <code>))</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'occur-edit-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'occur-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'outline-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'package-menu-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'pike-mode-abbrev-table</code><br>
+		      <code>'(</code><br>
+		      <code>))</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'process-menu-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'prog-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'scss-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'select-tags-table-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'sgml-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'shell-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'special-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'tabulated-list-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'term-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'text-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'thumbs-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'thumbs-view-image-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'url-cookie-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'vc-git-log-edit-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'vc-git-log-view-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'vc-git-region-history-mode-abbrev-table '())</code><br>
+		      <code></code><br>
+		      <code>(define-abbrev-table 'xref--xref-buffer-mode-abbrev-table '())</code><br>
+	      </div>
+      </div>
+
+      <div>
+	      <p>More Applications That I Use and Like Are Coming soon. . .</p>
+	      <h2>Applications That I Use and Dislike</h2>
+	      <p>Coming soon. . .</p>
+	      <h2>Applications That I May Begin Using in the Future</h2>
+	      <p>Coming soon. . .</p>
+      </div>
    </div>
 </body>
 </html>
