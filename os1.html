@@ -703,10 +703,43 @@
       <p>It is a simple screenshot program that can capture the whole or a portion of the screen. It also allows annotations to be added to images before they are saved. I used it to capture all of the screenshots on this page. Unfortunately, I cannot provide a screenshot of it because it cannot capture images of itself. Instead, I will provide an image of Firefox that I captured and annotated with flameshot. If you would like to see flameshot itself, please view its <a href="https://flameshot.org/">website</a>.</p>
       <img class="centimage" src="images/operating_systems/1/flameshot.png" alt="Image Captured and Modified By Flameshot">
 
+
+      <h3>PDFtk</h3>
+      <p>PDFtk is a very useful command-line PDF manipulation tool. I installed it from the Debian repository. I did not record how much disk space it required, so I assume that the space was negligible.</p>
+	<div class="term">
+	  <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install pdftk</code>
+	  <div>
+	  </div>
+	</div>
+      <p>PDFtk provides basically all of the "reasonable" PDF manipulation functionality that I need or may need. It allows PDFs to be split, concatenated, interleaved, and reordered. It can also rotate pages individually or as a group.</p>
+      <p>This version of PDFtk is released under the GPL license, but there is apparently also a graphical "professional" version that is not free (as in cost or in freedom).</p>
+      <p>You may have noticed that over the course of this article, I sometimes provide links to the websites of some programs but not others. I generally make that choice based on how many trackers and how much junk they contain. Among all of them, the PDFtk website had by far the highest number of obvious third-party trackers. It had upwards of twenty trackers from Google, Yahoo!, Verizon, The Rubicon Project, Amazon, Facebook, WarnerMedia, and others. Wow, that is a lot of redundant junk! I am not including a link to it.</p>
+      <p>Its command options can be quite complex. If I need to do something more than just concatenating PDFs, I generally need to reference documentation. Here is a command that would concatenate two PDFs.</p>
+	<div class="term">
+	  <code class="prompt">user@debian:~$</code> <code class="command">pdftk pdf_number_one.pdf pdf_number_two.pdf cat output output_document.pdf</code>
+	  <div>
+	  </div>
+	</div>
+<p>Here is an example of a time that PDFtk was extremely useful to me. As a have already stated, I have been using this operating system for <a href="https://en.wikipedia.org/wiki/FIRST_Tech_Challenge">FIRST Tech Challenge</a> this year. One very important task that is a part of that is creating our engineering notebook. By the end of the season, it contained 361 pages and was composed of ten separate documents. I needed to, on a regular basis, concatenate all ten documents together in a specific order. Not only did they have to be concatenated, but the table of contents pages of specific documents had to be split and moved to a different location within the document so that all of the table of contents pages would be together. Fortunately, all of this work could be done with one PDFtk command. Unfortunately, as shown below it was a very very long command. Yes, that is one command! My solution was to put the command in a makefile. Then, all that I had to do in order to completely assemble the document was type <code>make</code>. That was extremely convenient.</p>
+	<div class="term">
+	  <code class="prompt">user@debian:~$</code> <code class="command">pdftk A=Cover_ULTIMATE_GOAL.pdf B=Summary_Page_ULTIMATE_GOAL.pdf C=Table_Of_Contents_ULTIMATE_GOAL.pdf D=Team_Section_ULTIMATE_GOAL.pdf F=Part_1_Of_ULTIMATE_GOAL_Engineering_Section.pdf G=Part_2_Of_ULTIMATE_GOAL_Engineering_Section.pdf H=Part_3_Of_ULTIMATE_GOAL_Engineering_Section.pdf I=Business_Plan_ULTIMATE_GOAL.pdf J=Sustainability_Plan_ULTIMATE_GOAL.pdf K=Strategic_Plan_ULTIMATE_GOAL.pdf cat A B C D F6 F1-5 G1-6 H1-8 F7-end G7-end H9-end I J K output notebook.pdf
+</code>
+	  <div>
+	  </div>
+	</div>
+
+
+	
+	<h3>GIMP</h3>
+	<p><a href="https://www.gimp.org/">GIMP</a> is installed, but for some reason, I did not document its installation. I know that I installed it from the Debian repository, but I do not know how mush disk space it required. I have to edit images reliably often, and I basically do all of that editing in GIMP. There are many tools and functions within GIMP that I have not yet learned, but I know enough to do quite a bit.</p>
+      <img class="centimage" src="images/operating_systems/1/gimp.png" alt="GIMP">
+
+
+
+	
 	      <p>More Applications That I Use and Like Are Coming soon. . .</p>
 	      <h2>Applications That I Use and Dislike</h2>
-	      <p>Coming soon. . .</p>
-	      <h2>Applications That I May Begin Using in the Future</h2>
+	      <p>Coming soon. . .</p> <h2>Applications That I May Begin Using in the Future</h2>
 	      <p>Coming soon. . .</p>
 
 
