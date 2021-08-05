@@ -759,7 +759,7 @@
 
 	<h3>Thunderbird</h3>
 	<p>For too long, I used Outlook.com as my e-mail interface and stored none of my e-mail locally. That is obviously suboptimal, so I began searching for an alternative. I spent some time using both <a href="https://apps.kde.org/kmail2/">KMail</a> and <a href="https://wiki.gnome.org/Apps/Evolution">Evolution</a>. However, I could not comfortably use them because they did not provide a conversation view for easily navigating the messages within a thread. I then tried <a href="https://wiki.gnome.org/Apps/Geary">Geary</a>, which provided a conversation view and a very modern interface. However, I abandoned it when I found that there was no way for me to save drafts. That must have been a bug, but I have difficulty understanding how it could have been included in an official release.</p>
-	<p>I had tried <a href="https://www.thunderbird.net">Thunderbird</a> in the past, but I disliked it because it did not have a conversation view. However, once I realized that there was <a href="https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/">a popular add-on that provides a conversation view</a>, I changed my mind. It required 197 MB of disk space, and has become my primary e-mail client</p>
+	<p>I had tried <a href="https://www.thunderbird.net">Thunderbird</a> in the past, but I disliked it because it did not have a conversation view. However, once I realized that there was <a href="https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/">a popular add-on that provides a conversation view</a>, I changed my mind. It required 197 MB of disk space, and has become my primary e-mail client. I installed two addions: <code>Thunderbird Conversations</code> and <code>ThunderHTMLedit</code>. I also enabled the dark theme.</p>
 	<div class="term">
 	  <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install thunderbird</code>
 	  <div>
@@ -767,7 +767,19 @@
 	</div>
       <img class="centimage" src="images/operating_systems/1/thunderbird.png" alt="Thunderbird">
 
+      <p>I selected the "Use Paragraph format instead of Body Text by default" option because the Paragraph format causes strange vertical spacing.</p>
+      <img class="centimage" src="images/operating_systems/1/use_paragraph_rather_than_body_text_in_thunderbird.png" alt="Selecting Use Paragraph format instead of Body Text by default">
+      <p>By default, Thunderbird automatically wraps lines at 72 characters. I think that <a href="https://www.arp242.net/email-wrapping.html">hard wrapping e-mail text is not generally a good idea</a>, so I disabled that feature. This was surprisingly difficult to disable, but the process is shown in the series of images below. I opened the Config Editor, turned off <code>mail.wrap_long_lines</code>, and set <code>mailnews.wraplength</code> to <code>0</code>. I am not sure if turning <code>mail.wrap_long_lines</code> off was necessary.</p>
+      <img class="centimage" src="images/operating_systems/1/thunderbird_word_wrapping.png">
 
+      <h3>Mutt</h3>
+      <p>I have heard many good things about the Mutt e-mail client. It is probably the most common command-line e-mail client. It was quite hard to properly configure, but it now works. However, I do not know how to use it to access directories within my e-mail account other than Inbox, Sent, and other default directories. It is also not configured to store my mail locally. I basically never use Mutt within this installation because I have Thunderbird.</p>
+	<div class="term">
+	  <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install mutt</code>
+	  <div>
+	  </div>
+	</div>
+       <img class="centimage" src="images/operating_systems/1/mutt.png" alt="Mutt">
       <br><br><br>
 
 	
@@ -777,6 +789,5 @@
 	      <p>Coming soon. . .</p>
 
 
-   </div>
-</body>
+   </div> </body>
 </html>
