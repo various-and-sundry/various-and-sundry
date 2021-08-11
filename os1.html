@@ -780,10 +780,38 @@
 	  </div>
 	</div>
        <img class="centimage" src="images/operating_systems/1/mutt.png" alt="Mutt">
-      <br><br><br>
 
-	
-	      <p>More Applications That I Use and Like Are Coming soon. . .</p>
+       <h3>Kdenlive</h3>
+       <p><a href="https://kdenlive.org/en/">Kdenlive</a> is a powerful video editing program. It is a KDE project and is licensed under the GPL. It provides a wide array of features including keyframe based effects and chroma key, making it the most feature-rich freely licensed video editing program of which I am aware.</p>
+       <img class="centimage" src="images/operating_systems/1/kdenlive.png" alt="Kdenlive">
+       <p>Because of the developers' focus on adding advanced features, they may have lacked the ability to focus on increasing reliability or improving the user interface. Using the program feels much less intuitive than it could be, but that can be overcome by becoming familiar with the interface over time. Although I would like a better interface, I understand that it is a community driven project. If they have to focus on something, I would prefer it to be the program's capabilities not its interface.</p>
+       <p>As I mentioned, the program is also somewhat unreliable. It periodically crashes without any warning. Thankfully, it has a very good automatic save/backup function. Consequently, when the program crashes, work is almost never lost, and any projects that were in progress can generally be recovered within a few seconds of restarting the program. Although this is a mild inconvenience, it does not greatly detract from the functionality of the program.</p>
+       <p>I installed Kdenlive from the Debian repository, and it required over 100 MB of disk space</p>
+       <div class="term">
+	       <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install kdenlive</code>
+	       <div>
+	       </div>
+       </div>
+       <p>By default, Kdenlive only had one theme, which mostly used light colors. I wanted to have a dark theme that would be less harsh to view. In order for other themes to be available within Kdenlive, I installed the <code>kde-style-breeze</code> package.</p>
+	<div class="term">
+	       <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install kde-style-breeze</code>
+	       <div>
+	       </div>
+       </div>
+       <p>In order to access those additional themes, I may have also needed to install <code>breeze</code> and/or <code>arc</code> and/or <code>arc-theme</code>, but I do not think so.</p>
+       <img class="centimage" src="images/operating_systems/1/kdenlive_themes.png" alt="Kdenlive Light and Dark Theme Comparison">
+
+       <h3>bc</h3>
+       <p>GNU bc is a arbitrary precision arithmetic calculator. Occasionally, I need to evaluate some mathematical expressions, and bc was a very light and command-line based program for that, which used a negligible amount of disk space.</p>
+	<div class="term">
+	       <code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install bc</code>
+	       <div>
+	       </div>
+       </div>
+ 
+
+
+
 	      <h2>Applications That I Use and Dislike</h2>
 	      <p>Coming soon. . .</p> <h2>Applications That I May Begin Using in the Future</h2>
 	      <p>Coming soon. . .</p>
