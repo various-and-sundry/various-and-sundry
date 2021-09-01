@@ -37,7 +37,7 @@
       <p>The operating system is not installed to an internal hard drive. It is installed to a <a href="https://www.amazon.com/SanDisk-64GB-Cruzer-Flash-Drive/dp/B07MDXBTL1/ref=sr_1_7">SanDisk 64GB Cruzer Fit USB 2.0 Flash Drive</a> with persistence. In the past, I always used persistent USB drives of 16 Gigabytes or less, but this time I chose a 64 Gigabyte drive because it happen to be available to me when I installed the operating system. It also has a very portable form factor.</p>.
       
       <h3>Installation and Persistence</h3>
-      <p>I have not found a way of creating a persistent Debian USB stick using only dd, so I created this one with <a href="https://help.ubuntu.com/community/mkusb">mkusb</a>. As far as I know, mkusb can only be installed to <a href="https://ubuntu.com/">Ubuntu</a>systems, but it can be used to create either persistent Debian or Ubuntu USB sticks. It allows for an extra FAT partition to be added to the drive which allows a portion of the drive to be accessed as if it were a standard removable storage volume. I allocated 10 Gigabytes for this purpose, but I have never used them. In fact, I never tested them. It seems like a useful feature because it would prevent me for having to carry both a storage USB stick and bootable USB stick. However, since I am at home in the middle of a pandemic, portability is not particularly important right now.</p>
+      <p>I have not found a way of creating a persistent Debian USB stick using only dd, so I created this one with <a href="https://help.ubuntu.com/community/mkusb">mkusb</a>. As far as I know, mkusb can only be installed to Ubuntu systems, but it can be used to create either persistent Debian or Ubuntu USB sticks. It allows for an extra FAT partition to be added to the drive which allows a portion of the drive to be accessed as if it were a standard removable storage volume. I allocated 10 Gigabytes for this purpose, but I have never used them. In fact, I never tested them. It seems like a useful feature because it would prevent me for having to carry both a storage USB stick and bootable USB stick. However, since I am at home in the middle of a pandemic, portability is not particularly important right now.</p>
 
       <h3>Why A 64bit Persistent USB Drive</h3>	
       <p>Using a persistent USB stick as a primary operating system is unusual, but its portability provides me with the option of basically carrying my computer anywhere in my pocket. Up until now I have almost exclusively used 32bit bootable operating systems so that I could use them on almost any computer. However, this time I used a 64bit operating system because I had to use Android Studio, which is a program that I do not like and does not support 32bit architecture. Out of the three 64bit machines on which I have attempted to boot it, only one worked. That prevents it from being effectively portable, unlike most of the bootable USB sticks that I have used in the past. Anyhow, portability is not particularly useful during this pandemic.</p>
@@ -303,7 +303,7 @@
       
 
       <h3>Vim and Emacs</h3>
-      <p>I feel that it is necessary to address both Vim and Emacs under the same heading. I use both of them almost everyday, but every few months, I decide that Vim is so superior to Emacs that I should only use Vim. Then, I find some Emacs features that I did not know about, and I decide that Emacs is so superior to Vim that I should only use Emacs. Then I find another Vim feature that. . .</p>
+      <p>I feel that it is necessary to address both Vim and <a href="https://www.gnu.org/software/emacs/">Emacs</a> under the same heading. I use both of them almost everyday, but every few months, I decide that Vim is so superior to Emacs that I should only use Vim. Then, I find some Emacs features that I did not know about, and I decide that Emacs is so superior to Vim that I should only use Emacs. Then I find another Vim feature that. . .</p>
       <p>I use Vim and Emacs for different purposes, and the best summary of my opinion of these programs is this: <i>"If I could only use one text editor for the rest of my life, I would use Vim, but if I could only use one program for the rest of my life, I would use Emacs."</i></p>
 
       <h4>Vim</h4>
@@ -645,7 +645,7 @@
       <br><br><br>
 
       <h3>Firefox</h3>
-      <p>My primary web browser is Firefox 68.12.0esr Extended Support Release. I think that it required 280 MB of disk space. As noted below, I use a different browser (Chromium) for <a href="https://en.wikipedia.org/wiki/FIRST_Tech_Challenge">FIRST Tech Challenge</a>.</p>
+      <p>My primary web browser is <a href="https://www.mozilla.org/en-US/firefox/browsers/">Firefox</a> 68.12.0esr Extended Support Release. I think that it required 280 MB of disk space. As noted below, I use a different browser (Chromium) for <a href="https://en.wikipedia.org/wiki/FIRST_Tech_Challenge">FIRST Tech Challenge</a>.</p>
       <div class="term">
 	<code class="prompt">user@debian:~$</code> <code class="command">sudo apt-get install firefox-esr</code>
 	<div>
