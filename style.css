@@ -3,10 +3,12 @@ body h1 {
 	font-family: "courier";
 	color: #eeeeee;
 	padding: 10px 10px;
+	text-shadow: 3px 3px black;
 }
 
 .Bluesector h1 {
 	color: #222222;
+	text-shadow: 1px 1px black;
 }
 
 body h2 {
@@ -14,12 +16,14 @@ body h2 {
 	font-family: "courier";
 	color: #eeeeee;
 	padding-top: 22px;
+	text-shadow: 3px 3px black;
 }
 
 body h3 {
 	text-align: center;
 	font-family: "courier";
 	color: #eeeeee;
+	text-shadow: 3px 3px black;
 }
 
 #main {
@@ -212,7 +216,7 @@ nav ul li:hover {
 
 .Bluesector .centext {
 	padding: 5px 45px;
-	color: #FFFFFF;
+	color: #222222;
 	text-align: center;
 	font-size: 25px;
 	font-family: "Liberation Serif";
