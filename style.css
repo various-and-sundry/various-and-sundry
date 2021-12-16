@@ -1,4 +1,4 @@
-body h1 {
+h1 {
 	text-align: center;
 	font-family: "courier";
 	color: #eeeeee;
@@ -11,7 +11,7 @@ body h1 {
 	text-shadow: 1px 1px black;
 }
 
-body h2 {
+h2 {
 	text-align: center;
 	font-family: "courier";
 	color: #eeeeee;
@@ -19,7 +19,7 @@ body h2 {
 	text-shadow: 3px 3px black;
 }
 
-body h3 {
+h3 {
 	text-align: center;
 	font-family: "courier";
 	color: #eeeeee;
@@ -91,6 +91,25 @@ body h3 {
 	display: none;
 }
 
+a h1 mark {
+	color: #222222;
+	text-shadow: 1px 1px #444444;
+	background-color: #eeeeee;
+	padding: 8px 12px 0px 12px;
+	border-style: solid;
+	border-color: #222222;
+}
+
+a h1 mark:hover {
+	color: black;
+	background: white;
+	border-color: black;
+}
+
+.container div a {
+	text-decoration: none;
+}
+
 .Bluesector {
 	width: 95%;
 	background: #40E0D0;
@@ -142,7 +161,6 @@ nav ul {
 
 nav ul li {
 	background: #222222;
-	color: black;
 	display: inline-block;
 	list-style-type: none;
 	padding: 5px 15px;
@@ -392,11 +410,6 @@ th.thborder{
 
 hr.large {
   border: 2px solid gray;
-}
-
-mark {
-  background-color: #40E0D0;
-  color: #242a2b;
 }
 
 table.leftable{
