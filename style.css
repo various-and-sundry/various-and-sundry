@@ -126,6 +126,16 @@ body {
 	background: gray;
 }
 
+a {
+	color: #cccc33;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #ffff00;
+	text-decoration: underline;
+}
+
 #navbar {
 	top: 0;
 	width: 100%;
