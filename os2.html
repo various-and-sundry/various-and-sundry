@@ -27,16 +27,105 @@
       <br><br><hr>
 
 
-      <h2>Operating System and Hardware</h2>
-      <h3>Operating System</h3>
+      <h2>Operating System</h2>
       <p>I am now using Arch Linux. I previously used a base install of Debian on which I installed i3, but since I was already customizing many things, moving to a distribution that is designed for a customized installation, such as Arch, made sense. Also, Arch's packages are generally much more up-to-date than Debian's packages, and the fact that it is a rolling release distribution allows me to use the system indefinitely with out a full reinstall.</p>
       <p>Arch is known for being difficult to install and maintain. Its updates are also known for breaking things. Consequently, I was concerned that it might not be practical. However, it was much easier to install than I expected. In fact, despite never having installed it before, I was able to install it faster than I normally install Debian (mostly because the Wi-Fi drivers were pre-installed). I was also under the impression that I would have to compile the kernel, but that was not the case. Its installation was far simpler than I expected.</p>
       <p>Additionally, despite the reputation of Arch's updates, I have never installed an update that broke anything major. Occasionally, I have experienced an update that had minor mistakes, such as miss-coloring a button, but those are rare and relatively inconsequential. In general, I have found Arch to be reliable.</p>
       
-      <h3>Hardware</h3>
+      <h2>Hardware</h2>
       <p>I am running this operating system on an HP G72-250US laptop. I think that my family purchased it as a Windows 7 laptop in 2011 and used it until the hard drive began to die in late 2019. It has a 2 Core 1.86 GHz Intel Pentium P6000 CPU and 4 GB of ram.</p>
       <p>My family has a different laptop now, so I decided to add a new hard drive to this old one in order to use it myself. I bought a cheap 150 GB HDD on eBay, which was a sufficient replacement. I do not need very much hard drive space because I keep most of my files on extremal drives. In fact, I only partitioned about half of the drive for my operating system, leaving the rest in case I decide that I want to add another operating system.</p>
       <p>My main complain about the machine is that it becomes very hot and constantly runs its fan loudly. Sometimes the fan can actually be louder than the speakers. One time, when I was browsing the internet, the computer unexpectedly cut power to itself in order to prevent the processor from overheating. However, while its running, it has enough processing power to comfortably do everything that I need to do on a regular basis. However, I cannot use it for resource intensive tasks such as videoconferencing.</p>
+
+      <h2>Partitioning Scheme</h2>
+      <table>
+	      <tr>
+		      <th><code>NAME</code></th><th><code>MAJ:MIN</code></th><th><code>RM</code></th><th><code>SIZE</code></th><th><code>RO</code></th><th><code>TYPE</code></th><th><code>MOUNTPOINTS</code></th>
+	      </tr>
+	      <tr>
+		      <th><code>sda</code></th><th><code>8:0</code></th><th><code>0</code></th><th><code>149.1G</code></th><th><code>0</code></th><th><code>disk</code></th><th></th>
+	      </tr>
+	      <tr>
+		      <th><code>-sda1</code></th><th><code>8:1</code></th><th><code>0</code></th><th><code>150M</code></th><th><code>0</code</th><th><code>part</code></th> <th><code>/boot</code></th>
+	      </tr>
+	      <tr>
+		      <th><code>-sda2</code></th><th><code>8:2</code></th><th><code>0</code></th><th><code>6G</code></th><th><code>0</code></th><th><code>part</code></th><th></th>
+	      </tr>
+	      <tr>
+		      <th><code>-sda3</code></th><th><code>8:3</code></th><th><code>0</code></th><th><code>35G</code></th><th><code>0</code></th><th><code>part</code></th><th><code>/</code></th>
+	      </tr>
+	      <tr>
+		      <th><code>-sda4</code></th><th><code>8:4</code></th><th><code>0</code></th><th><code>35G</code></th><th><code>0</code></th><th><code>part</code></th><th><code>/home</code></th>
+	      </tr>
+      </table>
+
+      <h2>Initial System Setup</h2>
+      <p>I recorded these as the initial commands that I used to set up the system after its first boot. I do not remember very much about them, so I will not comment on them.</p>
+      <div class="term">
+	      <div>
+		      <code class="command">#</code> <code class="command">pacman -S networkmanager</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">systemctl enable NetworkManager</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">pacman -S grub</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">grub-install --target=i386-pc /dev/sda</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">grub-mkconfig -o /boot/grub/grub.cfg</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">passwd</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">vim /etc/locale.gen </code>
+		      <br>
+		      <code class="command">#</code> <code class="command">vim /etc/locale.gen </code>
+		      <br>
+		      <code class="command">#</code> <code class="command">locale-gen</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">vim /etc/locale.conf</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">ln -sf /usr/share/zoneinfo/America/New_York </code>
+		      <br>
+		      <code class="command">#</code> <code class="command">ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">vim /etc/hostname</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">vim /etc/hosts </code>
+		      <br>
+		      <code class="command">#</code> <code class="command">vim /etc/hostname</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">exit</code>
+	      </div>
+      </div>
+
+      <h2>Connecting to Wi-Fi</h2>
+      <p>Here is how I connected the machine to a Wi-Fi network.</p>
+      <div class="term">
+	      <div>
+		      <code class="command">#</code> <code class="command">info NetworkManager</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">nmcli dev wifi list</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">nmcli device wifi connect NETWORK_NAME password PASSWORD</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">nmcli connection</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">ping various-and-sundry.com</code>
+	      </div>
+      </div>
+
+      <h2>Adding A User</h2>
+      <p>I created a user and gave it sudo privilege by adding <code>%wheel ALL=(ALL) ALL</code> to the <code>/etc/sudoers</code> file using <code>visudo</code>.</p>
+      <div class="term">
+	      <div>
+		      <code class="command">#</code> <code class="command">useradd -m idm</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">usermod -aG wheel idm</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">export EDITOR="/usr/bin/vim"</code>
+		      <br>
+		      <code class="command">#</code> <code class="command">visudo</code>
+	      </div>
+      </div>
 
       <br><hr>
 
