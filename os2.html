@@ -38,26 +38,10 @@
       <p>My main complain about the machine is that it becomes very hot and constantly runs its fan loudly. Sometimes the fan can actually be louder than the speakers. One time, when I was browsing the internet, the computer unexpectedly cut power to itself in order to prevent the processor from overheating. However, while its running, it has enough processing power to comfortably do everything that I need to do on a regular basis. However, I cannot use it for resource intensive tasks such as videoconferencing.</p>
 
       <h2>Partitioning Scheme</h2>
-      <table>
-	      <tr>
-		      <th><code>NAME</code></th><th><code>MAJ:MIN</code></th><th><code>RM</code></th><th><code>SIZE</code></th><th><code>RO</code></th><th><code>TYPE</code></th><th><code>MOUNTPOINTS</code></th>
-	      </tr>
-	      <tr>
-		      <th><code>sda</code></th><th><code>8:0</code></th><th><code>0</code></th><th><code>149.1G</code></th><th><code>0</code></th><th><code>disk</code></th><th></th>
-	      </tr>
-	      <tr>
-		      <th><code>-sda1</code></th><th><code>8:1</code></th><th><code>0</code></th><th><code>150M</code></th><th><code>0</code</th><th><code>part</code></th> <th><code>/boot</code></th>
-	      </tr>
-	      <tr>
-		      <th><code>-sda2</code></th><th><code>8:2</code></th><th><code>0</code></th><th><code>6G</code></th><th><code>0</code></th><th><code>part</code></th><th></th>
-	      </tr>
-	      <tr>
-		      <th><code>-sda3</code></th><th><code>8:3</code></th><th><code>0</code></th><th><code>35G</code></th><th><code>0</code></th><th><code>part</code></th><th><code>/</code></th>
-	      </tr>
-	      <tr>
-		      <th><code>-sda4</code></th><th><code>8:4</code></th><th><code>0</code></th><th><code>35G</code></th><th><code>0</code></th><th><code>part</code></th><th><code>/home</code></th>
-	      </tr>
-      </table>
+      <p>sda1 150M /boot</p>
+      <p>sda2 6G swap</p>
+      <p>sda3 35G /</p>
+      <p>sda4 35G /home</p>
 
       <h2>Initial System Setup</h2>
       <p>I recorded these as the initial commands that I used to set up the system after its first boot. I do not remember very much about them, so I will not comment on them.</p>
@@ -127,7 +111,7 @@
 	      </div>
       </div>
 
-      <h2>Installed Programs</h2>
+      <h2>Programs Installed Via Pacman</h2>
 
       <p>I installed xorg-server because I want to be able to run X programs.</p>
       <div class="term">
@@ -797,6 +781,8 @@
 			<code>Total Installed Size:  0.43 MiB</code><br>
 		</div>
 	</div>
+
+	<h2>Program Configuration</h2>
       <br><hr>
    </div>
 </body>
