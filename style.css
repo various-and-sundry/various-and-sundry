@@ -387,7 +387,7 @@ th.thborder{
 }
 
 .prompt {
-	color: green;
+	color: white;
 }
 
 .pihostname {
@@ -412,7 +412,7 @@ th.thborder{
 
 .term div {
 	background: black;
-	color: lightgreen;
+	color: white;
 	padding: 2px 10px;
 }
 
