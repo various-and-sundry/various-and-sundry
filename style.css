@@ -485,6 +485,38 @@ table.dictabdefs tr th.example {
 
 
 
+.bookTable {
+	border-collapse: collapse;
+	color: black;
+	background: #dddddd;
+	margin: 1em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.bookTable th{
+	border: 1px solid;
+	font-weight: bold;
+	padding: 6px;
+}
+
+.headerRow th {
+	font-weight: bold;
+	background: black;
+	color: #dddddd;
+}
+
+.bookComplete {
+	background: #22ff22;
+}
+
+.bookInProgress {
+	background: #ffc015;
+}
+
+.bookNotStarted {
+	background: #ff2222;
+}
 
 
 
