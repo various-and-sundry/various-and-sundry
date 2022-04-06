@@ -163,6 +163,11 @@ p {
 	font-family: "Liberation Serif";
 }
 
+li {
+	color: #eeeeee;
+	font-family: monospace;
+}
+
 nav ul {
 	margin: 0px;
 	font-size: 15px;

@@ -783,6 +783,31 @@
 	</div>
 
 	<h2>Program Configuration</h2>
+
+	<h3>dwm</h3>
+	<p>My prior and first tiling window manager was i3. However, I have now moved to dwm. It is more minimal, and, most importantly, it is dynamic. I also like that it is written in C. I really like it.</p>
+	<p>I have not configured X to start by default. Sometimes, I do not need it, and when I do, I can simply type <code>startx</code></p>
+	<p>I downloaded the source code from the <a href="https://dwm.suckless.org/">dwm web site</a>. Although I initially left all of its defaults (other then changing the Mod key from Alt to Super), over time, I made a number of changes. Here are my configured dwm <a href="downloads/operating_systems/2/config.h">config.h</a> and <a href="downloads/operating_systems/2/dwm.c">dwm.c</a> files. Here is a list of the noteworthy changes that I made.</p>
+	<ul>
+		<li>The status bar is not displayed by default.</li>
+		<li>The color scheme has been changed.</li>
+		<li>The window border width has been increased from one pixel to two pixels.</li>
+		<li>The default size of the master window has been increased from 0.55 to 0.60.55).</li>
+		<li>The volume up, volume down, and mute buttons now control the system volume (although the mute button is not particularly reliable).</li>
+		<li><code>Super-w</code> starts my browser (Firefox).</li>
+		<li><code>Super-e</code> opens my e-mail client (Thunderbird).</li>
+		<li>The <code>prt sc</code> button activates my screenshot program (flameshot).</li>
+		<li><code>Super-o</code> opens Emacs.</li>
+		<li><code>Super-u</code> opens my PDF viewer (zathura).</li>
+		<li><code>Super-c</code> gives access to the clipboard manager (clipmenu).</li>
+		<li><code>Super-b</code> switches between the current and previous layout.</li>
+		<li>The <a href="https://dwm.suckless.org/patches/holdbar/">holdbar</a> patch has been added. Now, when the space bar is held, the status bar is shown but is hidden otherwise.</li>
+	</ul>
+	<p>When I first set up the <a href="https://dwm.suckless.org/patches/holdbar/">holdbar</a> patch, the status bar would flicker because the space bar would repeat. I fixed that by adding <code>[ -f ~/.config/xprofile ] && . ~/.config/xprofile</code> to my <code>.xinitrx file</code>. Then I created a <code>xprofile</code> file in </code>~/.config</code> file and added <code>xset -r 65</code>. Now, the space bar no longer repeats when I hold it down.</p>
+	<img class="centimage" src="images/operating_systems/2/dwm_1.png" alt="dwm not showing status bar">
+	<br>
+	<img class="centimage" src="images/operating_systems/2/dwm_2.png" alt="dwm showing status bar">
+
       <br><hr>
    </div>
 </body>
