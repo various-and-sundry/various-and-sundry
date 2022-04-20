@@ -36,11 +36,11 @@
 
 			<div  class="slideUp">
 
-				<p class="centext">Welcome to various-and-sundry.com, my residence on the internet from which I distribute information and ideas. Either that, or perhaps it is just a sort of public notebook. I have not created a site map because I honestly do not know what a site map is. Instead, I have created this <a href="internet_map.html">map of the whole internet</a>.</p>
+				<p class="centext">Welcome to various-and-sundry.com, my residence on the Internet from which I distribute information and ideas. Well, actually, it might just be a kind of public notebook. If this was not the site that you were looking for, please refer to this <a href="internet_map.html">map of the internet</a>.</p>
 
 				<div class="Bluesector">
 					<p class="centext">Here is my <a href="com_u_pers_code.html">Computer User Profile Code</a>, which contains encoded information about me. It can be decode via the <a href="com_u_pers_code_parser.html">profile parser</a>.</p>
-					<p class="center"><code><---COM_U_PROF_CODE---Version[Beta]---E[S] F[H] L[Ba++C++Cl++Cs+++H+++J+Js++Lx++L++Pl+Us++] O[B++L++++M+*W+++*] P[A+*I++*N] C[#40e0d0] S[GhW] H[P+++R++Ro+++W++]></code></p>
+					<center><code><---COM_U_PROF_CODE---Version[Beta]---E[S] F[H] L[Ba++C++Cl++Cs+++H+++J+Js++Lx++L++Pl+Us++] O[B++L++++M+*W+++*] P[A+*I++*N] C[#40e0d0] S[GhW] H[P+++R++Ro+++W++]></code></center>
 				</div>
 
 			</div>
@@ -65,8 +65,9 @@
 				<a href="https://www.duckduckgo.com/">
 					<img src="images/buttons/duckduckgo.gif" alt="DuckDuckGo" width="88px" height="31px">
 				</a>
+				<img onclick="toggleMoneroVisibilty()" src="images/buttons/monero.gif" alt="Monero" width="88px" height="31px">
 				<img src="images/buttons/pdf-odf.gif" alt="Do Not Send Me Word Documents" width="88px" height="31px">
-				<img onclick="toggleVisibilty()" src="images/buttons/click_here.gif" alt="" width="88px" height="31px">
+				<img onclick="togglePinsVisibilty()" src="images/buttons/click_here.gif" alt="" width="88px" height="31px">
 			</div>
 			<div id="additionalPins" class="centext hide">
 				<img src="images/buttons/bookmark_this_page.gif" alt="" width="88px" height="31px">
@@ -95,8 +96,7 @@
 				<a href="https://slashdot.org/">
 					<img src="images/buttons/slashdot.gif" alt="Slashdot" width="88px" height="31px">
 				</a>
-				<img src="images/buttons/Jesus.gif" alt="" width="88px" height="31px">
-				<img src="images/buttons/sendit.gif" alt="Salvation" width="88px" height="31px">
+				<img src="images/buttons/Jesus.gif" alt="" width="88px" height="31px"> <img src="images/buttons/sendit.gif" alt="Salvation" width="88px" height="31px">
 				<a href="http://www.mutt.org/">
 					<img src="images/buttons/mutt.gif" alt="Mutt" width="88px" height="31px">
 				</a>
@@ -106,13 +106,21 @@
 				<a href="https://www.mozilla.org/en-US/firefox/">
 					<img src="images/buttons/firefoxnow.gif" alt="Firefox" width="88px" height="31px">
 				</a>
+				<a href="https://gnupg.org/">
 				<img src="images/buttons/pgp-now.gif" alt="" width="88px" height="31px">
+				</a>
 				<a href="http://www.libpng.org/pub/png/">
 					<img src="images/buttons/pngnow.gif" alt="" width="88px" height="31px">
 				</a>
 			</div>
+			<div id="monero" class="centext hide">
+				<h3>Donate Monero</h3>
+				<p class="centext">In my opinion, Monero is the most well designed and useful cryptocurrency available right now. If you want to donate some, you can send it to the address below. I would be surprised if anyone visits this web site at all, so if I get a donation, I will be really shocked.</p>
+				<img src="icons/monero_address.png" alt="Monero QR Code"><br>
+				<code>46aEg4xk19WZP6PJg4NCxQ6eqpkA9p3UGQMGFRkdEUL7hycVEqazRu3bk2qkfHdRZB6GQmL4gDWXsbkcYcGrZ6yGGzJLmY3</code>
+			</div>
 			<script>
-				function toggleVisibilty() {
+				function togglePinsVisibilty() {
 					var x = document.getElementById("additionalPins");
 						if (x.style.display === "block") {
 							x.style.display = "none";
@@ -120,7 +128,14 @@
 							x.style.display = "block";
 						}
 				} 
+				function toggleMoneroVisibilty() {
+					var x = document.getElementById("monero");
+						if (x.style.display === "block") {
+							x.style.display = "none";
+						} else {
+							x.style.display = "block";
+						}
+				} 
 			</script>
-
 </body>
 </html>
