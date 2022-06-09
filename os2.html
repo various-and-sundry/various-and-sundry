@@ -101,9 +101,9 @@
       <p>I created a user and gave it sudo privilege by adding <code>%wheel ALL=(ALL) ALL</code> to the <code>/etc/sudoers</code> file using <code>visudo</code>.</p>
       <div class="term">
 	      <div>
-		      <code class="command">#</code> <code class="command">useradd -m idm</code>
+		      <code class="command">#</code> <code class="command">useradd -m user</code>
 		      <br>
-		      <code class="command">#</code> <code class="command">usermod -aG wheel idm</code>
+		      <code class="command">#</code> <code class="command">usermod -aG wheel user</code>
 		      <br>
 		      <code class="command">#</code> <code class="command">export EDITOR="/usr/bin/vim"</code>
 		      <br>
@@ -787,7 +787,7 @@
 	<h3>dwm</h3>
 	<p>My prior and first tiling window manager was i3. However, I have now moved to dwm. It is more minimal, and, most importantly, it is dynamic. I also like that it is written in C. I really like it.</p>
 	<p>I have not configured X to start by default. Sometimes, I do not need it, and when I do, I can simply type <code>startx</code></p>
-	<p>I downloaded the source code from the <a href="https://dwm.suckless.org/">dwm web site</a>. Although I initially left all of its defaults (other then changing the Mod key from Alt to Super), over time, I made a number of changes. Here are my configured dwm <a href="downloads/operating_systems/2/config.h">config.h</a> and <a href="downloads/operating_systems/2/dwm.c">dwm.c</a> files. Here is a list of the noteworthy changes that I made.</p>
+	<p>I downloaded the source code from the <a href="https://dwm.suckless.org/">dwm web site</a>. Although I initially left all of its defaults (other then changing the Mod key from Alt to Super), over time, I made a number of changes. Here are my configured dwm <a href="downloads/operating_systems/2/dwm/config.h">config.h</a> and <a href="downloads/operating_systems/2/dwm/dwm.c">dwm.c</a> files. Here is a list of the noteworthy changes that I made.</p>
 	<ul>
 		<li>The status bar is not displayed by default.</li>
 		<li>The color scheme has been changed.</li>
@@ -804,11 +804,306 @@
 		<li>The <a href="https://dwm.suckless.org/patches/holdbar/">holdbar</a> patch has been added. Now, when the space bar is held, the status bar is shown but is hidden otherwise.</li>
 	</ul>
 	<p>When I first set up the <a href="https://dwm.suckless.org/patches/holdbar/">holdbar</a> patch, the status bar would flicker because the space bar would repeat. I fixed that by adding <code>[ -f ~/.config/xprofile ] && . ~/.config/xprofile</code> to my <code>.xinitrx file</code>. Then I created a <code>xprofile</code> file in </code>~/.config</code> file and added <code>xset -r 65</code>. Now, the space bar no longer repeats when I hold it down.</p>
+	<p>I also added the following script to my bin directory to update what is displayed by my status bar. It is called when the status bar is displayed.</p>
+	<div class="term">
+		<div>
+			<code>#!/bin/sh</code><br>
+			<code></code><br>
+			<code>xsetroot -name "  `amixer get Master | awk 'NR==5 {gsub(/[\[\]]/,""); print $4;}'` | `date +%I:%M` | `date +%D` "</code><br>
+		</div>
+	</div>
 	<img class="centimage" src="images/operating_systems/2/dwm_1.png" alt="dwm not showing status bar">
 	<br>
 	<img class="centimage" src="images/operating_systems/2/dwm_2.png" alt="dwm showing status bar">
 
-      <br><hr>
+	<br>
+	<h3>st and dmenu</h3>
+	<p>I installed st and dmenu from source. I changed the appearance st, but I do not think that I modified dmenu. Here are the config.h files for my versions of <a href="downloads/operating_systems/2/st/config.h">st</a> and <a href="downloads/operating_systems/2/dmenu/config.h">dmenu</a>.</p>
+
+	<br>
+	<h3>xinitrc</h3>
+	<p>This makes my caps lock key function as an escape key, turns num lock on, starts flameshot and clipmenu, and finally starts dwm.</p>
+	<div class="term">
+		<div>
+			<code>numlockx &</code><br>
+			<code> </code><br>
+			<code>setxkbmap -option caps:escape &</code><br>
+			<code> </code><br>
+			<code>flameshot &</code><br>
+			<code> </code><br>
+			<code>clipmenud &</code><br>
+			<code> </code><br>
+			<code>[ -f ~/.config/xprofile ] && . ~/.config/xprofile</code><br>
+			<code>[[ -f ~/.config/Xresources ]] && xrdb -merge -I$HOME ~/.config/Xresources</code><br>
+			<code> </code><br>
+			<code>exec dwm</code><br>
+		</div>
+	</div>
+
+	<br>
+	<h3>bashrc</h3>
+	<div class="term">
+		<div>
+			<code>export PS1="\[\e[1;36m\][\[\e[1;37m\]\W\e\[[1;36m]\]#\[\e[0m\] " </code><br>
+			<code> </code><br>
+			<code>EDITOR="/usr/bin/vim" </code><br>
+			<code>BROWSER="/bin/webview" </code><br>
+			<code> </code><br>
+			<code>export PS1 </code><br>
+			<code>export BROWSER </code><br>
+			<code> </code><br>
+			<code>alias a="alsamixer" </code><br>
+			<code>alias e="emacs -nw" </code><br>
+			<code>alias v="vim -p" </code><br>
+			<code> </code><br>
+			<code>alias mv="mv -i" </code><br>
+			<code>alias cp="cp -i" </code><br>
+			<code>alias ls="ls --color" </code><br>
+			<code> </code><br>
+			<code>alias mkpaper="printf \".nr PS 12\n.nr VS 24\n.nr HM 1.0i\n.nr FM 1.0i\n.nr PO 1.0i\n.nr LL 6.25i\" > paper.ms" </code><br>
+			<code>alias weather="curl wttr.in/oyracuse" </code><br>
+			<code>alias mkin="vim instructions.txt" </code><br>
+			<code>alias mine="~/programs/xmrig/build/xmrig -o gulf.moneroocean.stream:10128 -u 46aEg4xk19WZP6PJg4NCxQ6eqpkA9p3UGQMGFRkdEUL7hycVEqazRu3bk2qkfHdRZB6GQmL4gDWXsbkcYcGrZ6yGGzJLmY3 -p HP" </code><br>
+			<code>alias backup="rsync -vur ~/college /mnt/j/" </code><br>
+			<code> </code><br>
+			<code>cman(){ </code><br>
+			<code>less ~/documents/man/$1 </code><br>
+			<code>} </code><br>
+			<code> </code><br>
+			<code>eg() { </code><br>
+			<code>emacs $1 & exit </code><br>
+			<code>} </code><br>
+			<code> </code><br>
+			<code>n(){ </code><br>
+			<code>echo "$1 $2:		" >> $1_$2.txt </code><br>
+			<code>vim $1_$2.txt </code><br>
+			<code>} </code><br>
+			<code> </code><br>
+			<code>nip(){ </code><br>
+			<code>tail -n 1 $1 | xsel -b </code><br>
+			<code>} </code><br>
+			<code> </code><br>
+			<code>jfx(){ </code><br>
+			<code>javac --module-path /lib/javafx-sdk-18/lib/ --add-modules javafx.controls,javafx.fxml $1 </code><br>
+			<code>java --module-path /lib/javafx-sdk-18/lib/ --add-modules javafx.controls $1 </code><br>
+			<code>} </code><br>
+		</div>
+	</div>
+
+	<br>
+	<h3>root bashrc</h3>
+	<p>This has fewer features than my normal bashrc and makes the prompt red instead of cyan.</p>
+	<div class="term">
+		<div>
+			<code>export PS1="\[\e[1;31m\][\[\e[1;37m\]\W\e\[[1;31m]\]#\[\e[0m\] " </code><br>
+			<code> </code><br>
+			<code>EDITOR="/usr/bin/vim" </code><br>
+			<code> </code><br>
+			<code>export PS1 </code><br>
+			<code>export BROWSER </code><br>
+			<code> </code><br>
+			<code>alias a="alsamixer" </code><br>
+			<code>alias e="emacs -nw" </code><br>
+			<code>alias v="vim -p" </code><br>
+			<code> </code><br>
+			<code>alias mv="mv -i" </code><br>
+			<code>alias cp="cp -i" </code><br>
+			<code> </code><br>
+			<code>alias mkpaper="printf \".nr PS 12\n.nr VS 24\n.nr HM 1.0i\n.nr FM 1.0i\n.nr PO 1.0i\n.nr LL 6.25i\" > paper.ms" </code><br>
+			<code>alias weather="curl wttr.in/redactedlocation" </code><br>
+			<code> </code><br>
+			<code>cman(){ </code><br>
+			<code>less ~/documents/man/$1 </code><br>
+			<code>} </code><br>
+		</div>
+	</div>
+
+	<br>
+	<h3>Assorted</h3>
+	<p>I do not remember what this did, but I did it.</p>
+	<div class="term">
+		<div>
+			<code>unset LANG</code><br>
+			<code>source /etc/profile.d/locale.sh</code><br>
+		</div>
+	</div>
+
+	<p>Also, I deleted my <code>~/R</code> directory and install tidyverse as root (sudo R) so that it would not be in my home directory.</p>
+
+	<p>I added <a href="https://github.com/LukeSmithxyz/etc/blob/master/ips">Luke Smith's blocked IP addresses</a> to /etc/hosts.</p>
+
+	<br>
+	<h3>Firefox</h3>
+	
+	<p>I have Firefox's dark theme and strict privacy settings turned on. I have selected Firefox's <code>Always ask you where to save files</code> option, and I also changed the <code>Save files to</code> location so that it would stop creating a <code>~/Downloads</code> directory. I also set the scroll bar to be always visible because I like to be able to see how far down a page the viewport is. I also disabled all of the home content other than web search.</p>
+	
+	<p>I use the extensions that are listed below. Dark Reader gives web pages a dark theme, which makes them easier for me to read. DuckDuckGo Privacy Essentials, uBlock Origin, Google Container, Facebook Container, and JSelter help to block trackers. I started using JSelter when it was very new, having fewer then one hundred Firefox users (as reported by Mozilla). Flagfox informs me from what country web sites are hosted. Vimium gives me Vim key bindings in the browser, which is particularly helpful for scrolling and moving back to previous pages. I keep GNU LibreJS disabled, but I have it installed.</p>
+
+	<ul>
+		<li>Dark Reader</li>
+		<li>DuckDuckGo Privacy Essentials</li>
+		<li>Facebook Container</li>
+		<li>Flagfox </li>
+		<li>Google Container</li>
+		<li>JSelter </li>
+		<li>uBlock Origin</li>
+		<li>Vimium</li>
+		<li>GNU LibreJS</li>
+	</ul>
+
+	<img class="centimage" src="images/operating_systems/2/firefox.png" alt="Firefox">
+
+	<br>
+	<h3>Thunderbird</h3>
+
+	<p>I use Thunderbird as my e-mail client. I activated its dark theme and installed the Thunderbird Conversations and ThunderHTMLedit extensions.</p>
+	<img class="centimage" src="images/operating_systems/2/thunderbird.png" alt="Thunderbird">
+
+	<p>I disabled the use a paragraph text by default because I do not like paragraph text.</p>
+	<img class="centimage" src="images/operating_systems/2/thunderbird_body_text.png" alt="Thunderbird Paragraph Text Setting">
+
+	<p>I do not like <a href="https://www.arp242.net/email-wrapping.html">hard wrapping email body text</a>, so I disabled that function by setting <code>mailnews.wraplength</code> to 0 in the Config Editor.</p>
+	<img class="centimage" src="images/operating_systems/2/thunderbird_config.png" alt="Thunderbird Line Wrap">
+	
+	<br>
+	<h3>Vim</h3>
+	<p>I have a very simple <code>.vimrc</code>, which is shown below.</p>
+	<div class="term">
+		<div>
+			<code>set background=dark </code> <br>
+			<code>au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif </code><br>
+			<code>filetype plugin indent on </code><br>
+			<code></code><br>
+			<code>set showcmd " Show (partial) command in status line.</code><br>
+			<code>set showmatch " Show matching brackets.</code><br>
+			<code>set ignorecase " Do case insensitive matching</code><br>
+			<code>set smartcase " Do smart case matching</code><br>
+			<code>set incsearch " Incremental search</code><br>
+			<code>set autowrite " Automatically save before commands like :next and :make</code><br>
+			<code>set hidden " Hide buffers when they are abandoned</code><br>
+			<code>set mouse=a " Enable mouse usage (all modes)</code><br>
+			<code>set spell</code><br>
+			<code>set nu</code><br>
+			<code>set rnu</code><br>
+			<code>set nowrap</code><br>
+			<code>set smartcase</code><br>
+			<code></code><br>
+			<code>syntax on </code><br>
+			<code></code><br>
+			<code>" Source a global configuration file if available</code><br>
+			<code>if filereadable("/etc/vim/vimrc.local")</code><br>
+			<code>source /etc/vim/vimrc.local</code><br>
+			<code>endif</code><br>
+		</div>
+	</div>
+
+	<br>
+	<h3>Emacs</h3>
+	<p>I have a very simple <code>.emacs</code> file, which is shown below. I made a customized theme that is just the tsdh-dark-theme with a black background.</p>
+	<div class="term">
+		<div>
+			<code>(custom-set-variables</code><br>
+			<code>;; custom-set-variables was added by Custom.</code><br>
+			<code>;; If you edit it by hand, you could mess it up, so be careful.</code><br>
+			<code>;; Your init file should contain only one such instance.</code><br>
+			<code>;; If there is more than one, they won't work right.</code><br>
+			<code>'(ansi-color-faces-vector</code><br>
+			<code>[default default default italic underline success warning error])</code><br>
+			<code>'(ansi-color-names-vector</code><br>
+			<code>["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])</code><br>
+			<code>'(custom-enabled-themes '(my_theme))</code><br>
+			<code>'(custom-safe-themes</code><br>
+			<code>'("c4065e2e6d519b4b90abab3f9ccfb177f0328a69082b3ae953bee5173a1f25a5"))</code><br>
+			<code>'(horizontal-scroll-bar-mode nil)</code><br>
+			<code>'(inhibit-startup-screen t)</code><br>
+			<code>'(menu-bar-mode nil)</code><br>
+			<code>'(scroll-bar-mode nil)</code><br>
+			<code>'(text-mode-hook '(turn-on-flyspell text-mode-hook-identify))</code><br>
+			<code>'(tool-bar-mode nil))</code><br>
+			<code>(custom-set-faces</code><br>
+			<code>;; custom-set-faces was added by Custom.</code><br>
+			<code>;; If you edit it by hand, you could mess it up, so be careful.</code><br>
+			<code>;; Your init file should contain only one such instance.</code><br>
+			<code>;; If there is more than one, they won't work right.</code><br>
+			<code>)</code><br>
+			<code></code><br>
+			<code>(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")</code><br>
+			<code>(add-hook 'after-init-hook (lambda () (load-theme 'my_theme)))</code><br>
+		</div>
+	</div>
+
+	<br>
+	<h3>Newsboat</h3>
+	<p>My <code>~/.newsboat/config</code> file contains the following.</p>
+	<div class="term">
+		<div>
+			<code>include /usr/share/doc/newsboat/contrib/colorschemes/my-theme</code><br>
+			<code></code><br>
+			<code>auto-reload  yes</code><br>
+			<code></code><br>
+			<code>external-url-viewer "urlscan"</code><br>
+			<code></code><br>
+			<code>bind-key j down</code><br>
+			<code>bind-key k up</code><br>
+			<code>bind-key j next articlelist</code><br>
+			<code>bind-key k prev articlelist</code><br>
+			<code>bind-key G end</code><br>
+			<code>bind-key g home</code><br>
+			<code>bind-key l open</code><br>
+			<code>bind-key h quit</code><br>
+			<code>bind-key u show-urls</code><br>
+		</div>
+	</div>
+
+	<p>My theme is shown below.</p>
+	<div class="term">
+		<div>
+			<code>color listnormal        white default</code><br>
+			<code>color listnormal_unread white default bold</code><br>
+			<code>color listfocus         white default reverse</code><br>
+			<code>color listfocus_unread  white default reverse</code><br>
+			<code>color info              white default reverse</code><br>
+			<code>color background        white default</code><br>
+			<code>color article           white default</code><br>
+			<code></code><br>
+			<code>highlight article "^(Feed|Link):.*$" white default bold</code><br>
+			<code>highlight article "^(Title|Date|Author):.*$" white default bold</code><br>
+			<code>highlight article "https?://[^ ]+" white default underline</code><br>
+			<code>highlight article "\\[[0-9]+\\]" white default bold</code><br>
+			<code>highlight article "\\[image\\ [0-9]+\\]" white default bold</code><br>
+			<code>highlight feedlist "^─.*$" white white bold</code><br>
+		</div>
+	</div>
+
+	<p>To allow me to open urls from within articles in newsboat, I installed urlscan. Perhaps urlview is better, but it is not in the Arch repository. After installing urlscan, I ran <code>urlscan -g</code> to create a configured <code>~/.config/urlscan/config.json</code> file. I then added <code>"h": "quit",</code>, to that file so that I could exit with the <code>h</code> key.</p>
+
+	<p>To to allow me to view certain files that url's point to without using Firefox, I added Luke Smith's <code>webview</code> script to my <code>/bin</code> directory and made it my default browser in my <code>.bashrc</code> file. I also installed feh so that I can view online images from urlscan (sxiv cannot view online images).</p>
+
+	<br>
+	<h3>Mounting and Unmounting Drives</h3>
+	<p>In order to easily mount drives I created the two following scripts, which are in my <code>/bin</code> directory and are named <code>m</code> and <code>u</code> respectably. I created these scripts rather then bash aliases because dmenu can not run bash aliases, and I want to run these functions from dmenu sometimes.</p>
+
+	<div class="term">
+		<div>
+			<code>#!/bin/sh</code><br>
+			<code></code><br>
+			<code>sudo mount -a</code><br>
+		</div>
+	</div>
+
+	<div class="term">
+		<div>
+			<code>#!/bin/sh</code><br>
+			<code></code><br>
+			<code>sudo umount /mnt/*</code><br>
+		</div>
+	</div>
+
+	<p>I then added the following lines to the <code>/etc/sudoers</code> file so that I can run the above scripts without entering a password.</p>
+	<div class="term">
+		<div>
+			<code>user HP-Arch  = (root) NOPASSWD: /usr/bin/mount</code><br>
+			<code>user HP-Arch  = (root) NOPASSWD: /usr/bin/umount</code><br>
    </div>
 </body>
 </html>
