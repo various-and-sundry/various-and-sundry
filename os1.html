@@ -134,7 +134,7 @@
       </div>
   </div>
 
-<p>Then, I create a mount point for the drive. In this case, I chose <code>/media/j</code>, the most accessible letter on the qwerty keyboard, because this is my primary drive.</p>
+<p>Then, I create a mount point for the drive. In this case, I chose <code>/media/j</code>, the most accessible letter on the qwerty keyboard because this is my primary drive.</p>
 
   <div class="term">
         <code class="prompt">user@debian:~$</code> <code class="command">mkdir /media/j<mount_point_name></code><br>
@@ -186,7 +186,7 @@
 
 
     <h3>Numlockx</h3>
-<p>By default, <a href="https://en.wikipedia.org/wiki/Num_Lock">Num Lock</a> is disabled every time Debian boots. I do not know why that is considered a good default. It was especially inconvenient for me, because I use the numeric keypad to control the system volume via alsamixer. If Num Lock is disabled, pressing a key on the numeric keypad closes alsamixer. When trying to change the volume, it is annoying when the alsamixer closes.</p>
+<p>By default, <a href="https://en.wikipedia.org/wiki/Num_Lock">Num Lock</a> is disabled every time Debian boots. I do not know why that is considered a good default. It was especially inconvenient for me because I use the numeric keypad to control the system volume via alsamixer. If Num Lock is disabled, pressing a key on the numeric keypad closes alsamixer. When trying to change the volume, it is annoying when the alsamixer closes.</p>
 <p>I installed the <a href="https://software.opensuse.org/package/numlockx">numlockx</a> package which enables Num Lock by default. It can also be used to turn Num Lock on or off.</p>
     <div class="term">
       <code class="prompt">user@debian:~$</code> <code class="command">dsudo apt-get install numlockx</code><br>
@@ -202,7 +202,7 @@
 
 
       <h2>Scripts</h2>
-<p>I have written a number of scripts that complete useful functions for me. They can be downloaded <a href="downloads/operating_systems/1/scripts.tar.gz">here</a>. I am hesitant to call them scripts, because most of them only run one-line commands. I store all of them in <code>/bin</code> because dmenu will not run files that are anywhere else, even if they are in my <code>$PATH</code>.</p>
+<p>I have written a number of scripts that complete useful functions for me. They can be downloaded <a href="downloads/operating_systems/1/scripts.tar.gz">here</a>. I am hesitant to call them scripts because most of them only run one-line commands. I store all of them in <code>/bin</code> because dmenu will not run files that are anywhere else, even if they are in my <code>$PATH</code>.</p>
 <p>When I need to execute a command often, I sometimes write a one letter script that executes it. This is convenient, especially because I can easily run in from dmenu (dmenu does not prove TAB-auto-complete with multipart command such as commands that require <code>sudo</code>, options, or other arguments).
 
       <h3>m</h3>
@@ -824,7 +824,7 @@
 
 	      <h3>Zoom</h3>
 	      <p>Because of my involvement in <a href="https://en.wikipedia.org/wiki/FIRST_Tech_Challenge">FIRST Tech Challenge</a> during the pandemic, I had to use the Zoom videoconferencing client about three times per week. I found that it worked much better than the Zoom web-interface.</p>
-	      <p>Although Zoom served a purpose for me, I do not enjoy having proprietary software installed on my system. What is more, Zoom has a history of security issues. In 2019, Zoom took months to fix a vulnerability that allowed any web site to start a Zoom call with any visiting client and activate the client's camera. This was possible even if the user had uninstalled Zoom, because of a web server that was left on client machines even when Zoom was uninstalled that allowed Zoom to be automatically reinstalled by any website without any user action.</p>
+	      <p>Although Zoom served a purpose for me, I do not enjoy having proprietary software installed on my system. What is more, Zoom has a history of security issues. In 2019, Zoom took months to fix a vulnerability that allowed any web site to start a Zoom call with any visiting client and activate the client's camera. This was possible even if the user had uninstalled Zoom because of a web server that was left on client machines even when Zoom was uninstalled that allowed Zoom to be automatically reinstalled by any website without any user action.</p>
 	      <p>Zoom was not in the default Debian repository, so I downloaded a .deb file from the Zoom website and used it to install Zoom using <code>apt-get</code>. It required 48.6 MB of disk space.<p>
               <img class="centimage" src="images/operating_systems/1/zoom.png" alt="Zoom Videoconferencing Program">
 
