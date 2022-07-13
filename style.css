@@ -111,10 +111,12 @@ a h1 mark:hover {
 }
 
 .Bluesector {
-	width: 95%;
+	width: 90%;
 	background: #40E0D0;
-	margin: 0 auto;
+	margin: 40px auto;
 	border-radius: 25px;
+	border: 6px solid #eeeeee;
+	outline: 6px dashed #eeeeee;
 }
 
 .padded {
@@ -122,8 +124,7 @@ a h1 mark:hover {
 }
 
 body {
-	background: #ccfffc;
-	background: gray;
+	background: grey;
 }
 
 a {
@@ -424,7 +425,7 @@ th.thborder{
 
 
 hr.large {
-  border: 2px solid gray;
+  border: 2px solid grey;
 }
 
 table.leftable{
@@ -451,7 +452,7 @@ table.dictabhead {
 	text-align: center;
 	padding: 7px 5% 7px 5%;
 	margin: 30px 5% 0 5%;
-	border: 2px solid gray;
+	border: 2px solid grey;
 }
 
 table.dictabhead tr th {
@@ -475,7 +476,7 @@ table.dictabdefs {
 	text-align: left;
 	padding: 7px 5% 7px 5%;
 	margin: 0 5% 30px 5%;
-	border: 2px solid gray;
+	border: 2px solid grey;
 }
 
 table.dictabdefs tr th {
@@ -483,12 +484,9 @@ table.dictabdefs tr th {
 }
 
 table.dictabdefs tr th.example {
-	color: gray;
+	color: grey;
 	padding-bottom: 20px;
 }
-
-
-
 
 .bookTable {
 	border-collapse: collapse;
