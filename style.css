@@ -424,8 +424,8 @@ th.thborder{
 
 
 
-hr.large {
-  border: 2px solid grey;
+hr.divider {
+  border: 1px solid black;
 }
 
 table.leftable{
