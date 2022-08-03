@@ -918,6 +918,46 @@ function getcode() {
 
 
 
+	//Groff/Troff
+
+
+	var groff = document.getElementById("Groff/Troff");
+	var groffp = document.getElementById("Groff/Troff+");
+	var groffpp = document.getElementById("Groff/Troff++");
+	var groffppp = document.getElementById("Groff/Troff+++");
+	var groffpppp = document.getElementById("Groff/Troff++++");
+	var groffppppp = document.getElementById("Groff/Troff+++++");
+	var groffpppppp = document.getElementById("Groff/Troff++++++");
+	var groffs = document.getElementById("Groff/Troff*");
+
+
+
+	if (groff.checked == true) {
+		L = L.concat("Gf");
+
+		if (groffp.checked == true) {
+			L = L.concat("+");
+		} else if (groffpp.checked == true) {
+			L = L.concat("++");
+		} else if (groffppp.checked == true) {
+			L = L.concat("+++");
+		} else if (groffpppp.checked == true) {
+			L = L.concat("++++");
+		} else if (groffppppp.checked == true) {
+			L = L.concat("+++++");
+		} else if (groffpppppp.checked == true) {
+			L = L.concat("++++++");
+		}
+	}
+ 	if (groffs.checked == true && groff.checked == true) {
+		L = L.concat("*");
+	}
+
+
+
+
+
+
 	//Groovy
 
 
@@ -3224,6 +3264,12 @@ function getcode() {
 
 											//Social Media
 
+	var activitypub = document.getElementById("ActivityPub");	//ActivityPub
+	if (activitypub.checked == true){
+	S = S.concat("A");
+	}
+
+
 	var facebook = document.getElementById("Facebook");		//Facebook
 	if (facebook.checked == true){
 	S = S.concat("F");
@@ -3283,6 +3329,13 @@ function getcode() {
 
 
 
+	var odysee = document.getElementById("Odysee");			//Odysee
+	if (odysee.checked == true){
+	S = S.concat("O");
+	}
+
+
+
 	var pwp = document.getElementById("Personal Web Page");		//Personal Web Page
 	if (pwp.checked == true){
 	S = S.concat("W");
@@ -3321,6 +3374,13 @@ function getcode() {
 	var snapchat = document.getElementById("Snapchat");		//Snapchat
 	if (snapchat.checked == true){
 	S = S.concat("S");
+	}
+
+
+
+	var tiktok = document.getElementById("TikTok");			//TikTok
+	if (tiktok.checked == true){
+	S = S.concat("Tt");
 	}
 
 
@@ -3494,7 +3554,7 @@ function getcode() {
 	var gardeningpppp = document.getElementById("Gardening++++");
 
 	if (gardening.checked == true){
-		H = H.concat("Gr");
+		H = H.concat("G");
 	if (gardeningp.checked == true){
 		H = H.concat("+");
 	} else if (gardeningpp.checked == true){
@@ -3502,6 +3562,26 @@ function getcode() {
 	} else if (gardeningppp.checked == true){
 		H = H.concat("+++");
 	} else if (gardeningpppp.checked == true){
+		H = H.concat("++++");
+	}
+	}
+
+
+	var juggling = document.getElementById("Juggling");				//Juggling
+	var jugglingp = document.getElementById("Juggling+");
+	var jugglingpp = document.getElementById("Juggling++");
+	var jugglingppp = document.getElementById("Juggling+++");
+	var jugglingpppp = document.getElementById("Juggling++++");
+
+	if (juggling.checked == true){
+		H = H.concat("J");
+	if (jugglingp.checked == true){
+		H = H.concat("+");
+	} else if (jugglingpp.checked == true){
+		H = H.concat("++");
+	} else if (jugglingppp.checked == true){
+		H = H.concat("+++");
+	} else if (jugglingpppp.checked == true){
 		H = H.concat("++++");
 	}
 	}

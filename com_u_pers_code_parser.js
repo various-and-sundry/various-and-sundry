@@ -60,13 +60,13 @@ function parse() {
 
 
 	if(/[A-Za-z0-9]/.test(parse_languages(languages, 0))) {                 	//Programming/Markup Languages
-		output = output.concat("I've used ", parse_languages(languages, 0), ". ");
+		output = output.concat("I have used ", parse_languages(languages, 0), ". ");
 	}
 	if(/[A-Za-z0-9]/.test(parse_languages(languages, 1))) {
 		if(/and /.test(parse_languages(languages, 1))) {
-			output = output.concat("I've played around with ", parse_languages(languages, 1), " a bit. I might remember their syntax if I think about it. ");
+			output = output.concat("I have played around with ", parse_languages(languages, 1), " a bit. I might remember their syntax if I think about it. ");
 		} else {
-			output = output.concat("I've played around with ", parse_languages(languages, 1), " a bit. I might remember the syntax if I think about it. ");
+			output = output.concat("I have played around with ", parse_languages(languages, 1), " a bit. I might remember the syntax if I think about it. ");
 		}
 	}
     	if(/[A-Za-z0-9]/.test(parse_languages(languages, 2))) {
@@ -78,16 +78,16 @@ function parse() {
 	}
 	if(/[A-Za-z0-9]/.test(parse_languages(languages, 3))) {
 		if(/and /.test(parse_languages(languages, 3))) {
-			output = output.concat("I've written a few small projects with ", parse_languages(languages, 3), ". I am not good enough to use them professionally, but I can write useful things with them. ");
+			output = output.concat("I have written a few small projects with ", parse_languages(languages, 3), ". I am not good enough to use them professionally, but I can write useful things with them. ");
 		} else {
-			output = output.concat("I've written a few small projects with ", parse_languages(languages, 3), ". I am not good enough to use it professionally, but I can write useful things with it. ");
+			output = output.concat("I have written a few small projects with ", parse_languages(languages, 3), ". I am not good enough to use it professionally, but I can write useful things with it. ");
 		}
 	}
 	if(/[A-Za-z0-9]/.test(parse_languages(languages, 4))) {
 		output = output.concat("I am perfectly capable of using ", parse_languages(languages, 4), " professionally. ");
 	}
 	if(/[A-Za-z0-9]/.test(parse_languages(languages, 5))) {
-		output = output.concat("You will be hard pressed to find someone who knows ", parse_languages(languages, 5), " better than I do. ");
+		output = output.concat("Finding someone who knows ", parse_languages(languages, 5), " better than I do is very difficult. ");
 	}
 	if(/[A-Za-z0-9]/.test(parse_languages(languages, 6))) {
 			if(/and /.test(parse_languages(languages, 6))) {
@@ -97,7 +97,7 @@ function parse() {
 		}
 	}
 	if(/[A-Za-z0-9]/.test(parse_languages_asterisks(languages))) {
-		output = output.concat("I don't like ", parse_languages_asterisks(languages), ". ");
+		output = output.concat("I do not like ", parse_languages_asterisks(languages), ". ");
 	}
 
 
@@ -105,7 +105,7 @@ function parse() {
 
 
 	if(/[A-Za-z0-9]/.test(parse_operating_systems(operating_system, 0))) {	//Operating Systems
-		output = output.concat("I've used ", parse_operating_systems(operating_system, 0), ". ");
+		output = output.concat("I have used ", parse_operating_systems(operating_system, 0), ". ");
 	}
 	if(/[A-Za-z0-9]/.test(parse_operating_systems(operating_system, 1))) {
 		if(/and /.test(parse_operating_systems(operating_system, 1))) {
@@ -130,13 +130,13 @@ function parse() {
 		output = output.concat("I helped develop ", parse_operating_systems(operating_system, 6), ". ");
 	}
 	if(/[A-Za-z0-9]/.test(parse_operating_systems_asterisks(operating_system))) {
-		output = output.concat("I don't like ", parse_operating_systems_asterisks(operating_system), ". ");
+		output = output.concat("I do not like ", parse_operating_systems_asterisks(operating_system), ". ");
 	}
 
 
 
 	if(/[A-Za-z0-9]/.test(parse_phone_operating_systems(phone, 0))) {	//Phone
-		output = output.concat("I've used ", parse_phone_operating_systems(phone, 0), ". ");
+		output = output.concat("I have used ", parse_phone_operating_systems(phone, 0), ". ");
 	}
 	if(/[A-Za-z0-9]/.test(parse_phone_operating_systems(phone, 1))) {
 			output = output.concat("I used ", parse_phone_operating_systems(phone, 1), " once. ");
@@ -160,7 +160,7 @@ function parse() {
 		output = output.concat("I use ", parse_phone_operating_systems_exclamation_point(phone), " on my current phone. ");
 	}
 	if(/[A-Za-z0-9]/.test(parse_phone_operating_systems_asterisks(phone))) {
-		output = output.concat("I don't like ", parse_phone_operating_systems_asterisks(phone), ". ");
+		output = output.concat("I do not like ", parse_phone_operating_systems_asterisks(phone), ". ");
 	}
 	if(parse_i_dont_have_a_phone(phone) !== "") {
 		output = output.concat(parse_i_dont_have_a_phone(code));
@@ -181,7 +181,7 @@ function parse() {
 	
 	
 	if(/[A-Za-z0-9]/.test(parse_hobbies(hobbies, 0))) {				//Hobbies
-		output = output.concat("I do ", parse_hobbies(hobbies, 0), ". ");
+		output = output.concat("My hobbies include ", parse_hobbies(hobbies, 0), ". ");
 	}
 	if(/[A-Za-z0-9]/.test(parse_hobbies(hobbies, 1))) {
 		output = output.concat("I like ", parse_hobbies(hobbies, 1), ". ");
@@ -483,6 +483,8 @@ function interpret_languages(word) {					//Accepts the code for a single program
 		output = output.concat("FORTRAN");
 	} else if(/G$/.test(word)) {
 		output = output.concat("Go");
+	} else if(/Gf$/.test(word)) {
+		output = output.concat("Groff/Troff");
 	} else if(/Gr$/.test(word)) {
 		output = output.concat("Groovy");
 	} else if(/Hk$/.test(word)) {
@@ -870,7 +872,9 @@ function interpret_social_media(word) {					//Accepts the code for a single soci
 
 	var output = '';
 
-	if(word === "F") {
+	if(word === "A") {
+		output = output.concat("ActivityPub");
+	} else if(word === "F") {
 		output = output.concat("Facebook");
 	} else if(word === "Fl") {
 		output = output.concat("Flickr");
@@ -888,6 +892,8 @@ function interpret_social_media(word) {					//Accepts the code for a single soci
 		output = output.concat("Mastodon");
 	} else if(word === "My") {
 		output = output.concat("Myspace");
+	} else if(word === "O") {
+		output = output.concat("Odysee/LBRY");
 	} else if(word === "W") {
 		output = output.concat("a personal web page");
 	} else if(word === "P") {
@@ -900,6 +906,8 @@ function interpret_social_media(word) {					//Accepts the code for a single soci
 		output = output.concat("Quora");
 	} else if(word === "S") {
 		output = output.concat("Snapchat");
+	} else if(word === "Tt") {
+		output = output.concat("TikTok");
 	} else if(word === "Tb") {
 		output = output.concat("Tumblr");
 	} else if(word === "T") {
@@ -983,8 +991,11 @@ function interpret_hobbies(word) {					//Accepts the code for a single hobbies a
 	else if(/F$/.test(word)) {
 		output = output.concat("film");
 	}
-	else if(/Gr$/.test(word)) {
+	else if(/G$/.test(word)) {
 		output = output.concat("gardening");
+	}
+	else if(/J$/.test(word)) {
+		output = output.concat("juggling");
 	}
 	else if(/M$/.test(word)) {
 		output = output.concat("music");
