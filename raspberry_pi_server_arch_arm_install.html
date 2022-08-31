@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+     	<title>Raspberry Pi Server -- SSH</title>
+     	<link href="style.css" type="text/css" rel="stylesheet">
+     	<link rel="shortcut icon" type="image/png" href="icons/favicon.png">
+</head>
+<body>
+     	<div id="navbar">
+	  	<img src="icons/banner-logo.png" alt="" id="banner">
+	  	<!-- Nav bar section -->
+       		<nav>
+	    		<ul>
+		 		<li><a href="index.html">Home</a></li>
+		 		<li><a href="robots.html">Various Robots</a></li>
+		 		<li><a href="projects.html">Sundry Projects</a></li>
+		 		<li><a href="more.html">More</a></li>
+		 		<li><a href="about.html">About</a></li>
+	    		</ul>
+       		</nav>
+     	</div>
+     	<div id="main">
+      		<h1>Installing Arch Linux Arm on the Raspberry Pi</h1>
+		<p>I have not added anything to this series in well over a year, and the Debian based operating system that <a href="raspberry_pi_server_operating_system_install.html">I had previously installed</a> on the Raspberry Pi would be quite out of date, requiring a reinstall. Rather than install an up-to-date Debian based operating system, I have decided to install <a href="https://archlinuxarm.org/">Arch Linux Arm</a>. It is a rolling release distribution, meaning that I will not have to take the time to reinstall it again if it becomes out-of-date.</p>
+		<p>This article will show how to install Arch Linux Arm on the Raspberry Pi. I will be using a laptop with Arch Linux on it to install Arch Linux Arm on the Raspberry Pi's SD card, but the steps would generally be the same even if I had a distribution other than Arch Linux on my laptop.</p>
+
+		<h2>Install Arch Linux on the SD Card</h2>
+		<p>First, I plugged the SD card into my laptop and used fdisk to find the SD card's identifier, which was <code>sdb</code> in this case.</p>
+		<div class="term">
+			<div>
+				<code class="command">$</code> <code class="command">sudo fdisk -l</code><br>
+				<code>Disk /dev/sda: 149.05 GiB, 160041885696 bytes, 312581808 sectors</code><br>
+				<code>Disk model: Hitachi HTS72321</code><br>
+				<code>Units: sectors of 1 * 512 = 512 bytes</code><br>
+				<code>Sector size (logical/physical): 512 bytes / 512 bytes</code><br>
+				<code>I/O size (minimum/optimal): 512 bytes / 512 bytes</code><br>
+				<code>Disklabel type: dos</code><br>
+				<code>Disk identifier: 0x00000000</code><br>
+				<code></code><br>
+				<code>Device     Boot    Start       End  Sectors  Size Id Type</code><br>
+				<code>/dev/sda1           2048    309247   307200  150M 83 Linux</code><br>
+				<code>/dev/sda2         309248  12892159 12582912    6G 83 Linux</code><br>
+				<code>/dev/sda3       12892160  86292479 73400320   35G 83 Linux</code><br>
+				<code>/dev/sda4       86292480 159692799 73400320   35G 83 Linux</code><br>
+				<code></code><br>
+				<code></code><br>
+				<code>Disk /dev/sdb: 7.25 GiB, 7780433920 bytes, 15196160 sectors</code><br>
+				<code>Disk model: Multi-Card</code><br>
+				<code>Units: sectors of 1 * 512 = 512 bytes</code><br>
+				<code>Sector size (logical/physical): 512 bytes / 512 bytes</code><br>
+				<code>I/O size (minimum/optimal): 512 bytes / 512 bytes</code><br>
+				<code>Disklabel type: dos</code><br>
+				<code>Disk identifier: 0xc30ac758</code><br>
+				<code></code><br>
+				<code>Device     Boot  Start      End  Sectors  Size Id Type</code><br>
+				<code>/dev/sdb1         8192   532479   524288  256M  c W95 FAT32 (LBA)</code><br>
+				<code>/dev/sdb2       532480 15196159 14663680    7G 83 Linux</code><br>
+			</div>
+		</div>
+
+		<p>I then partitioned the drive using fdisk.</p>
+		<div class="term">
+			<div>
+				<code class="command">$</code> <code class="command">sudo fdisk /dev/sdb</code></br>
+				<code></code><br>
+				<code>Welcome to fdisk (util-linux 2.37.2).</code><br>
+				<code>Changes will remain in memory only, until you decide to write them.</code><br>
+				<code>Be careful before using the write command.</code><br>
+				<code></code><br>
+				<code></code><br>
+				<code>Command (m for help): <b>o</b></code><br>
+				<code>Created a new DOS disklabel with disk identifier 0x67a9e83d.</code><br>
+				<code></code><br>
+				<code>Command (m for help): <b>p</b></code><br>
+				<code>Disk /dev/sdb: 7.25 GiB, 7780433920 bytes, 15196160 sectors</code><br>
+				<code>Disk model: Multi-Card</code><br>
+				<code>Units: sectors of 1 * 512 = 512 bytes</code><br>
+				<code>Sector size (logical/physical): 512 bytes / 512 bytes</code><br>
+				<code>I/O size (minimum/optimal): 512 bytes / 512 bytes</code><br>
+				<code>Disklabel type: dos</code><br>
+				<code>Disk identifier: 0x67a9e83d</code><br>
+				<code></code><br>
+				<code>Command (m for help): <b>n</b></code><br>
+				<code>Partition type</code><br>
+				<code>   p   primary (0 primary, 0 extended, 4 free)</code><br>
+				<code>   e   extended (container for logical partitions)</code><br>
+				<code>Select (default p): <b>p</b></code><br>
+				<code>Partition number (1-4, default 1): <b>1</b></code><br>
+				<code>First sector (2048-15196159, default 2048): <b>RETERN</b></code><br>
+				<code>Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-15196159, default 15196159): <b>+100M</b></code><br>
+				<code></code><br>
+				<code>Created a new partition 1 of type 'Linux' and of size 100 MiB.</code><br>
+				<code></code><br>
+				<code>Command (m for help): <b>t</b></code><br>
+				<code>Selected partition 1</code><br>
+				<code>Hex code or alias (type L to list all): <b>c</b></code><br>
+				<code>Changed type of partition 'Linux' to 'W95 FAT32 (LBA)'.</code><br>
+				<code></code><br>
+				<code>Command (m for help): <b>n</b></code><br>
+				<code> Partition type</code><br>
+				<code>    p   primary (1 primary, 0 extended, 3 free)</code><br>
+				<code>    e   extended (container for logical partitions)</code><br>
+				<code>Select (default p): <b>p</b></code><br>
+				<code>Partition number (2-4, default 2): <b>2</b></code><br>
+				<code>First sector (206848-15196159, default 206848): <b>RETERN</b></code><br>
+				<code>Last sector, +/-sectors or +/-size{K,M,G,T,P} (206848-15196159, default 15196159): <b>RETERN</b></code><br>
+				<code></code><br>
+				<code>Created a new partition 2 of type 'Linux' and of size 7.1 GiB.</code><br>
+				<code></code><br>
+				<code>Command (m for help): <b>w</b></code><br>
+			</div>
+		</div>
+
+		<p>I then formatted the first partition.</p>
+		<div class="term">
+			<div>
+				<code class="command">$</code> <code class="command">sudo mkfs -t vfat /dev/sdb1</code><br>
+				<code>mkfs.fat 4.2 (2021-01-31)</code><br>
+			</div>
+		</div>
+
+		<p>I then mounted the first partition.</p>
+		<div class="term">
+			<div>
+				<code class="command">$</code> <code class="command">mkdir boot</code><br>
+				<code></code><br>
+				<code class="command">$</code> <code class="command">sudo mount /dev/sdb1 boot</code><br>
+			</div>
+		</div>
+
+		<p>I then formatted the second partition.</p>
+		<div class="term">
+			<div>
+				<code class="command">$</code> <code class="command">sudo mkfs -t ext4 /dev/sdb2</code><br>
+				<code>	mke2fs 1.46.4 (18-Aug-2021)</code><br>
+				<code>	Creating filesystem with 1873664 4k blocks and 468640 inodes</code><br>
+				<code>	Filesystem UUID: d2874535-cf2f-4e5f-bbb4-758320c6effb</code><br>
+				<code>	Superblock backups stored on blocks:</code><br>
+				<code>	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632</code><br>
+				<code></code><br>
+				<code>	Allocating group tables: done</code><br>
+				<code>	Writing inode tables: done</code><br>
+				<code>	Creating journal (16384 blocks): done</code><br>
+				<code>	Writing superblocks and filesystem accounting information:</code><br>
+				<code>	done</code><br>
+			</div>
+		</div>
+
+		<p>I then mounted the second partition.</p>
+		<div class="term">
+			<div>
+				<code class="command">$</code> <code class="command">mkdir root</code><br>
+				<code></code><br>
+				<code class="command">$</code> <code class="command">sudo mount /dev/sdb2 root</code><br>
+			</div>
+		</div>
+
+		<p>I then downloaded the current Arch Linux Arm ISO file.</p>
+		<div class="term">
+			<div>
+				<code class="command">$</code> <code class="command">wget http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-armv7-latest.tar.gz</code><br>
+			</div>
+		</div>
+
+		<p>I then extracted the contents of the ISO file onto the second partition of the SD card and also populated the first partition.</p>
+		<div class="term">
+			<div>
+				<code class="command">$</code> <code class="command">su root</code><br>
+				<code class="command">$</code> <code class="command">bsdtar -xpf ArchLinuxARM-rpi-armv7-latest.tar.gz -C root</code><br>
+				<code class="command">$</code> <code class="command">sync</code><br>
+				<code class="command">$</code> <code class="command">mv root/boot/* boot</code><br>
+			</div>
+		</div>
+
+		<p>I then unmounted the partitions.</p>
+		<div class="term">
+			<div>
+				<code class="command">$</code> <code class="command">umount boot root</code><br>
+			</div>
+		</div>
+
+		<h2>Setting Up Arch Linux</h2>
+		<p>I then plugged the SD card into the Raspberry Pi and booted it. I plugged in a monitor and keyboard and logged into the system's default account, which has user name <code>alarm</code> and password <code>alarm</code>.</p>
+
+		<p>I then changed the password of the <code>alarm</code> user.</p>
+		<div class="term">
+			<div>
+				<code class="command">$</code> <code class="command">passwd</code><br>
+			</div>
+		</div>
+
+		<p>I then logged in as the root user, which has default password <code>root</code>.</p>
+		<div class="term">
+			<div>
+				<code class="command">$</code> <code class="command">su root</code><br>
+			</div>
+		</div>
+
+		<p>I then changed the password of the <code>root</code> user.</p>
+		<div class="term">
+			<div>
+				<code class="command">$</code> <code class="command">passwd</code><br>
+			</div>
+		</div>
+
+
+		<p>I then connected to Wi-Fi using <code>wifi-menu</code>.</p>
+		<div class="term">
+			<div>
+				<code class="command">#</code> <code class="command">wifi-menu</code><br>
+			</div>
+		</div>
+
+		<p>For some reason, after rebooting, the Pi would not automatically reconnect to the Wi-Fi network (I think that, in the past, it would do so automatically). Consequently, I ran the following <code>netctl</code> command with the name of the network profile to which the Pi was connected. This ensures that it connects to the Wi-Fi network automatically upon boot.</p>
+		<div class="term">
+			<div>
+				<code class="command">#</code> <code class="command">netctl enable &lt;name_of_wifi_profile&gt;</code><br>
+			</div>
+		</div>
+
+		<p>I then setup the package management system and updated all of the out-of-date packages.</p>
+		<div class="term">
+			<div>
+				<code class="command">#</code> <code class="command">pacman-key --init</code><br>
+				<code class="command">#</code> <code class="command">pacman-key --populate archlinuxarm	</code><br>
+				<code class="command">#</code> <code class="command">pacman -Syu</code><br>
+			</div>
+		</div>
+
+		<p>I then installed <code>sudo</code> and <code>vim</code> because they are useful tools for me.</p>
+		<div class="term">
+			<div>
+				<code class="command">#</code> <code class="command">pacman -S sudo</code><br>
+				<code class="command">#</code> <code class="command">pacman -S vim</code><br>
+			</div>
+		</div>
+
+		<p>I also added the <code>alarm</code> user to the <code>wheel</code> group.</p>
+		<div class="term">
+			<div>
+				<code class="command">#</code> <code class="command">usermod -aG wheel alarm</code><br>
+			</div>
+		</div>
+
+		<p>I then used <code>visudo</code> to make the <code>alarm</code> user a sudoer and configure its privileges.</p>
+		<div class="term">
+			<div>
+				<code class="command">#</code> <code class="command">export EDITOR="/usr/bin/vim"</code><br>
+				<code class="command">#</code> <code class="command">visudo</code><br>
+			</div>
+		</div>
+
+		<p>I added the following three lines to the sudoers file.</p>
+		<div class="term">
+			<div>
+				<code>%wheel ALL=(ALL) ALL</code><br>
+				<code>alarm ALL = NOPASSWD: /usr/bin/pacman</code><br>
+				<code>alarm ALL = NOPASSWD: /usr/bin/shutdown</code><br>
+			</div>
+		</div>
+
+		<p>I then reverted to the <code>alarm</code> user and added the following line to the <code>/home/alarm/.bashrc</code> in order to change the appearance of the prompt</p>
+		<div class="term">
+			<div>
+				<code>export PS1="\[\e[1;33m\][\[\e[1;37m\]\W\e\[[1;33m]\]#\[\e[0m\] "<code><br>
+			</div>
+		</div>
+
+
+		<p>I then went back to my laptop and logged into the Pi via SSH. I found its IP address in the same way that I did in <a href="raspberry_pi_server_ssh.html">this article</a>.</p>
+		<div class="term">
+			<div>
+				<code class="command">#</code> <code class="command">ssh alarm@192.168.1.29</code><br>
+			</div>
+		</div>
+
+		<p>I then set up an SSH key pair so that I can log into the Pi without using its password. In order to do that, I ran the following two commands on my laptop.</p>
+		<div class="term">
+			<div>
+				<code class="command">#</code> <code class="command">ssh-keygen</code><br>
+				<code>	Generating public/private rsa key pair.</code><br>
+				<code>	Enter file in which to save the key (/home/idm/.ssh/id_rsa):</code><br>
+				<code>	Enter passphrase (empty for no passphrase):</code><br>
+				<code>	Enter same passphrase again:</code><br>
+				<code>	Your identification has been saved in /home/idm/.ssh/id_rsa</code><br>
+				<code>	Your public key has been saved in /home/idm/.ssh/id_rsa.pub</code><br>
+				<code>	The key fingerprint is:</code><br>
+				<code>	SHA256:jzSLReSOTPKlJ+6FiqdyUVCvs1g+RZEEs6XwSRvnrO8 idm@HP-Arch</code><br>
+				<code>	The key's randomart image is:</code><br>
+				<code class="command">#</code> <code class="command">ssh-copy-id alarm@192.168.1.29</code><br>
+			</div>
+		</div>
+		<hr>
+		<table class="centable">
+			<tr>
+				<th><a href="raspberry_pi_server_installing_apache.html">Previous</a></th>
+				<th>Published August 31, 2022</th>
+				<!-- <th><a href="#">Next</a></th> -->
+			</tr>
+		</table>
+		<br>
+	</div>
+</body>
+</html>
