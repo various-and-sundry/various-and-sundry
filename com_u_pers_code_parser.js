@@ -661,7 +661,7 @@ function interpret_operating_system(word) {					//Accepts the code for a single 
 	} else if(word === "L") {
 		output = output.concat("GNU/Linux");
 	} else if(word === "M") {
-		output = output.concat("Mac OS");
+		output = output.concat("macOS");
 	} else if(word === "Mi") {
 		output = output.concat("Minix");
 	} else if(word === "Md") {

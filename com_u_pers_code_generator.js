@@ -2581,17 +2581,17 @@ function getcode() {
 
 
 
-	//Mac OS
+	//macOS
 
 
-	var macos = document.getElementById("Mac OS");
-	var macosp = document.getElementById("Mac OS+");
-	var macospp = document.getElementById("Mac OS++");
-	var macosppp = document.getElementById("Mac OS+++");
-	var macospppp = document.getElementById("Mac OS++++");
-	var macosppppp = document.getElementById("Mac OS+++++");
-	var macospppppp = document.getElementById("Mac OS++++++");
-	var macoss = document.getElementById("Mac OS*");
+	var macos = document.getElementById("macOS");
+	var macosp = document.getElementById("macOS+");
+	var macospp = document.getElementById("macOS++");
+	var macosppp = document.getElementById("macOS+++");
+	var macospppp = document.getElementById("macOS++++");
+	var macosppppp = document.getElementById("macOS+++++");
+	var macospppppp = document.getElementById("macOS++++++");
+	var macoss = document.getElementById("macOS*");
 
 
 
