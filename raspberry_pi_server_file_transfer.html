@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<title>Raspberry Pi Server -- File Transfer</title>
+		<link href="style.css" type="text/css" rel="stylesheet">
+		<link rel="shortcut icon" type="image/png" href="icons/favicon.png">
+	</head>
+	<body>
+		<div id="navbar">
+			<img src="icons/banner-logo.png" alt="" id="banner">
+			<!-- Nav bar section -->
+			<nav>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="robots.html">Various Robots</a></li>
+					<li><a href="projects.html">Sundry Projects</a></li>
+					<li><a href="more.html">More</a></li>
+					<li><a href="about.html">About</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div id="main">
+			<h1>Copying Files to the Raspberry Pi Over a Network</h1>
+			<p>This article will be dealing with transferring files to and from the Pi over a network. As an example, some web site files will be transferred to the Pi for an Apache server on the Pi. An <a href= "raspberry_pi_server_installing_apache.html">article</a>, has already been written showing how to install the server on Debian, but Arch Apache instillation instructions are shown below because this article series now uses Arch Arm.</p>
+
+			<h2>Apache</h2>
+			<p>Apache can be installed via pacman.</p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">sudo pacman -S apache</code><br>
+					<code>resolving dependencies...</code><br>
+					<code>looking for conflicting packages...</code><br>
+					<code></code><br>
+					<code>Packages (3) apr-1.7.0-3  apr-util-1.6.1-9  apache-2.4.54-2</code><br>
+					<code></code><br>
+					<code>Total Download Size:   1.82 MiB</code><br>
+					<code>Total Installed Size:  7.16 MiB</code><br>
+				</div>
+			</div>
+
+			<p>Then, it needs to be enabled with systemctl.</p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">sudo systemctl start httpd</code><br>
+				</div>
+			</div>
+
+			<p>Files to be served by http are stored in <code>/srv/http</code>. By default, root privilege is needed to modify anything in that directory. To modify it more easily (and because this is a test server for which security is not really a concern), I changed the directory's group to <code>wheel</code>, and gave the group read, write, and execute privilege.</p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">sudo chgrp wheel /srv/http/</code><br>
+					<code class="command">$</code> <code class="command">sudo chmod g=rwx /srv/http/</code><br>
+				</div>
+			</div>
+
+
+			<h2>scp</h2>
+			<p><code>scp</code> is a part of OpenSSH and can securely Transfer files and/or directories over a network through SSH. It is very similar to the <code>cp</code> command.</p>
+
+			<p>When sending a file to the Pi, first the file that is to be sent is listed. Then the destination is given. The destination is formatted as follows: username, @, IP address:, destination path.</p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">scp file user@000.000.0.00:/destination/file/path</code><br>
+				</div>
+			</div>
+
+			<p>When sending a file from the Pi, the same is done in reverse.</p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">scp user@000.000.0.00:file destination</code><br>
+				</div>
+			</div>
+
+			<p>However, one should remember that, in order to send files from the Pi back to the controlling computer, the OpenSSH daemon must be enabled on the controlling computer. The commands needed to turn the daemon on and off are shown below.</p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">sudo systemctl start sshd</code><br>
+					<code class="command">$</code> <code class="command">sudo systemctl stop sshd</code><br>
+				</div>
+			</div>
+
+
+			<p>As an example, I will more the files from a webs site that I made a few years ago to the server. Notice that the <code>-r</code> flag is used because directories need to be moved.</p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">scp -r ./* alarm@192.168.1.29:/srv/http/</code><br>
+				</div>
+			</div>
+
+			<h2>rsync</h2>
+
+			<p><code>rsync</code> can perform basically all of the functions that <code>scp</code> can perform but also has some additional features. Perhaps most importantly, it can selectively copy only files that have more recent modification dates than files with the same name in the destination directory. For instance, if a large web site is stored both on a local computer and on the Pi, local changes can be moved to the Pi without recopying all of the unchanged files.</p>
+			<p>The <code>-r</code> flag copies files recursively, the <code>-v</code> flag gives a verbose output, and the <code>-u</code> flag only updates files that need to be updated.</p>
+
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">rsync -vur file user@000.000.0.00:destination</code><br>
+					<code class="command">$</code> <code class="command">rsync -vur user@000.000.0.00:file destination</code><br>
+				</div>
+			</div>
+		<hr>
+		<table class="centable">
+			<tr>
+				<th><a href="raspberry_pi_server_arch_arm_install.html">Previous</a></th>
+				<th>Published November 2, 2022</th>
+				<!-- <th><a href="#">Next</a></th> -->
+			</tr>
+		</table>
+	</body>
+</html>
+
+
+
