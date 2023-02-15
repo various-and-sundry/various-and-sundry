@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<title>Raspberry Pi Server -- Hugo</title>
+		<link href="style.css" type="text/css" rel="stylesheet">
+		<link rel="shortcut icon" type="image/png" href="icons/favicon.png">
+	</head>
+	<body>
+		<div id="navbar">
+			<img src="icons/banner-logo.png" alt="" id="banner">
+			<!-- Nav bar section -->
+			<nav>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="robots.html">Various Robots</a></li>
+					<li><a href="projects.html">Sundry Projects</a></li>
+					<li><a href="more.html">More</a></li>
+					<li><a href="about.html">About</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div id="main">
+			<h1>Using The Hugo Static Site Generator</h1>
+			<p>Hugo is a light weight static site generator that creates full, well-structured web sites from Markdown files.</p>
+
+			<p>It is a package in the Arch Linux repository.</p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">sudo pacman -S hugo</code><br>
+					<code>resolving dependencies...</code><br>
+					<code>looking for conflicting packages...</code><br>
+					<code></code><br>
+					<code>Packages (1) hugo-0.109.0-1</code><br>
+					<code></code><br>
+					<code>Total Download Size:   11.44 MiB</code><br>
+					<code>Total Installed Size:  53.61 MiB</code><br>
+					<code></code><br>
+					<code>:: Proceed with installation? [Y/n]</code><br>
+				</div>
+			</div>
+
+			<p>Git will also be used by the instructions on this page, and it can obviously be installed as follows.</p>
+
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">sudo pacman -S git</code><br>
+					<code>resolving dependencies...</code><br>
+					<code>looking for conflicting packages...</code><br>
+					<code></code><br>
+					<code>Packages (4) perl-error-0.17029-4  perl-mailtools-2.21-6  perl-timedate-2.33-4  git-2.39.1-1</code><br>
+					<code></code><br>
+					<code>Total Download Size:    5.83 MiB</code><br>
+					<code>Total Installed Size:  35.60 MiB</code><br>
+					<code></code><br>
+					<code>:: Proceed with installation? [Y/n]</code><br>
+				</div>
+			</div>
+
+			<p>The following command creates a blank web site named <code>my-site</code>.</p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">hugo new site my-site</code><br>
+				</div>
+			</div>
+
+			<p>A theme is needed for each web page. In this example, Luke Smith's Hugo theme (<a href="https://github.com/LukeSmithxyz/lugo">Lugo</a>) is used. Mr. Smith also has a very good <a href="https://videos.lukesmith.xyz/w/oz4VV8SrnTEACCndxMASZH">Hugo video tutorial</a>.</p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">cd my-site</code><br>
+					<code class="command">$</code> <code class="command">git clone https://github.com/lukesmithxyz/lugo themes/lugo</code><br>
+				</div>
+			</div>
+						
+			<p>A line should be added to the <code>config.toml</code> file in order to activate the theme.</p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">echo "theme = 'lugo'" >> config.toml</code><br>
+				</div>
+			</div>
+
+			<p>If one wants to modify the CSS of the site, the CSS file should be copied to the <code>static</code> directory.</p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">cp themes/lugo/static/style.css static/</code><br>
+				</div>
+			</div>
+
+			<p>The site can be seen locally in a browser by running <code>hugo server</code> and viewing <code>http://localhost:1313/</code> in a browser. However, this does not work remotely through SSH unless a browser is run through SSH.</p>
+
+			<p>The site can be generated via the command <code>hugo</code>. The site will be generated in the <code>public</code> directory.</p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">hugo</code><br>
+				</div>
+			</div>
+
+			<p>However, in order to serve the site through Apache, I would like to generate the site in the <code>/srv/http/</code> directory. The <code>hugo</code> command can be passed the <code>-d</code> flag in order to give it a destination directory.</p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">hugo -d /srv/http/</code><br>
+				</div>
+			</div>
+
+			<p>The default site can then be seen at the server's IP address.</p>
+			<img class="centimage" src="images/raspberry_pi_server/hugo/base_site.png" alt="">
+
+			<p>The <code>config.toml</code> file contains the base configuration of the site.</p>
+			<div class="term">
+				<div>
+					<code>baseURL = 'http://example.org/'</code><br>
+					<code>languageCode = 'en-us'</code><br>
+					<code>title = 'My New Hugo Site'</code><br>
+					<code>theme = 'lugo'</code><br>
+				</div>
+			</div>
+
+			<p>Those attributes can all be changed. Additionally, some extra lines can be added if HTML is to be used within the Markdown files that will generate pages. The following is the version of the <code>config.toml</code> file that is used in the example below.</p>
+			<div class="term">
+				<div>
+					<code>baseURL = 'http://192.168.1.29'</code><br>
+					<code>languageCode = 'en-us'</code><br>
+					<code>title = 'Various-and-Sundry.com'</code><br>
+					<code>theme = 'lugo'</code><br>
+					<code></code><br>
+					<code>[markup.goldmark.renderer]</code><br>
+					<code>unsafe= true</code><br>
+
+				</div>
+			</div>
+
+			<img class="centimage" src="images/raspberry_pi_server/hugo/changed_attributes.png" alt="">
+
+			<p>A new page can be created using the command <code>hugo new page.md</code> where <code>page.md</code> is the name of the page followed by the Markdown file extension. Markdown can then be added to it to populate the page. For organization's sake, these files can also be created within subdirectories.</p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">hugo new page.md</code><br>
+				</div>
+			</div>
+
+			<p>Below is an example of a Markdown file that uses most of the basic Markdown features. An image of the page that this creates is then shown below that. This page does use one locally stored image, which can be downloaded and stored in the <code>static/images</code> directory as shown below.</code></p>
+			<div class="term">
+				<div>
+					<code class="command">$</code> <code class="command">mkdir static/images</code><br>
+					<code class="command">$</code> <code class="command">wget --no-check-certificate -P static/images/ https://d33wubrfki0l68.cloudfront.net/c38c7334cc3f23585738e40334284fddcaf03d5e/2e17c/images/hugo-logo-wide.svg</code><br>
+				</div>
+			</div>
+
+			<div class="term">
+					<pre>
+---
+title: "Page"
+date: 2022-12-22T02:50:47Z
+draft: false
+tags: ['these', 'are', 'tags']
+---
+
+# Here Is A Heading
+
+## Text
+Here is some text, which is written in Markdown.
+
+Here is some *italicized text* and some **bold text**. ***Both*** can be done at the same time too.
+
+Here is some code: `System.out.println("Hello World!");`
+
+Everyone should visit [Various-and-Sundry.com](https://various-and-sundry.com "This text is displayed when one hovers over the link").
+
+Using &lt;code&gt;HTML&lt;/code&gt; is &lt;em&gt;fine&lt;/em&gt; too.
+
+## Blockquote
+
+&gt;  But what things were gain to me, those I counted loss for Christ.
+&gt;
+&gt; Yea doubtless, and I count all things but loss for the excellency of the knowledge of Christ Jesus my Lord: for whom I have suffered the loss of all things, and do count them but dung, that I may win Christ,
+&gt;
+&gt; And be found in him, not having mine own righteousness, which is of the law, but that which is through the faith of Christ, the righteousness which is of God by faith:
+&gt;
+&gt; That I may know him, and the power of his resurrection, and the fellowship of his sufferings, being made conformable unto his death;
+&gt;
+&gt; If by any means I might attain unto the resurrection of the dead.
+&gt;
+&gt; Not as though I had already attained, either were already perfect: but I follow after, if that I may apprehend that for which also I am apprehended of Christ Jesus.
+
+## Lists
+* list item 1
+* another list item
+* list item 3
+  * this is an indented item
+  * this is another one
+* this is another normal item
+
+1. this
+2. is
+   1. a
+3. numbered
+4. list
+
+## Code Block
+
+    #include &lt;stdio.h&gt;
+
+    int main() {
+        // Here is a comment
+        printf("Hello World!");
+  
+        return 0;
+    }
+
+
+## Images
+
+![The Various-and-Sundry Logo](https://www.various-and-sundry.com/icons/banner-logo.png)
+[![The Hugo Logo](/images/hugo-logo-wide.svg "Here is some hover text.")](https://gohugo.io/)
+
+## Horzontal Rule
+
+___
+
+## URL Links
+&lt;https://www.various-and-sundry.org&gt;
+
+&lt;someone@various-and-sundry.com&gt;
+					</pre>
+			</div>
+
+			<img class="centimage" src="images/raspberry_pi_server/hugo/page.png" alt="">
+
+			<p>An _index.md can be created to add content to the home page. One can also do that in a subdirectory to modify the main page of the subdirectory.</p>
+
+			<hr>
+			<table class="centable">
+				<tr>
+					<th><a href="raspberry_pi_server_file_transfer.html">Previous</a></th>
+					<th>Published February 15, 2023</th>
+					<!-- <th><a href="#">Next</a></th> -->
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
