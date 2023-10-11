@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <title>Raspberry Pi Server -- MySQL/MariaDB</title>
+   <link href="style.css" type="text/css" rel="stylesheet">
+   <link rel="shortcut icon" type="image/png" href="icons/favicon.png">
+</head>
+<body>
+   <div id="navbar">
+      <img src="icons/banner-logo.png" alt="" id="banner">
+      <nav>
+	      <ul>
+		      <li><a href="index.html">&#127968; Home</a></li>
+		      <li><a href="projects.html">&#129691; Projects</a></li>
+		      <li><a href="articles.html">&#128221; Articles</a></li>
+		      <li><a href="books.html">&#128218; Books</a></li>
+		      <li><a href="more.html">&#128377; More</a></li>
+		      <li><a href="about.html">&#129516; About</a></li>
+	      </ul>
+      </nav>
+   </div>
+   <div id="main">
+      <h1>Setting Up MySQL/MariaDB</h1>
+
+      <p class="centext">MariaDB is basically an open source fork of MySQL.</p>
+
+      <h2>Installation</h2>
+
+      <p class="centext">MariaDB can simply be installed via <code>pacman</code> with the following command.</p>
+      
+      <div class="term">
+	      <code class="command">$</code> <code class="command">pacman -S mariadb</code><br>
+	      <div>
+		      <code>resolving dependencies...</code><br>
+		      <code>looking for conflicting packages...</code><br>
+		      <code></code><br>
+		      <code>Packages (5) jemalloc-1:5.3.0-3  liburing-2.4-1  mariadb-clients-11.1.2-1  mariadb-libs-11.1.2-1</code><br>
+		      <code>mariadb-11.1.2-1</code><br>
+		      <code></code><br>
+		      <code>Total Download Size:    41.21 MiB</code><br>
+		      <code>Total Installed Size:  300.52 MiB</code><br>
+		      <code></code><br>
+		      <code>:: Proceed with installation? [Y/n]</code><br>
+	      </div>
+      </div>
+
+
+      <h2>Setup</h2>
+
+      <p>First, run the following setup command.</p>
+
+      <div class="term">
+	      <code class="command">$</code> <code class="command">mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql</code><br>
+	      <div>
+		      <code>Installing MariaDB/MySQL system tables in '/var/lib/mysql' ...</code><br>
+		      <code>OK</code><br>
+		      <code></code><br>
+		      <code>To start mariadbd at boot time you have to copy</code><br>
+		      <code>support-files/mariadb.service to the right place for your system</code><br>
+		      <code></code><br>
+		      <code></code><br>
+		      <code>Two all-privilege accounts were created.</code><br>
+		      <code>One is root@localhost, it has no password, but you need to</code><br>
+		      <code>be system 'root' user to connect. Use, for example, sudo mysql</code><br>
+		      <code>The second is mysql@localhost, it has no password either, but</code><br>
+		      <code>you need to be the system 'mysql' user to connect.</code><br>
+		      <code>After connecting you can set the password, if you would need to be</code><br>
+		      <code>able to connect as any of these users with a password and without sudo</code><br>
+		      <code></code><br>
+		      <code>See the MariaDB Knowledgebase at https://mariadb.com/kb</code><br>
+		      <code></code><br>
+		      <code>You can start the MariaDB daemon with:</code><br>
+		      <code>cd '/usr' ; /usr/bin/mariadb-safe --datadir='/var/lib/mysql'</code><br>
+		      <code></code><br>
+		      <code>You can test the MariaDB daemon with mariadb-test-run.pl</code><br>
+		      <code>cd '/usr/mariadb-test' ; perl mariadb-test-run.pl</code><br>
+		      <code></code><br>
+		      <code>Please report any problems at https://mariadb.org/jira</code><br>
+		      <code></code><br>
+		      <code>The latest information about MariaDB is available at https://mariadb.org/.</code><br>
+		      <code></code><br>
+		      <code>Consider joining MariaDB's strong and vibrant community:</code><br>
+		      <code>https://mariadb.org/get-involved/</code><br>
+	      </div>
+      </div>
+
+     
+      <p class="centext">Then, MariaDB must be started with <code>systemctl</code>. One can <code>start</code> the service every time it is needed (it will not restart upon boot), or one can <code>enable</code> it so that it always starts upon boot. Both are shown below.</p>
+
+      <div class="term">
+	      <code class="command">$</code> <code class="command">systemctl start mariadb</code><br>
+	      <code class="command">$</code> <code class="command">systemctl enable mariadb</code><br>
+	      <div>
+	      </div>
+      </div>
+
+      <p>Then you can enter the MariaDB interface. The default password should be blank.</p>
+      <div class="term">
+	      <code class="command">$</code> <code class="command">sudo mysql -u root -p</code><br>
+	      <div>
+		      <code>Enter password:</code><br>
+		      <code>Welcome to the MariaDB monitor.  Commands end with ; or \g.</code><br>
+		      <code>Your MariaDB connection id is 3</code><br>
+		      <code>Server version: 11.1.2-MariaDB Arch Linux</code><br>
+		      <code></code><br>
+		      <code>Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.</code><br>
+		      <code></code><br>
+		      <code>Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.</code><br><br>
+	      </div>
+      </div>
+
+      <p>A new user can be added.</p>
+      <div class="term">
+	      <code class="command">MariaDB [(none)]></code> <code class="command">CREATE USER 'USER_NAME'@'localhost' IDENTIFIED BY 'PASSWORD';</code><br>
+	      <code>Query OK, 0 rows affected (0.014 sec)</code><br>
+	      <code class="command">MariaDB [(none)]></code> <code class="command">MariaDB> GRANT ALL PRIVILEGES ON *.* TO 'USER_NAME'@'localhost';</code><br>
+	      <code>Query OK, 0 rows affected (0.005 sec)</code><br>
+	      <code class="command">MariaDB [(none)]></code> <code class="command">MariaDB> FLUSH PRIVILEGES;</code><br>
+	      <code>Query OK, 0 rows affected (0.004 sec)</code><br>
+	      <code class="command">MariaDB [(none)]></code> <code class="command">MariaDB> quit</code><br>
+	      <code>Bye</code><br>
+      </div>
+
+      <p>That user can then be used to login. If a blank password was set, then an empty password can be used to login.</p>
+      <div class="term">
+	      <code class="command">$</code> <code class="command">mariadb -u USER_NAME -p</code><br>
+	      <div>
+		      <code>Enter password:</code><br>
+		      <code>Welcome to the MariaDB monitor.  Commands end with ; or \g.</code><br>
+		      <code>Your MariaDB connection id is 4</code><br>
+		      <code>Server version: 11.1.2-MariaDB Arch Linux</code><br>
+		      <code></code><br>
+		      <code>Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.</code><br>
+		      <code></code><br>
+		      <code>Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.</code><br>
+		      <code></code><br>
+		      <code>MariaDB [(none)]></code><br>
+	      </div>
+      </div>
+
+      <h2>Use</h2>
+
+      <p>Once logged in, a new database can be created as follows.</p>
+      <div class="term">
+	      <code class="command">MariaDB [(none)]> </code> <code class="command">CREATE DATABASE myDataBase;</code><br>
+	      <div>
+		      <code>Query OK, 1 row affected (0.001 sec)</code><br>
+	      </div>
+      </div>
+
+      <p>That database can be entered as follows.</p>
+      <div class="term">
+	      <code class="command">MariaDB [(none)]> </code> <code class="command">USE myDataBase;</code><br>
+	      <div>
+		      <code>Database changed</code><br>
+	      </div>
+      </div>
+
+      <p>A table can be created as follows.</p>
+      <div class="term">
+	      <code class="command">MariaDB [myDataBase]></code> <code class="command">CREATE TABLE exampleTable (</code><br>
+	      <code class="command"></code> <code class="command">CREATE TABLE exampleTable (</code><br>
+	      <code class="command"></code> <code class="command">-> ID char(5) not null,</code><br>
+	      <code class="command"></code> <code class="command">-> name varchar(15) not null,</code><br>
+	      <code class="command"></code> <code class="command">-> number int not noll,</code><br>
+	      <code class="command"></code> <code class="command">-> primary key (ID));</code><br>
+
+	      <div>
+		      <code>Query OK, 0 rows affected (0.204 sec)</code><br>
+	      </div>
+      </div>
+
+      <p>Data can be loaded from an external SQL file as follows.</p>
+      <div class="term">
+	      <code class="command">MariaDB [myDataBase]> </code> <code class="command">SOURCE database.sql</code><br>
+	      <div>
+		      <code>Query OK, 0 rows affected (0.116 sec)</code><br>
+		      <code></code><br>
+		      <code>Query OK, 0 rows affected (0.106 sec)</code><br>
+		      <code></code><br>
+		      <code>Query OK, 0 rows affected (0.092 sec)</code><br>
+		      <code></code><br>
+		      <code>Query OK, 0 rows affected (0.108 sec)</code><br>
+		      <code></code><br>
+		      <code>Query OK, 0 rows affected (0.100 sec)</code><br>
+		      <code></code><br>
+		      <code>Query OK, 0 rows affected (0.125 sec)</code><br>
+		      <code></code><br>
+		      <code>Query OK, 0 rows affected (0.108 sec)</code><br>
+		      <code></code><br>
+		      <code>Query OK, 0 rows affected (0.090 sec)</code><br>
+		      <code></code><br>
+		      <code>Query OK, 0 rows affected (0.117 sec)</code><br>
+		      <code></code><br>
+		      <code>Query OK, 0 rows affected (0.108 sec)</code><br>
+		      <code></code><br>
+		      <code>Query OK, 0 rows affected (0.092 sec)</code><br>
+	      </div>
+      </div>
+
+      <p>All available tables can be shown as follows.</p>
+      <div class="term">
+	      <code class="command">MariaDB [myDataBase]> </code> <code class="command">SHOW TABLES;</code><br>
+	      <div>
+		      <code>+----------------------+</code><br>
+		      <code>| Tables_in_university |</code><br>
+		      <code>+----------------------+</code><br>
+		      <code>| balloons             |</code><br>
+		      <code>| designs              |</code><br>
+		      <code>| clowns               |</code><br>
+		      <code>| circus               |</code><br>
+		      <code>| clubs                |</code><br>
+		      <code>| jugglers             |</code><br>
+		      <code>| elephants            |</code><br>
+		      <code>| rings                |</code><br>
+		      <code>| dancers              |</code><br>
+		      <code>| cannons              |</code><br>
+		      <code>| venues               |</code><br>
+		      <code>+----------------------+</code><br>
+		      <code>11 rows in set (0.001 sec)</code><br>
+	      </div>
+      </div>
+
+      <hr>
+      <table class="centable">
+	      <tr>
+		      <th><a href="raspberry_pi_server_hugo.html">Previous</a></th>
+		      <th>Published October 11, 2023</th>
+		      <!-- <th><a href="">Next</a></th> -->
+	      </tr>
+      </table>
+      <br>
+   </div>
+</body>
+</html>
