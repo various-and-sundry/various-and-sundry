@@ -35,6 +35,14 @@ h3 {
  	display: table;
 }
 
+.marginedContainer {
+	width: 60%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
 .container {
   position: relative;
   text-align: center;
@@ -652,6 +660,10 @@ table.dictabdefs tr th.example {
 
 
 @media only screen and (max-width: 1000px) {
+
+	.marginedContainer {
+		width: 90%;
+	}
 
 	.centimage {
 		width: 80%;
