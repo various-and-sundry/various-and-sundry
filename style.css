@@ -114,6 +114,20 @@ a h1 mark:hover {
 	border-color: black;
 }
 
+body {
+	background: grey;
+}
+
+a {
+	color: #cccc33;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #ffff00;
+	text-decoration: underline;
+}
+
 .container div a {
 	text-decoration: none;
 }
@@ -127,22 +141,21 @@ a h1 mark:hover {
 	outline: 6px dashed #eeeeee;
 }
 
-.padded {
-	padding: 10px 42px;
+.articleDiv {
+	background: #444;
+	border: 6px solid black;
 }
 
-body {
-	background: grey;
-}
-
-a {
-	color: #cccc33;
+.articleDiv a {
 	text-decoration: none;
 }
 
-a:hover {
-	color: #ffff00;
-	text-decoration: underline;
+.articleDiv:hover {
+	background: #3c3c3c;
+}
+
+.padded {
+	padding: 10px 42px;
 }
 
 #navbar {
