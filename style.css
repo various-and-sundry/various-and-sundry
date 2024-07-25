@@ -40,7 +40,6 @@ h3 {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	text-align: center;
 }
 
 .container {
@@ -516,6 +515,17 @@ table.dictabdefs tr th {
 table.dictabdefs tr th.example {
 	color: grey;
 	padding-bottom: 20px;
+}
+
+.paddedTable {
+	border-collapse: collapse;
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tableBorder {
+	border: 1px solid;
 }
 
 .bookTable {

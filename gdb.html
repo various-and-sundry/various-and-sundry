@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <title>How To Use GDB</title>
+   <link href="style.css" type="text/css" rel="stylesheet">
+   <link rel="shortcut icon" type="image/png" href="icons/favicon.png">
+</head>
+<body>
+<div id="navbar">
+
+
+<img src="icons/banner-logo.png" alt="RobotPicture" id="banner">
+
+<nav>
+	<ul>
+		<li><a href="index.html">&#127968; Home</a></li>
+		<li><a href="projects.html">&#129691; Projects</a></li>
+		<li><a href="articles.html">&#128221; Articles</a></li>
+		<li><a href="books.html">&#128218; Books</a></li>
+		<li><a href="more.html">&#128377; More</a></li>
+		<li><a href="about.html">&#129516; About</a></li>
+	</ul>
+</nav>
+
+</div>
+	<div id="main">
+		<div class="marginedContainer">
+			<h1>The GNU Debugger</h1>
+
+			<h2>Background</h2>
+
+			<p>The GNU Debugger is a command-line debugging program that allows a user to step through the execution of a program and monitor its internal state. It can be used with C, C++, Fortran and Modula-2, although I only have experience using it with C.</p>
+
+
+			<p>Joshua Rampersad gave and extremely useful lecture on the basics of GDB at the University of Waterloo, which is available on <a href="https://www.youtube.com/watch?v=svG6OPyKsrw">YouTube</a>. I originally learned GDB from that lecture, and its influence is likely seen in the content and structure of this article.</p>
+
+			<h2>Running GDB</h2>
+			
+			<p>When using GDB, C programs should generally be compiled with the <code>-g</code> flag. This will add debugging information to the output file. The output will be a larger file than a normal binary because it will contain the information necessary for GDB to determine line number and line content information.</p>
+			<div class="term">
+				<div>
+					<code class="prompt">$</code> <code class="command">gcc -g myProgram.c</code><br>
+				</div>
+			</div>
+
+			<p>Once the program has been compiled, the GDB debugger can be entered as shown below.</p>
+			<div class="term">
+				<div>
+					<code class="prompt">$</code> <code class="command">gdb myExecutable.out</code><br>
+					<code>GNU gdb (GDB) 14.2</code><br>
+					<code>Copyright (C) 2023 Free Software Foundation, Inc.</code><br>
+					<code>License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html></code><br>
+					<code>This is free software: you are free to change and redistribute it.</code><br>
+					<code>There is NO WARRANTY, to the extent permitted by law.</code><br>
+					<code>Type "show copying" and "show warranty" for details.</code><br>
+					<code>This GDB was configured as "x86_64-pc-linux-gnu".</code><br>
+					<code>Type "show configuration" for configuration details.</code><br>
+					<code>For bug reporting instructions, please see:</code><br>
+					<code>&lt;https://www.gnu.org/software/gdb/bugs/&gt;.</code><br>
+					<code>Find the GDB manual and other documentation resources online at:</code><br>
+					<code>&lt;http://www.gnu.org/software/gdb/documentation/&gt;.</code><br>
+					<code></code><br>
+					<code>For help, type "help".</code><br>
+					<code>Type "apropos word" to search for commands related to "word"...</code><br>
+					<code>Reading symbols from myExecutable.out...</code><br>
+					<code>(gdb)</code><br>
+				</div>
+			</div>
+
+			<p>If the program requires command-line arguments, they must be assigned using the <code>set</code> command as shown in the table below.</p>
+
+			<h2>The Commands</h2>
+
+			<p>Once a program is loaded in GDB, the following commands can be used to run and debug it.</p>
+
+			<table class="paddedTable tableBorder">
+				<tr><td class="tableBorder"><code>set args arg1 arg2 etc.</code></td>	<td class="tableBorder">if the program requires command-line arguments, they must be entered this way</td></tr>
+				<tr><td class="tableBorder"><code>run</code></td>			<td class="tableBorder">run the program from the beginning</td></tr>
+				<tr><td class="tableBorder"><code>break n</code></td>			<td class="tableBorder">set a breakpoint at line n</td></tr>
+				<tr><td class="tableBorder"><code>break functionName</code></td>	<td class="tableBorder">set a breakpoint at function functionName</td></tr>
+				<tr><td class="tableBorder"><code>next</code></td>			<td class="tableBorder">run the next line</td></tr>
+				<tr><td class="tableBorder"><code>list</code></td>			<td class="tableBorder">show the lines surrounding the current line</td></tr>
+				<tr><td class="tableBorder"><code>print x</code></td>			<td class="tableBorder">print the status of variable x</td></tr>
+				<tr><td class="tableBorder"><code>quit</code></td>			<td class="tableBorder">quit GDB</td></tr>
+				<tr><td class="tableBorder"><code>up</code></td>    			<td class="tableBorder">move up the call stack</td></tr>
+				<tr><td class="tableBorder"><code>down</code></td>			<td class="tableBorder">move down the call stack</td></tr>
+				<tr><td class="tableBorder"><code>display x</code></td>			<td class="tableBorder">keep displaying the status of variable x at every step</td></tr>
+				<tr><td class="tableBorder"><code>undisplay 1</code></td>		<td class="tableBorder">stop displaying the status of variable number 1</td></tr>
+				<tr><td class="tableBorder"><code>backtrace</code></td>			<td class="tableBorder">show backtrace</td></tr>
+				<tr><td class="tableBorder"><code>step</code></td>			<td class="tableBorder">advance to the next line, even if it is inside a function</td></tr>
+				<tr><td class="tableBorder"><code>continue</code></td>			<td class="tableBorder">run to the next breakpoint</td></tr>
+				<tr><td class="tableBorder"><code>finish</code></td>			<td class="tableBorder">run until the current function returns</td></tr>
+				<tr><td class="tableBorder"><code>watch x</code></td>			<td class="tableBorder">run until the value of x changes and print the change</td></tr>
+				<tr><td class="tableBorder"><code>info breakpoints</code></td>		<td class="tableBorder">list all breakpoints, which will show their numbers</td></tr>
+				<tr><td class="tableBorder"><code>delete 1</code></td>			<td class="tableBorder">delete breakpoint 1</td></tr>
+				<tr><td class="tableBorder"><code>delete</code></td>			<td class="tableBorder">delete all breakpoints</td></tr>
+				<tr><td class="tableBorder"><code>whatis x</code></td>			<td class="tableBorder">print x's type</td></tr>
+				<tr><td class="tableBorder"><code>target record-full</code></td>	<td class="tableBorder">begin recording, allowing reverse-next to be used</td></tr>
+				<tr><td class="tableBorder"><code>reverse-next</code></td>		<td class="tableBorder">undo next (only works after target record-full was run)</td></tr>
+				<tr><td class="tableBorder"><code>set var x = 0</code></td>		<td class="tableBorder">set the value of x to 0</td></tr>
+			</table>
+
+			<br><br>
+
+		</div>
+		<div>
+	</body>
+</html>
