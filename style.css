@@ -352,6 +352,13 @@ th.thborder{
 	border: 1px solid black; 
 }
 
+td.tdborder{
+	border: 2px solid black; 
+	color: white;
+    	padding: 10px;
+}
+
+
 #input_com_u_prof_code {
 	width: 100%;
 }
