@@ -24,7 +24,24 @@
 
 		<div id="main">
 			<h1>My Books</h1>
-			<p class="centext">Here are all of my books. Stars signify the titles of my favorites.</p>
+
+			<p class="centext">Here are all of my books.</p>
+
+			<p class="centext">Stars signify the titles of my favorites.</p>
+
+			<table class="bookTable" id="countTable" style="display: none;">
+				<tr>
+					<th class="bookComplete">
+			<p id="completeCounter" class="centext"></p>
+					</th>
+					<th class="bookInProgress">
+			<p id="inProgressCounter" class="centext"></p>
+					</th>
+					<th class="bookNotStarted">
+			<p id="notStartedCounter" class="centext"></p>
+					</th>
+				</tr>
+			</table>
 
 			<h2>Computing</h2>
 
@@ -1246,4 +1263,15 @@
 			</table>
 		</div>
 	</body>
+	<script>
+		completeBooks = document.querySelectorAll(".bookComplete").length - 1;
+		inProgressBooks = document.querySelectorAll(".bookInProgress").length - 1;
+		notStartedBooks = document.querySelectorAll(".bookNotStarted").length - 1;
+
+		document.getElementById("completeCounter").textContent = "Complete: " + completeBooks;
+		document.getElementById("inProgressCounter").textContent = "In Progress: " + inProgressBooks;
+		document.getElementById("notStartedCounter").textContent = "Not Started: " + notStartedBooks;
+
+		document.getElementById('countTable').style.display = 'table';
+	</script>
 </html>
